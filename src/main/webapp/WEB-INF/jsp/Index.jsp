@@ -10,6 +10,7 @@
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
 
     <script src="<c:url value="/resources/theme1/build/react-with-addons.js" />"></script>
+    <script src="<c:url value="/resources/theme1/build/jquery-1.11.3.min.js" />"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -88,8 +89,17 @@
     // successful.  See statusChangeCallback() for when this call is made.
     function testAPI() {
         console.log('Welcome!  Fetching your information.... ');
-        FB.api('/me', function(response) {
+        FB.api('/me?fields=id,name,email', function(response) {
             console.log('Successful login for: ' + response.name);
+            console.log(response);
+            $.ajax({
+                type: 'POST',
+                url: '/login',
+                data: response,
+                success: function(data) {
+                    console.log(data);
+                }
+            });
             document.getElementById('app').innerHTML =
                     'Thanks for logging in, ' + response.name + '!';
         });
