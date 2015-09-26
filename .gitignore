@@ -1,6 +1,10 @@
 # Java class files
 *.class
 
+## Build files for Javascript
+src/main/webapp/resources/theme1/build/
+src/main/webapp/resources/theme1/build/*
+
 
 .classpath
 
