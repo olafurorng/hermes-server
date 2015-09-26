@@ -20,17 +20,18 @@ import java.util.ArrayList;
 public class LoginController
 {
 
+    // TODO: @RequestParam(value="accessToken") String accessToken,
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<LoginResponse> login(@RequestParam(value="accessToken") String accessToken,
-                                        @RequestParam(value="fbId") String fbId,
+    public ResponseEntity<LoginResponse> login(
+                                        @RequestParam(value="id") String id,
                                         @RequestParam(value="name") String name,
                                         @RequestParam(value="email") String email
                                         )
     { // TODO: taka við fleiri upplýsingum sem við fáum frá server
 
 
-        if (fbId == null || fbId.isEmpty()
-                || accessToken == null || accessToken.isEmpty()
+        if (id == null || id.isEmpty()
+                // || accessToken == null || accessToken.isEmpty() // TODO: enable
                 || name == null || name.isEmpty())
         {
             return new ResponseEntity<LoginResponse>(HttpStatus.UNAUTHORIZED);
