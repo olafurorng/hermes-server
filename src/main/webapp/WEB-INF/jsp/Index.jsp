@@ -106,5 +106,6 @@
   </fb:login-button>
   <div id="app" class="container-fluid"></div>
   <script src="<c:url value="/resources/theme1/build/test.js" />"></script>
+
 </body>
 </html>
