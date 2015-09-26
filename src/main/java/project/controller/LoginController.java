@@ -20,9 +20,10 @@ import java.util.ArrayList;
 public class LoginController
 {
 
-    // TODO: @RequestParam(value="accessToken") String accessToken,
+    // TODO: ,
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<LoginResponse> login(
+                                        @RequestParam(value="accessToken") String accessToken,
                                         @RequestParam(value="id") String id,
                                         @RequestParam(value="name") String name,
                                         @RequestParam(value="email") String email
@@ -31,7 +32,7 @@ public class LoginController
 
 
         if (id == null || id.isEmpty()
-                // || accessToken == null || accessToken.isEmpty() // TODO: enable
+                || accessToken == null || accessToken.isEmpty()
                 || name == null || name.isEmpty())
         {
             return new ResponseEntity<LoginResponse>(HttpStatus.UNAUTHORIZED);
