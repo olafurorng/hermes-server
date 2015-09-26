@@ -8,9 +8,10 @@
     <meta charset="UTF-8">
     <title>Hermes</title>
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
-
+    <link href='/resources/theme1/css/style.css' rel='stylesheet' type='text/css'>
     <script src="<c:url value="/resources/theme1/build/react-with-addons.js" />"></script>
     <script src="<c:url value="/resources/theme1/build/jquery-1.11.3.min.js" />"></script>
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
