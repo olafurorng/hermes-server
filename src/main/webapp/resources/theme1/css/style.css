@@ -1,0 +1,11 @@
+/* Main */
+*{ margin: 0; padding: 0; box-sizing: border-box; }
+main{ max-width: 1980px; font-size: 12px; }
+body{ max-width:100%; width:100%;  padding:5% 1% 0% 1%; }
+
+/* Navbar */
+.navbar { font-family:Helvetica,Arial,MS Sans Serif; color:#000; padding:0.3% 2% 0.3% 2%; font-size: 1em; }
+.navbar-nav{ float: right; }
+
+
+.fb-login { padding-top: 20em; }
