@@ -90,14 +90,17 @@ color: #fff;
 
 /* Facebook, Twitter, Snapchat */
 .twitter_img {
- margin-bottom: 10px;
- width: 64px;
- display:block;
- background:transparent url('/resources/theme1/images/twitter_color1.png') center top no-repeat;
- background-size: contain; background-repeat: no-repeat;
+    margin-bottom: 10px;
+    height: auto; 
+    width: auto; 
+    max-width: 64px; 
+    min-height: 64px;
+    display:block;
+    background:transparent url("/resources/theme1/images/twitter_color.png") center top no-repeat;
+    background-size: contain; background-repeat: no-repeat;
 }
 
 .twitter_img:hover {
-   background-image: url('/resources/theme1/images/twitter_no_color1.png');
-   background-size: contain; background-repeat: no-repeat;
+    background-image: url("/resources/theme1/images/twitter_no_color.png");
+    background-size: contain; background-repeat: no-repeat;
 }

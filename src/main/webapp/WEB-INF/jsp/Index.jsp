@@ -49,7 +49,8 @@
     </div>
     <section class="second_block">
         <p>Prufa</p>
-        <a href="http://twitter.com/me" class="twitter_img" title="Twitter link"></a>
+
+        <a href="" class="twitter_img" title="Twitter link"></a>
     </section>
   </main>
     
