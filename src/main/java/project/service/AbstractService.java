@@ -1,4 +1,4 @@
-package project.model;
+package project.service;
 
 import misc.Log;
 
@@ -10,9 +10,9 @@ import java.sql.SQLException;
 /**
  * Created by olafurorn on 9/29/15.
  */
-public abstract class AbstractModel
+public abstract class AbstractService
 {
-    private static final String LOGTAG = AbstractModel.class.getSimpleName();
+    private static final String LOGTAG = AbstractService.class.getSimpleName();
 
     private final int VALID_TIMEOUT = 3000; // TODO: setja einhverja viturlega tölu hérna, ekki e-ð random
 
