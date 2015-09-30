@@ -1,4 +1,4 @@
-package project.model;
+package project.service;
 
 /**
  * Created by olafurorn on 9/30/15.

@@ -8,13 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import project.model.UserModel;
+import project.mockservice.MockDataService;
+import project.service.UserService;
 import project.responseentities.LoginResponse;
-import project.responseentities.subentities.DriverListEntry;
-import project.responseentities.subentities.RiderListEntry;
 import project.responseentities.subentities.User;
-
-import java.util.ArrayList;
 
 /**
  * Created by olafurorn on 9/26/15.
@@ -24,13 +21,15 @@ public class LoginController
 {
     private static final String LOGTAG = LoginController.class.getSimpleName();
 
-    private final UserModel userModel;
+    private final UserService userModel;
+    private final MockDataService mockDataService;
 
 
     @Autowired
-    public LoginController(UserModel userModel)
+    public LoginController(UserService userModel, MockDataService mockDataService)
     {
         this.userModel = userModel;
+        this.mockDataService = mockDataService;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -65,16 +64,18 @@ public class LoginController
             user = new User(id, name, email); // TODO: bíða eftir success frá gagnagrunni og þá senda svar, annars senda 5xx villu
 
 
-            LoginResponse loginResponse = new LoginResponse(new ArrayList<DriverListEntry>(),
-                    new ArrayList<RiderListEntry>(),
+            LoginResponse loginResponse = new LoginResponse(
+                    mockDataService.getMockDriverList(),
+                    mockDataService.getMockRiderList(),
                     user);
             return new ResponseEntity<LoginResponse>(loginResponse, HttpStatus.CREATED);
         }
         else
         {
             // user exist and we return 200
-            LoginResponse loginResponse = new LoginResponse(new ArrayList<DriverListEntry>(),
-                    new ArrayList<RiderListEntry>(),
+            LoginResponse loginResponse = new LoginResponse(
+                    mockDataService.getMockDriverList(),
+                    mockDataService.getMockRiderList(),
                     user);
             return new ResponseEntity<LoginResponse>(loginResponse, HttpStatus.OK);
         }
