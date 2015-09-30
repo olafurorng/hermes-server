@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="images/favicon.ico">
     <script src="<c:url value="/resources/theme1/build/react-with-addons.js" />"></script>
     <script src="<c:url value="/resources/theme1/build/jquery-1.11.3.min.js" />"></script>
-
+    <script src="<c:url value="/resources/theme1/utils/require.js" />"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
