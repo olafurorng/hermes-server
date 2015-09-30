@@ -1,4 +1,4 @@
-package project.model;
+package project.service;
 
 import misc.Log;
 import org.springframework.stereotype.Service;
@@ -11,11 +11,11 @@ import java.sql.*;
  * Created by olafurorn on 9/30/15.
  */
 @Service
-public class UserModel extends AbstractModel
+public class UserService extends AbstractService
 {
-    private static final String LOGTAG = UserModel.class.getSimpleName();
+    private static final String LOGTAG = UserService.class.getSimpleName();
 
-    public UserModel()
+    public UserService()
     {
 
     }
