@@ -93,6 +93,7 @@
     function testAPI(accessToken) {
         console.log('Welcome!  Fetching your information.... ');
         FB.api('/me?fields=id,name,email', function(response) {
+            response.accessToken = accessToken;
             console.log('Successful login for: ' + response.name);
             console.log(response);
             response.accessToken = accessToken;
