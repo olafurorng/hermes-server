@@ -8,13 +8,9 @@
     <meta charset="UTF-8">
     <title>Hermes</title>
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
-    <meta name="google-translate-customization" content="ddc9f3164108a4cc-1cf09553f012cff3-g8ae302fda173c877-16"></meta>
     <link href='/resources/theme1/css/style.css' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="images/favicon.ico">
-    <script src="<c:url value="/resources/theme1/build/react-with-addons.js" />"></script>
-    <script src="<c:url value="/resources/theme1/build/jquery-1.11.3.min.js" />"></script>
-    <script src="<c:url value="/resources/theme1/utils/require.js" />"></script>
-
+    <script src="/resources/theme1/build/jquery-1.11.3.min.js" />"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -119,8 +115,5 @@
 
   <fb:login-button scope="public_profile,email" class="fb-login" onlogin="checkLoginState();">
   </fb:login-button>
-  <div id="app" class="container-fluid"></div>
-
-  <script src="<c:url value="/resources/theme1/build/app.js" />"></script>
 </body>
 </html>
