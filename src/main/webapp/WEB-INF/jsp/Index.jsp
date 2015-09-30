@@ -33,7 +33,12 @@
           <li><a href="">Contact</a></li>
         </ul>
       </div>
-    </div>
+        <ul class="nav navbar-nav merki">
+          <li><a href="" class="twitter_img" title="Twitter link"></a></li>
+          <li><a href="" class="facebook_img" title="Facebook link"></a></li>
+          <li><a href="" class="snapchat_img" title="Snapchat link"></a></li>
+        </ul>         
+    </div> 
   </nav>
   <header>
     <h1>Hermes</h1>
@@ -54,14 +59,12 @@
         </section>
     </div>
     <section class="second_block">
-        <p>Prufa</p>
-
-        <a href="" class="twitter_img" title="Twitter link"></a>
+    
     </section>
   </main>
     
         <!--<div class="push"></div>-->
-        <div class="footer">
+    <div class="footer">
             <p>&#9400; 2015 Project Hermes. All Rights Reserved. Terms of Use and Privacy</p>
     </div>
 </body>

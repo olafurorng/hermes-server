@@ -9,6 +9,10 @@
 main {
     max-width: 1200px;
     font-size: 12px;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -2em;
 }
 
 html,
@@ -34,6 +38,7 @@ header {
 header h1 {
     color: black;
 }
+
 
 .btn-social {
     position: relative;
@@ -98,33 +103,33 @@ header h1 {
     background-color: white;
 }
 
-.fb_twitter {
-    float: right;
-    width: 3em;
-    padding: 1% 9% 1% 3%;
-}
 
 
 /* First Block*/
+.first_block_container{
+    width: 100%;
+    height: 300px; /*Tímabundinn breyta*/
+}
 
-
-/*.first_left_block { background-image: url( "http://blogs-images.forbes.com/michakaufman/files/2014/10/Tesla-Alpha-Model-S-2011-widescreen-10.jpg"); background-size: contain; background-repeat: no-repeat; float:left; width:50%; padding: 32% 0% 0% 0%; }*/
+.first_left_block {
+    background-color: rgba(114, 214, 57, 0.8); 
+    float:left; 
+    width:50%; 
+    height: 300px; /*Tímabundinn breyta*/
+}
 
 .first_right_block {
     background-color: rgba(224, 192, 180, 0.8);
     float: right;
     width: 50%;
-    padding: 15% 0% 9% 0%;
+    padding: 15% 0% 0% 0%;
+    height: 300px; /*Tímabundinn breyta*/
 }
 
 .fb_container {
     padding: 1% 0% 1% 40%;
 }
 
-.fb_lock {
-    width: 10%;
-    float: left;
-}
 
 
 /* Second Block */
@@ -135,4 +140,59 @@ header h1 {
     background-color: rgba(247, 244, 41, 0.8);
     border: 5px solid #D0CD09;
     height: 250px;
+}
+
+/* Footer */
+.footer, .push {
+height: 4em;
+background-color: #222222;
+padding: 2% 4% 2% 4%;
+color: #fff;
+}
+
+/* Facebook, Twitter, Snapchat */
+.merki{
+    float: right;
+}
+.twitter_img {
+    height: auto; 
+    width: auto; 
+    max-width: 10%; 
+    min-height: 10%;
+    display:block;
+    background:transparent url("/resources/theme1/images/twitter_color.png") center top no-repeat;
+    background-size: contain; background-repeat: no-repeat;
+}
+
+.twitter_img:hover {
+    background-image: url("/resources/theme1/images/twitter_no_color.png");
+    background-size: contain; background-repeat: no-repeat;
+}
+.facebook_img {
+    height: auto; 
+    width: auto; 
+    max-width: 10%; 
+    min-height: 10%;
+    display:block;
+    background:transparent url("/resources/theme1/images/facebook_color.png") center top no-repeat;
+    background-size: contain; background-repeat: no-repeat;
+}
+
+.facebook_img:hover {
+    background-image: url("/resources/theme1/images/facebook_no_color.png");
+    background-size: contain; background-repeat: no-repeat;
+}
+.snapchat_img {
+    height: auto; 
+    width: auto; 
+    max-width: 10%; 
+    min-height: 10%;
+    display:block;
+    background:transparent url("/resources/theme1/images/snapchat_color.png") center top no-repeat;
+    background-size: contain; background-repeat: no-repeat;
+}
+
+.snapchat_img:hover {
+    background-image: url("/resources/theme1/images/snapchat_no_color.png");
+    background-size: contain; background-repeat: no-repeat;
 }
