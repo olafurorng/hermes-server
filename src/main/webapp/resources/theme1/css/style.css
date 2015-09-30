@@ -12,7 +12,7 @@ main {
     min-height: 100%;
     height: auto !important;
     height: 100%;
-    margin: 0 auto -2em;
+    margin: 0 auto -4em;
 }
 
 html,
@@ -139,7 +139,7 @@ header h1 {
     float: left;
     background-color: rgba(247, 244, 41, 0.8);
     border: 5px solid #D0CD09;
-    height: 250px;
+    height: 400px; /*Tímabundinn breyta*/
 }
 
 /* Footer */
