@@ -10,11 +10,13 @@
     <link href='/resources/theme1/css/style.css' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="images/favicon.ico">
     <script src="/resources/theme1/build/jquery-1.11.3.min.js" />"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
   <script src="/resources/theme1/src/facebook.js"></script>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
+  <nav class="navbar">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -24,7 +26,6 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href=""><img alt="Brand" src="https://flitways.com/img/flitways/img_external/gallery/Car-1B-1500x550.png"></a>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
@@ -35,18 +36,23 @@
       </div>
     </div>
   </nav>
-  <main>
+  <header>
+    <h1>Hermes</h1>
+    <button class="btn btn-block btn-social btn-facebook"><i class="fa fa-facebook"></i>Sign in with Facebook</button>
+      <!-- <fb:login-button scope="public_profile,email" class="fb-button" onlogin="checkLoginState();">
+      </fb:login-button> -->
+  </header>
+  <!-- <main>
     <section class="first_left_block"></section>
     <section class="first_right_block">
       <div class="fb_container">
         <img class="fb_lock" src="http://www.veryicon.com/icon/png/System/Android%201/Very%20Basic%20lock.png">
-        <h1>Authentication</h1>
         <fb:login-button scope="public_profile,email" class="fb-button" onlogin="checkLoginState();">
         </fb:login-button>
       </div>
       <div id="app" class="container-fluid"></div>
     </section>
     <section class="second_block"></section>
-  </main>
+  </main> -->
 </body>
 </html>
