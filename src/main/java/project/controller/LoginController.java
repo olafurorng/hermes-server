@@ -1,11 +1,14 @@
 package project.controller;
 
+import misc.Log;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import project.model.UserModel;
 import project.responseentities.LoginResponse;
 import project.responseentities.subentities.DriverListEntry;
 import project.responseentities.subentities.RiderListEntry;
@@ -19,8 +22,17 @@ import java.util.ArrayList;
 @Controller
 public class LoginController
 {
+    private static final String LOGTAG = LoginController.class.getSimpleName();
 
-    // TODO: ,
+    private final UserModel userModel;
+
+
+    @Autowired
+    public LoginController(UserModel userModel)
+    {
+        this.userModel = userModel;
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<LoginResponse> login(
                                         @RequestParam(value="accessToken") String accessToken,
@@ -28,7 +40,11 @@ public class LoginController
                                         @RequestParam(value="name") String name,
                                         @RequestParam(value="email") String email
                                         )
-    { // TODO: taka við fleiri upplýsingum sem við fáum frá server
+    {
+        Log.i(LOGTAG, "calling /login");
+        // TODO: checka á accessToken-inu
+
+        // TODO: taka við fleiri upplýsingum sem við fáum frá facebook
 
 
         if (id == null || id.isEmpty()
@@ -38,15 +54,32 @@ public class LoginController
             return new ResponseEntity<LoginResponse>(HttpStatus.UNAUTHORIZED);
         }
 
+        User user = userModel.getUser(id);
+
+        if (user == null)
+        {
+            // user doesn't exist and is a new user
+            // user is created in database and we return 201
+
+            userModel.createUser(id, name, email);
+            user = new User(id, name, email); // TODO: bíða eftir success frá gagnagrunni og þá senda svar, annars senda 5xx villu
 
 
+            LoginResponse loginResponse = new LoginResponse(new ArrayList<DriverListEntry>(),
+                    new ArrayList<RiderListEntry>(),
+                    user);
+            return new ResponseEntity<LoginResponse>(loginResponse, HttpStatus.CREATED);
+        }
+        else
+        {
+            // user exist and we return 200
+            LoginResponse loginResponse = new LoginResponse(new ArrayList<DriverListEntry>(),
+                    new ArrayList<RiderListEntry>(),
+                    user);
+            return new ResponseEntity<LoginResponse>(loginResponse, HttpStatus.OK);
+        }
 
-        // TODO: setja í gagnagrunn ef user er ekki til og return-a 201 -- annars fletta user upp og return-a 200
+        // TODO: return-a fake gögnum af Driver-um og Rider-um
 
-        User user = new User(name);
-        LoginResponse loginResponse = new LoginResponse(new ArrayList<DriverListEntry>(),
-                new ArrayList<RiderListEntry>(),
-                user);
-        return new ResponseEntity<LoginResponse>(loginResponse, HttpStatus.OK);
     }
 }
