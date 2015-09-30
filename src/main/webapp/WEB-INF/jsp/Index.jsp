@@ -8,7 +8,6 @@
     <title>Hermes</title>
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
     <link href='/resources/theme1/css/style.css' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" href="images/favicon.ico">
     <script src="/resources/theme1/build/jquery-1.11.3.min.js" />"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -36,17 +35,27 @@
     </div>
   </nav>
   <main>
-    <section class="first_left_block"></section>
-    <section class="first_right_block">
-      <div class="fb_container">
-        <img class="fb_lock" src="http://www.veryicon.com/icon/png/System/Android%201/Very%20Basic%20lock.png">
-        <h1>Authentication</h1>
-        <fb:login-button scope="public_profile,email" class="fb-button" onlogin="checkLoginState();">
-        </fb:login-button>
-      </div>
-      <div id="app" class="container-fluid"></div>
+    <div class="first_block_container">
+        <section class="first_left_block"></section>
+        <section class="first_right_block">
+        <div class="fb_container">
+            <img class="fb_lock" src="http://www.veryicon.com/icon/png/System/Android%201/Very%20Basic%20lock.png">
+            <p>Authentication</p>
+            <fb:login-button scope="public_profile,email" class="fb-button" onlogin="checkLoginState();">
+            </fb:login-button>
+        </div>
+        <div id="app" class="container-fluid"></div>
+        </section>
+    </div>
+    <section class="second_block">
+        <p>Prufa</p>
+        <a href="http://twitter.com/me" class="twitter_img" title="Twitter link"></a>
     </section>
-    <section class="second_block"></section>
   </main>
+    
+        <!--<div class="push"></div>-->
+        <div class="footer">
+            <p>&#9400; 2015 Project Hermes. All Rights Reserved. Terms of Use and Privacy</p>
+    </div>
 </body>
 </html>
