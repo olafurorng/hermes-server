@@ -107,13 +107,99 @@
     }
   </script>
 
+
+<section class="first_left_block">
+</section>
+<section class="first_right_block">
+    <div class="fb_container">
+        <img class="fb_lock" src="http://www.veryicon.com/icon/png/System/Android%201/Very%20Basic%20lock.png">
+        <h1>Authentication<h3/>
+        <fb:login-button scope="public_profile,email" class="fb-button" onlogin="checkLoginState();">
+        </fb:login-button>
+    </div>
+    
+  <div id="app" class="container-fluid"></div>
+    </section>
+    
+    <section class="second_block">
+    </section>
+  
+
+<!-- Footer drasl -->
+    <div id="wrap">
+      <!-- Begin page content -->
+      <div class="container">
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+
+      </div>
+    </div>
+    
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=636984166405294";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href=""><img alt="Brand" src="https://flitways.com/img/flitways/img_external/gallery/Car-1B-1500x550.png"></a>
+    </div>
+
+
+    <form class="navbar-form navbar-right" role="search">  
+      <!--  <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Leita</button>  -->
+    </form>
+    
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="">About us</a></li>
+        <li><a href="" >Idea</a></li>
+        <li><a href="">Contact</a></li>
+        <!--
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li class="divider"></li>
+            <li><a href=""></a></li>
+          </ul>
+        </li>
+        -->
+      </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
   <!--
     Below we include the Login Button social plugin. This button uses
     the JavaScript SDK to present a graphical Login button that triggers
     the FB.login() function when clicked.
   -->
 
-  <fb:login-button scope="public_profile,email" class="fb-login" onlogin="checkLoginState();">
-  </fb:login-button>
 </body>
 </html>
