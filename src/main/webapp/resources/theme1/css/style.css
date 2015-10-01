@@ -9,10 +9,9 @@
 main {
     max-width: 1200px;
     font-size: 12px;
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin: 0 auto -4em;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 html,
@@ -127,11 +126,6 @@ header h1 {
     height: 300px; /*Tímabundinn breyta*/
 }
 
-.fb_container {
-    padding: 1% 0% 1% 40%;
-}
-
-
 
 /* Second Block */
 
@@ -144,7 +138,7 @@ header h1 {
 }
 
 /* Footer */
-.footer, .push {
+footer, .push {
 height: 4em;
 background-color: #222222;
 padding: 2% 4% 2% 4%;
@@ -191,6 +185,12 @@ color: #fff;
     display:block;
     background:transparent url("/resources/theme1/images/snapchat_color.png") center top no-repeat;
     background-size: contain; background-repeat: no-repeat;
+}
+
+.cf:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .snapchat_img:hover {
