@@ -14,12 +14,16 @@ public class User
     private final String id;
     private final String name;
     private final String email;
+    private final double starRating;
+    private final int numberOfStarRatings;
 
-    public User(String id, String name, String email)
+    public User(String id, String name, String email, double starRating, int numberOfStarRatings)
     {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.starRating = starRating;
+        this.numberOfStarRatings = numberOfStarRatings;
     }
 
     public String getName() {
@@ -34,5 +38,15 @@ public class User
     public String getEmail()
     {
         return email;
+    }
+
+    public double getStarRating()
+    {
+        return starRating;
+    }
+
+    public int getNumberOfStarRatings()
+    {
+        return numberOfStarRatings;
     }
 }
