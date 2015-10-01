@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class HomeController
+public class RouterController
 {
-    private static final String LOGTAG = HomeController.class.getSimpleName();
+    private static final String LOGTAG = RouterController.class.getSimpleName();
 
-    public HomeController()
+    public RouterController()
     {
 
     }
