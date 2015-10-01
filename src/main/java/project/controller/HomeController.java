@@ -18,7 +18,18 @@ public class HomeController
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home()
     {
+        // ATHUGA: accessToken
+        // ... hugs hugs...
+        // String path = (accessToken) ? : ;
         String path = "Index";
+        Log.i(LOGTAG, "Routing to: " + path);
+        return path;
+    }
+
+    @RequestMapping(value = "/select", method = RequestMethod.GET)
+    public String select()
+    {
+        String path = "Select";
         Log.i(LOGTAG, "Routing to: " + path);
         return path;
     }
