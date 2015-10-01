@@ -1,8 +1,11 @@
-//$( document ).ready(function() {
-//	var form = document.getElementById('form');
-//	form.addEventListener('submit',rider , false);
-//
-//});
+jQuery(document).ready(function($) {
+	var form = document.getElementById('form');
+	form.addEventListener('click',rider , false);
+	$('#msg').html("")
+
+});
+
+
 //console.log("Ridertakki");
 //var el = document.getElementById("rider");
 //if (el.addEventListener)
@@ -13,8 +16,3 @@ function rider(e) {
 }
 function driver(e) {}
 
-jQuery(document).ready(function($) {
-
-	$('#msg').html("This is updated by jQuery")
-
-});

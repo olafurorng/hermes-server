@@ -215,3 +215,24 @@ color: #fff;
         display: initial;
     }
 }
+
+
+/* Main */
+.rider_button{
+    background-image: url("/resources/theme1/images/rider.png");
+    background-size: contain; background-repeat: no-repeat;
+    width: 150px; /*Tímabundinn breyta*/
+    height:150px; /*Tímabundinn breyta*/
+    border: 2px outset;
+    float:left;
+    margin-top: 5%;
+}
+.driver_button{
+    background-image: url("/resources/theme1/images/driver.png");
+    background-size: contain; background-repeat: no-repeat;
+    width: 150px; /*Tímabundinn breyta*/
+    height:150px; /*Tímabundinn breyta*/
+    border: 2px outset;
+    float:right;
+    margin-top: 5%;
+}
