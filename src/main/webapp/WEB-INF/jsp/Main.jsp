@@ -19,10 +19,14 @@
     <h1>Hermes</h1>
   </header>
   <main>
+
     <form name="form" id="form" method="post">
+        <div id="box2" class="box">
     <input type="button" id="rider" value="" class="rider_button"> 
+    </div>
     <input type="button" id="driver" value="" class="driver_button"> 
     </form>
+    <br>
 
   </main>
 </body>

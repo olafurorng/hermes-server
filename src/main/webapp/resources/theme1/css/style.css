@@ -214,6 +214,7 @@ color: #fff;
 
 /* Main */
 .rider_button{
+    position: absolute;
     background-image: url("/resources/theme1/images/rider.png");
     background-size: contain; background-repeat: no-repeat;
     width: 150px; /*Tímabundinn breyta*/
@@ -221,8 +222,10 @@ color: #fff;
     border: 2px outset;
     float:left;
     margin-top: 5%;
+    left: 0%;
 }
 .driver_button{
+    position: absolute;
     background-image: url("/resources/theme1/images/driver.png");
     background-size: contain; background-repeat: no-repeat;
     width: 150px; /*Tímabundinn breyta*/
@@ -230,8 +233,18 @@ color: #fff;
     border: 2px outset;
     float:right;
     margin-top: 5%;
+    right: 20%; /*Vantar padding right?*/
 
 }
+form{
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;  
+}
+
 
 @media screen and (min-width: 1200px) {
     .rider_button{
