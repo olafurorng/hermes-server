@@ -21,10 +21,10 @@
   <main>
 
     <form name="form" id="form" method="post">
-        <div id="box2" class="box">
+    <div id="rider_driver">
     <input type="button" id="rider" value="" class="rider_button"> 
-    </div>
     <input type="button" id="driver" value="" class="driver_button"> 
+    </div>
     </form>
     <br>
 

@@ -233,7 +233,7 @@ color: #fff;
     border: 2px outset;
     float:right;
     margin-top: 5%;
-    right: 20%; /*Vantar padding right?*/
+    right: 0%; 
 
 }
 form{
@@ -254,6 +254,7 @@ form{
     .driver_button{
         width: 500px;
         height: 500px;
+        right: 20%;
     }
 }
 
