@@ -17,7 +17,6 @@ public class PlayGround
 {
     private static final String LOGTAG = PlayGround.class.getSimpleName();
 
-
     public static void main(String[] args)
     {
         Log.d(LOGTAG, "Trying to get connection to database");
