@@ -26,10 +26,10 @@ public class HomeController
         return path;
     }
 
-    @RequestMapping(value = "/select", method = RequestMethod.GET)
-    public String select()
+    @RequestMapping(value = "/main", method = RequestMethod.GET)
+    public String main()
     {
-        String path = "Select";
+        String path = "Main";
         Log.i(LOGTAG, "Routing to: " + path);
         return path;
     }
