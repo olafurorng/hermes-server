@@ -59,7 +59,8 @@ public class MockDataService
 
         for (int i = 0; i < NUMBER_OF_MOCK_RIDER; i++)
         {
-            RiderListEntry riderListEntry = new RiderListEntry(new User(getRandomId(), getRandomName(), getRandomEmail()),
+            RiderListEntry riderListEntry = new RiderListEntry(new User(getRandomId(), getRandomName(),
+                    getRandomEmail(), getRandomRatings(), getRandomNumberOfRatings()),
                     getRandomLocation(), getRandomLocation(), getRandomDateInTheFuture());
             riderListEntries.add(riderListEntry);
 
@@ -73,7 +74,8 @@ public class MockDataService
 
         for (int i = 0; i < NUMBER_OF_MOCK_DRIVER; i++)
         {
-            DriverListEntry driverListEntry = new DriverListEntry(new User(getRandomId(), getRandomName(), getRandomEmail()),
+            DriverListEntry driverListEntry = new DriverListEntry(new User(getRandomId(), getRandomName(),
+                    getRandomEmail(), getRandomRatings(), getRandomNumberOfRatings()),
                     getRandomDateInTheFuture(), getRandomDateInTheFuture());
             driverListEntries.add(driverListEntry);
         }
@@ -103,6 +105,18 @@ public class MockDataService
     {
         int index = (int) (Math.random()*locations.size());
         return locations.get(index);
+    }
+
+    private double getRandomRatings()
+    {
+        int index = (int) (Math.random()*5) + 1;
+        return index;
+    }
+
+    private int getRandomNumberOfRatings()
+    {
+        int index = (int) (Math.random()*30) + 1;
+        return index;
     }
 
     private Date getRandomDateInTheFuture()

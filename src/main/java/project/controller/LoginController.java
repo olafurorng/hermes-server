@@ -61,7 +61,7 @@ public class LoginController
             // user is created in database and we return 201
 
             userModel.createUser(id, name, email);
-            user = new User(id, name, email); // TODO: bíða eftir success frá gagnagrunni og þá senda svar, annars senda 5xx villu
+            user = new User(id, name, email, 0.0, 0); // TODO: bíða eftir success frá gagnagrunni og þá senda svar, annars senda 5xx villu
 
 
             LoginResponse loginResponse = new LoginResponse(

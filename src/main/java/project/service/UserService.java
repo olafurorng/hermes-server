@@ -44,8 +44,10 @@ public class UserService extends AbstractService
                 final String name = resultSet.getString(DatabaseConstants.TABLE_USERS_COLUMN_NAME);
                 final String id = userId;
                 final String email = resultSet.getString(DatabaseConstants.TABLE_USERS_COLUMN_EMAIL);
+                final double starRating = resultSet.getDouble(DatabaseConstants.TABLE_USERS_COLUMN_STAR_RATING);
+                final int numberOfStarRatings = resultSet.getInt(DatabaseConstants.TABLE_USERS_COLUMN_NUMBER_OF_STAR_RATINGS);
 
-                user = new User(id, name, email);
+                user = new User(id, name, email, starRating, numberOfStarRatings);
             }
 
             resultSet.close();
