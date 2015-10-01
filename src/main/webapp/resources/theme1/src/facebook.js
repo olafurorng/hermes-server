@@ -88,3 +88,9 @@ function testAPI(accessToken) {
             'Thanks for logging in, ' + response.name + '!';
     });
 }
+
+function init() {
+    var fbButton = document.querySelector('.btn-facebook').addEventListener('click', checkLoginState);
+}
+
+window.addEventListener('load', init);

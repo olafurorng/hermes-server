@@ -85,6 +85,7 @@ header h1 {
     top: 0;
     left: 0;
     width: 100%;
+    display: none;
 }
 .navbar a {
     color: white;
@@ -195,4 +196,10 @@ color: #fff;
 .snapchat_img:hover {
     background-image: url("/resources/theme1/images/snapchat_no_color.png");
     background-size: contain; background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 700px) {
+    .navbar {
+        display: initial;
+    }
 }

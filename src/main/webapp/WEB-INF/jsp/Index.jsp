@@ -50,11 +50,6 @@
     <div class="first_block_container">
         <section class="first_left_block"></section>
         <section class="first_right_block">
-        <div class="fb_container">
-            <p>Authentication</p>
-            <fb:login-button scope="public_profile,email" class="fb-button" onlogin="checkLoginState();">
-            </fb:login-button>
-        </div>
         <div id="app" class="container-fluid"></div>
         </section>
     </div>
