@@ -210,11 +210,6 @@ color: #fff;
     background-size: contain; background-repeat: no-repeat;
 }
 
-@media screen and (min-width: 700px) {
-    .navbar {
-        display: initial;
-    }
-}
 
 
 /* Main */
@@ -235,4 +230,22 @@ color: #fff;
     border: 2px outset;
     float:right;
     margin-top: 5%;
+
+}
+
+@media screen and (min-width: 1200px) {
+    .rider_button{
+        width: 500px;
+        height: 500px;
+    }
+    .driver_button{
+        width: 500px;
+        height: 500px;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .navbar {
+        display: initial;
+    }
 }
