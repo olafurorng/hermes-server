@@ -40,11 +40,9 @@
         </ul>         
     </div> 
   </nav>
-  <header>
+  <header class="bg-header">
     <h1>Hermes</h1>
     <button class="btn btn-block btn-social btn-facebook"><i class="fa fa-facebook"></i>Sign in with Facebook</button>
-      <!-- <fb:login-button scope="public_profile,email" class="fb-button" onlogin="checkLoginState();">
-      </fb:login-button> -->
   </header>
   <main>
     <div class="first_block_container">
@@ -58,7 +56,7 @@
     </section>
   </main>
   <footer>
-          <p>&#9400; 2015 Project Hermes. All Rights Reserved. Terms of Use and Privacy</p>
+    <p>&#9400; 2015 Project Hermes. All Rights Reserved. Terms of Use and Privacy</p>
   </footer>
 </body>
 </html>

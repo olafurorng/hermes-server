@@ -25,7 +25,7 @@ body {
     padding: 0%;
 }
 
-header {
+.bg-header {
     width: 100%;
     background-image: url('http://www.teslamotors.com/sites/default/files/images/homepage/home_hero_70.jpg');
     background-size: cover;
@@ -34,10 +34,22 @@ header {
     padding: 50px 10%;
 }
 
-header h1 {
+.bg-header h1 {
     color: black;
 }
 
+.basic-header {
+    height: 4em;
+    display: flex;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.basic-header h1 {
+    margin: 0;
+}
 
 .btn-social {
     position: relative;
