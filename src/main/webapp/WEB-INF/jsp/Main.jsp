@@ -19,15 +19,13 @@
     <h1>Hermes</h1>
   </header>
   <main>
-
-    <form name="form" id="form" method="post">
-    <div id="rider_driver">
-    <input type="button" id="rider" value="" class="rider_button"> 
-    <input type="button" id="driver" value="" class="driver_button"> 
-    </div>
-    </form>
-    <br>
-
+    <section class="whatToDo">
+        <h1>I want to ...</h1>
+    </section>
+    <section class="pickContainer">
+        <a href="">Drive</a>
+        <a href="">Ride</a>
+    </section>
   </main>
 </body>
 </html>
