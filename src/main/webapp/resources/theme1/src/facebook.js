@@ -8,27 +8,25 @@ function statusChangeCallback(response) {
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
         // Logged into your app and Facebook.
-        testAPI(response.authResponse.accessToken);
+        callFbGraphApi(response.authResponse.accessToken);
     } else if (response.status === 'not_authorized') {
         // The person is logged into Facebook, but not your app.
-         FB.login(function(response) {
-            if (response.authResponse.accessToken) {
-             testAPI();
-            } else {
-             console.log('User cancelled login or did not fully authorize.');
-            }
-        });
+         loginToFb();
     } else {
         // The person is not logged into Facebook, so we're not sure if
         // they are logged into this app or not.
-         FB.login(function(response) {
-            if (response.authResponse) {
-             testAPI(response.authResponse.accessToken)
-            } else {
-             console.log('User cancelled login or did not fully authorize.');
-            }
-        });
+       loginToFb();
     }
+}
+
+function loginToFb() {
+    FB.login(function(response) {
+        if (response.authResponse) {
+            callFbGraphApi(response.authResponse.accessToken)
+        } else {
+            console.log('User cancelled login or did not fully authorize.');
+        }
+    });
 }
 
 // This function is called when someone finishes with the Login
@@ -77,9 +75,8 @@ window.fbAsyncInit = function() {
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-// Here we run a very simple test of the Graph API after login is
-// successful.  See statusChangeCallback() for when this call is made.
-function testAPI(accessToken) {
+//  See statusChangeCallback() for when this call is made.
+function callFbGraphApi(accessToken) {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me?fields=id,name,email', function(response) {
         response.accessToken = accessToken;
