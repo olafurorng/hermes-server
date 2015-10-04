@@ -8,13 +8,12 @@
     <title>Hermes</title>
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
     <link href='/resources/theme1/css/style.css' rel='stylesheet' type='text/css'>
-    <script src="/resources/theme1/build/jquery-1.11.3.min.js" />"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <script src="/resources/theme1/src/facebook.js"></script>
   <nav class="navbar">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -58,5 +57,7 @@
   <footer>
     <p>&#9400; 2015 Project Hermes. All Rights Reserved. Terms of Use and Privacy</p>
   </footer>
+  
+  <script src="/resources/theme1/src/facebook.js"></script>
 </body>
 </html>

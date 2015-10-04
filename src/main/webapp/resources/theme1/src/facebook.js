@@ -11,13 +11,23 @@ function statusChangeCallback(response) {
         testAPI(response.authResponse.accessToken);
     } else if (response.status === 'not_authorized') {
         // The person is logged into Facebook, but not your app.
-        document.getElementById('app').innerHTML = 'Please log ' +
-            'into this app.';
+         FB.login(function(response) {
+            if (response.authResponse.accessToken) {
+             testAPI();
+            } else {
+             console.log('User cancelled login or did not fully authorize.');
+            }
+        });
     } else {
         // The person is not logged into Facebook, so we're not sure if
         // they are logged into this app or not.
-        document.getElementById('app').innerHTML = 'Please log ' +
-            'into Facebook.';
+         FB.login(function(response) {
+            if (response.authResponse) {
+             testAPI(response.authResponse.accessToken)
+            } else {
+             console.log('User cancelled login or did not fully authorize.');
+            }
+        });
     }
 }
 
