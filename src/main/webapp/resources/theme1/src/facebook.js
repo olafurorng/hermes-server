@@ -81,14 +81,14 @@ function callFbGraphApi(accessToken) {
     FB.api('/me?fields=id,friends,name,email,picture,first_name', function(response) {
         response.accessToken = accessToken;
         console.log('Successful login for: ' + response.name);
-        console.log(response);
+        console.log('Data from FB graph api: ' + response);
         response.accessToken = accessToken;
         $.ajax({
             type: 'POST',
             url: '/login',
             data: response,
             success: function(data) {
-                console.log(data);
+                console.log('Data from server: ' + data);
             }
         });
         document.getElementById('app').innerHTML =
