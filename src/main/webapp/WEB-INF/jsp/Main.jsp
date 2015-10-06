@@ -13,6 +13,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 </head>
 <body>
   <header class="basic-header">
@@ -26,6 +30,65 @@
         <a href="">Drive</a>
         <a href="">Ride</a>
     </section>
+    <section class="add" id="rider">
+        <a></a>
+    </section>
+    <div class="goList">
+        <h1 role="heading">Ride Information</h1>
+    <br>
+    <div class="utkoma">
+        <h5 role="heading">Skilaboð móttekin</h5>
+        <p></p>
+    </div>      
+    <form name="form1" id="form1" action="" method="post">
+        <div>
+        <div>
+            <label for="simi" class="name">Phone:*</label>
+            <br>
+            <input type="text" id="phone" class="skrifbox" name="phone" placeholder="Phone">
+            <label id="errorPhone"></label>
+        </div>
+        <br>
+        <div>
+            <label for="efni" class="name">Title:*</label>
+            <br>
+            <input type="text" id="subject" name="subject" class="skrifbox" placeholder="Title">
+            <label id="errorSubject"></label>
+        </div>
+        <br>
+        <br>
+        <p>
+        <label for="amount">Price range:</label>
+        <input type="text" id="amount" class="price">
+        </p>
+        <div id="slider-range"></div>
+        <br>
+        <label for="numberpeople" class="name">Number of people:</label>
+        <br>
+
+        <div class="radios" id="r">
+        <input type="radio" name="rGroup" value="1" id="r1" checked="checked" />
+        <label class="radio" for="r1">1</label>
+        <input type="radio" name="rGroup" value="2" id="r2" />
+        <label class="radio" for="r2">2</label>
+        <input type="radio" name="rGroup" value="3" id="r3" />
+        <label class="radio" for="r3">3</label>
+        <input type="radio" name="rGroup" value="4" id="r4" />
+        <label class="radio" for="r4">4</label>
+        <input type="radio" name="rGroup" value="5" id="r5" />
+        <label class="radio" for="r5">5</label>
+        <input type="radio" name="rGroup" value="6" id="r6" />
+        <label class="radio" for="r6">6</label>
+        </div>
+        <div>
+            <label for="name" class="name">Message:</label>
+            <br>
+             <textarea rows="4" cols="20" class="max" id="message" name="comments" placeholder="Message"></textarea>
+            <br>
+        </div>
+        <input type="submit" name="submit" value="OK" class="takki"> 
+    </form>
+    </div>
   </main>
 </body>
 </html>
