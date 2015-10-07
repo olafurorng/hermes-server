@@ -52,7 +52,7 @@
     <form name="form" id="form" action="" method="post">
         <div>
         <div>           
-            <input type="text" id="phone" class="riderInput" name="phone" placeholder="Símanúmer">
+            <input type="number" id="phone" class="riderInput" name="phone" placeholder="Símanúmer">
             <label id="errorPhone"></label>
         </div>
         <br>
