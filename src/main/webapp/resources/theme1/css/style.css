@@ -221,13 +221,46 @@ color: #fff;
     margin-bottom: 40px;
 }
 
+.userList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userBody {
+    padding-top: 12px;
+}
+
+.riderContainer {
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 12px;
+}
+
+.riderContainer .userHead {
+    display: flex;
+    flex-direction: row;
+}
+
+.riderContainer .userName {
+    font-size: 14px;
+}
+
+.riderContainer img {
+    width: 50px;
+    margin-right: 8px;
+    height: 50px;
+}
+
 .pickContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.pickContainer a {
+.pickContainer h5 {
     width: 150px;
     height: 150px;
     background-color: #50505B;
@@ -239,13 +272,13 @@ color: #fff;
     border-radius: 75px;
 }
 
-.pickContainer a + a{
+.pickContainer h5 + h5 {
     margin-left: 5%;
 }
 
 
 /* RideInfo */
-.add{
+.add {
     width: 50px;
     height: 50px;
     background:url("/resources/theme1/images/add.png");
@@ -292,42 +325,41 @@ color: #fff;
     font-size:1em; 
     color: #000; 
 }
-.loc_des{
+.loc_des {
     width: 100%;
 }
-.name{ 
-    float: left; 
-    width: 100%; 
-    height: 1.5em; 
-    font-size:1em; 
-    color: #fff; 
+.name { 
+    float: left;
+    width: 100%;
+    height: 1.5em;
+    font-size:1em;
+    color: #fff;
 }
-.takki{ 
-    padding: 1%; 
-    width: 65px; 
-    float: right; 
-    color: #000; 
+.takki { 
+    padding: 1%;
+    width: 65px;
+    float: right;
+    color: #000;
 }
 #errorPhone, #errorSubject, #errorLocation, #errorDestination{ 
-    float: left;  
-    width: 100%; 
-    clear: both; 
-    float: left; 
-    color: red; 
+    float: left;
+    width: 100%;
+    clear: both;
+    color: red;
 }
-textarea{ 
-    width: 100%; 
-    height: 160px;  
-    font-size: 1.5em; 
-    color: #000; 
+textarea {
+    width: 100%;
+    height: 160px;
+    font-size: 1.5em;
+    color: #000;
 }
-.price{
+.price {
     border:0; 
     color:#fff; 
     background-color: #999999;
     font-weight:bold;
 }
-.radios .radio{
+.radios .radio {
     background-color:#666666;
     display:inline-block;
     padding:1.5% 0% 0% 1%;
@@ -335,10 +367,10 @@ textarea{
     height:25px;
     margin-right:5%;
 }
-.radios input[type=radio]{
+.radios input[type=radio] {
     display:none
 }
-.radios input[type=radio]:checked + .radio{
+.radios input[type=radio]:checked + .radio {
     background-color:#00B5D9;
     color:#fff;
 }
