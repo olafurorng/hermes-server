@@ -252,23 +252,36 @@ color: #fff;
     background-size: contain; background-repeat: no-repeat;
     display: flex;
 }
-.riderRegister {
-    position: absolute; 
-    background-color: #999999;
-    width: 60%; 
-    right:20%; 
-    top:10%; 
-    display:none; 
-    color: #FFFFFF;  
-    border: 1em solid #666666;
-    padding:1% 10% 5% 10%; 
+.riderRegister_Header
+{
+    background-color: #000;
+    border-radius: 15px 15px 0 0;
+
 }
-.riderRegister h1{ 
+.riderRegister_Header p{
     font-family:Segoe UI Semibold,Helvetica,Arial,MS Sans Serif; 
     text-align: center; 
     font-size: 3em; 
     font-weight: bold; 
+    padding:2% 0% 2% 0%; 
+    color:#fff;
+
 }
+.riderRegister {
+    position: absolute; 
+    background-color: #A7DAFF;
+    width: 40%; 
+    right:30%; 
+    top:10%; 
+    display:none; 
+    color: #000;  
+    border: 0.1em solid #666666;
+    border-radius: 15px;
+}
+.riderRegister_Body{
+    padding:0% 2% 5% 2%; 
+}
+
 .utkoma { 
     display: none; 
     padding-left: 2%; 
@@ -292,21 +305,31 @@ color: #fff;
     font-size:1em; 
     color: #000; 
 }
-.loc_des{
-    width: 100%;
-}
-.name{ 
-    float: left; 
-    width: 100%; 
+.destinationInput{ 
+    float:right;
+    width: 40%; 
     height: 1.5em; 
     font-size:1em; 
-    color: #fff; 
+    color: #000; 
+}
+.loc_to_des
+{
+    position: absolute; 
+    right:50%;
+}
+.radios span{ 
+    height: 1.5em; 
+    font-size:1em; 
+    color: #000; 
+    font-weight:bold;
+    padding-right:3%
 }
 .takki{ 
     padding: 1%; 
     width: 65px; 
     float: right; 
     color: #000; 
+    margin-bottom:1%;
 }
 #errorPhone, #errorSubject, #errorLocation, #errorDestination{ 
     float: left;  
@@ -320,17 +343,23 @@ textarea{
     height: 160px;  
     font-size: 1.5em; 
     color: #000; 
+    padding:1%;
 }
 .price{
     border:0; 
     color:#fff; 
     background-color: #999999;
     font-weight:bold;
+    color:#000;
+}
+#amount{
+    width:7.5em
 }
 .radios .radio{
     background-color:#666666;
     display:inline-block;
-    padding:1.5% 0% 0% 1%;
+    text-align: center;
+    line-height: 25px;
     width:25px;
     height:25px;
     margin-right:5%;
@@ -343,7 +372,12 @@ textarea{
     color:#fff;
 }
 
-
+input:not([type]), input[type="text"] {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 2px solid black;
+}
 
 
 
@@ -357,4 +391,20 @@ textarea{
     .navbar {
         display: initial;
     }
+}
+
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #0569B2;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #0569B2;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #0569B2;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #0569B2;
 }

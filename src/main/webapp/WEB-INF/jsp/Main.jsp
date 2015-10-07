@@ -40,23 +40,24 @@
 
 
     <div class="riderRegister">
-        <h1 role="heading">Upplýsingar um far</h1>
+        <div class="riderRegister_Header">
+        <p>Skrá ísFar</p>
+        </div>
     <br>
+    <div class="riderRegister_Body">
     <div class="utkoma">
         <h5 role="heading">Skilaboð móttekin</h5>
         <p></p>
     </div>      
     <form name="form" id="form" action="" method="post">
         <div>
-        <div>
-            <label for="simi" class="name">Símanúmer:*</label>
-            <br>
+        <div>           
             <input type="text" id="phone" class="riderInput" name="phone" placeholder="Símanúmer">
             <label id="errorPhone"></label>
         </div>
         <br>
         <div>
-            <label for="efni" class="name">Titill:*</label>
+            
             <br>
             <input type="text" id="subject" name="subject" class="riderInput" placeholder="Titill">
             <label id="errorSubject"></label>
@@ -64,15 +65,13 @@
         <br>
         <br>
         <p>
-        <label for="amount">Verðhugmynd sem þú/þið eruð tilbúin að borga fyrir farið:</label>
+        <label for="amount">Verðhugmynd:</label>
         <input type="text" id="amount" class="price">
         </p>
         <div id="slider-range"></div>
-        <br>
-        <label for="numberpeople" class="name">Fjöldi farþega sem þarf far:</label>
-        <br>
-
+        <br>       
         <div class="radios">
+        <span>Fjöldi farþega:</span>
         <input type="radio" name="rGroup" value="1" id="r1" checked="checked" />
         <label class="radio" for="r1">1</label>
         <input type="radio" name="rGroup" value="2" id="r2" />
@@ -85,23 +84,20 @@
         <label class="radio" for="r5">5</label>
         <input type="radio" name="rGroup" value="6" id="r6" />
         <label class="radio" for="r6">6</label>
-        </div>
-        <div class="loc_des">
-            <label for="Location" class="name">Upphafsstaður og áfangastaður:*</label>
+        </div>     
             <input type="text" id="location" name="location" class="locationInput" placeholder="Upphafsstaður">
-            <span> til </span>
-            <input type="text" id="destination" name="destination" class="locationInput" placeholder="Áfangastaður">
+            <span class="loc_to_des"> til </span>
+            <input type="text" id="destination" name="destination" class="destinationInput" placeholder="Áfangastaður">
             <label id="errorLocation"></label>     
             <label id="errorDestination"></label>
-        </div>
         <div>
-            <label for="name" class="name">Athugasemdir:</label>
             <br>
-             <textarea rows="4" cols="20" class="max" id="message" name="comments" placeholder="Auka athugasemdir ef við á"></textarea>
+             <textarea rows="4" cols="20" class="max" id="message" name="comments" placeholder="Auka athugasemdir"></textarea>
             <br>
         </div>
         <input type="submit" name="submit" value="Skrá far" class="takki">
     </form>
+    </div>
     </div>
   </main>
 </body>
