@@ -33,7 +33,7 @@
     <section class="add" id="rider">
         <a></a>
     </section>
-    <div class="goList">
+    <div class="riderRegister">
         <h1 role="heading">Ride Information</h1>
     <br>
     <div class="utkoma">
@@ -45,14 +45,14 @@
         <div>
             <label for="simi" class="name">Phone:*</label>
             <br>
-            <input type="text" id="phone" class="skrifbox" name="phone" placeholder="Phone">
+            <input type="text" id="phone" class="riderInput" name="phone" placeholder="Phone">
             <label id="errorPhone"></label>
         </div>
         <br>
         <div>
             <label for="efni" class="name">Title:*</label>
             <br>
-            <input type="text" id="subject" name="subject" class="skrifbox" placeholder="Title">
+            <input type="text" id="subject" name="subject" class="riderInput" placeholder="Title">
             <label id="errorSubject"></label>
         </div>
         <br>
@@ -82,9 +82,9 @@
         </div>
         <div class="loc_des">
             <label for="Location" class="name">Location to Destination:*</label>
-            <input type="text" id="location" name="location" class="ridertextbox" placeholder="Location">
+            <input type="text" id="location" name="location" class="locationInput" placeholder="Location">
             <span> to </span>
-            <input type="text" id="destination" name="destination" class="ridertextbox" placeholder="Destination">
+            <input type="text" id="destination" name="destination" class="locationInput" placeholder="Destination">
             <label id="errorLocation"></label>     
             <label id="errorDestination"></label>
         </div>

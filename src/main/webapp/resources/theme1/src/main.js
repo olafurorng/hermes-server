@@ -35,7 +35,7 @@ $('input[name="rGroup"]' ).on( "click", riderInfo);
 //Get out of rider with clicking outside of div
 $(document).mouseup(function (e)
 {
-    var container = $(".goList");
+    var container = $(".riderRegister");
 
     if (!container.is(e.target) // if the target of the click isn't the container...
         && container.has(e.target).length === 0) // ... nor a descendant of the container
@@ -46,7 +46,7 @@ $(document).mouseup(function (e)
 
 
 function rider(e) {
-    $(".goList").show();
+    $(".riderRegister").show();
 }
 function driver(e) {
 
@@ -71,8 +71,8 @@ function senda(e) {
     var message = '';
     //Phone
     if (phone === ''){
-        $("#errorPhone").text("* Please put your Phone number");
-        message+='<li>'+'You have to fill in Phone number'+'</li>';
+        $("#errorPhone").text("* Please put your phone number");
+        message+='<li>'+'You have to fill in phone number'+'</li>';
         valid = false;
         phoneElement.addClass('invalid');
     }
@@ -88,11 +88,11 @@ function senda(e) {
         phoneElement.removeClass('invalid');
     }
     if (phone !='' && phone.match(/^[0-9]+$/) === null) {
-        $("#errorPhone").text("* Please use only digits in phonenumber");
+        $("#errorPhone").text("* Please use only digits in phone number");
     };
     //Subject
     if (subject === ''){
-        $("#errorSubject").text("* Please fill in Title");
+        $("#errorSubject").text("* Please fill in title");
         message+='<li>'+'You have to fill in Title'+'</li>';
         valid = false;
         subjectElement.addClass('invalid');
@@ -136,7 +136,7 @@ function senda(e) {
         //Return info here -->
         //riderInfo();
         //resets everything
-        $(".goList").toggle();
+        $(".riderRegister").toggle();
         $('#phone').val('');
         $('#subject').val('');
         $('#location').val('');
