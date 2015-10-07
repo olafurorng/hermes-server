@@ -27,10 +27,21 @@ $('input[name="rGroup"]' ).on( "click", riderInfo);
     });
     $( "#amount" ).val( $( "#slider-range" ).slider( "values", 0 ) + "kr" +
       " - " + $( "#slider-range" ).slider( "values", 1 ) + "kr" );
-  });
-
+    });
+    //getDriverRiderList
+    $.ajax({
+        type: 'GET',
+        url: '/driverrider',
+        data: String,
+        success: function(data) {
+            console.log("Data from /driverrider endpoint:");
+            console.log(data);
+        }
+    });
  
 });
+
+
 
 //Get out of rider with clicking outside of div
 $(document).mouseup(function (e)
