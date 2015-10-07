@@ -6,7 +6,7 @@
 <html lang="is">
 <head>
     <meta charset="UTF-8">
-    <title>Hermes</title>
+    <title>ÍsFar</title>
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
     <link href='/resources/theme1/css/style.css' rel='stylesheet' type='text/css'>
     <script src="/resources/theme1/build/jquery-1.11.3.min.js" />"></script>
@@ -21,7 +21,7 @@
 </head>
 <body>
   <header class="basic-header">
-    <h1>Hermes</h1>
+    <h1>ÍsFar</h1>
   </header>
   <main>
     <section class="whatToDo">
@@ -35,7 +35,7 @@
         <a></a>
     </section>
     <div class="riderRegister">
-        <h1 role="heading">Ride Information</h1>
+        <h1 role="heading">Upplýsingar um far</h1>
     <br>
     <div class="utkoma">
         <h5 role="heading">Skilaboð móttekin</h5>
@@ -44,27 +44,27 @@
     <form name="form" id="form" action="" method="post">
         <div>
         <div>
-            <label for="simi" class="name">Phone:*</label>
+            <label for="simi" class="name">Símanúmer:*</label>
             <br>
-            <input type="text" id="phone" class="riderInput" name="phone" placeholder="Phone">
+            <input type="text" id="phone" class="riderInput" name="phone" placeholder="Símanúmer">
             <label id="errorPhone"></label>
         </div>
         <br>
         <div>
-            <label for="efni" class="name">Title:*</label>
+            <label for="efni" class="name">Titill:*</label>
             <br>
-            <input type="text" id="subject" name="subject" class="riderInput" placeholder="Title">
+            <input type="text" id="subject" name="subject" class="riderInput" placeholder="Titill">
             <label id="errorSubject"></label>
         </div>
         <br>
         <br>
         <p>
-        <label for="amount">Price range:</label>
+        <label for="amount">Verðhugmynd sem þú/þið eruð tilbúin að borga fyrir farið:</label>
         <input type="text" id="amount" class="price">
         </p>
         <div id="slider-range"></div>
         <br>
-        <label for="numberpeople" class="name">Number of people:</label>
+        <label for="numberpeople" class="name">Fjöldi farþega sem þarf far:</label>
         <br>
 
         <div class="radios">
@@ -82,20 +82,20 @@
         <label class="radio" for="r6">6</label>
         </div>
         <div class="loc_des">
-            <label for="Location" class="name">Location to Destination:*</label>
-            <input type="text" id="location" name="location" class="locationInput" placeholder="Location">
-            <span> to </span>
-            <input type="text" id="destination" name="destination" class="locationInput" placeholder="Destination">
+            <label for="Location" class="name">Upphafsstaður og áfangastaður:*</label>
+            <input type="text" id="location" name="location" class="locationInput" placeholder="Upphafsstaður">
+            <span> til </span>
+            <input type="text" id="destination" name="destination" class="locationInput" placeholder="Áfangastaður">
             <label id="errorLocation"></label>     
             <label id="errorDestination"></label>
         </div>
         <div>
-            <label for="name" class="name">Message:</label>
+            <label for="name" class="name">Athugasemdir:</label>
             <br>
-             <textarea rows="4" cols="20" class="max" id="message" name="comments" placeholder="Message"></textarea>
+             <textarea rows="4" cols="20" class="max" id="message" name="comments" placeholder="Auka athugasemdir ef við á"></textarea>
             <br>
         </div>
-        <input type="submit" name="submit" value="OK" class="takki"> 
+        <input type="submit" name="submit" value="Skrá far" class="takki">
     </form>
     </div>
   </main>
