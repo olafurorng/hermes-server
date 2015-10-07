@@ -3,8 +3,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="is">
-<!-- TODO: olafur: update after this PR has been merged end fixed: https://github.com/pajdak3/hermes-server/pull/11
-                    so when the webpage create this page it has to send the accessToken-->
 <head>
     <meta charset="UTF-8">
     <title>Hermes</title>
