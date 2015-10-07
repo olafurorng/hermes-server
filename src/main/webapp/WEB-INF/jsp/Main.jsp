@@ -34,6 +34,11 @@
     <section class="add" id="rider">
         <a></a>
     </section>
+      <section class="rider-driver-list">
+          <div id="rider-driver-data" class="container-fluid"></div>
+      </section>
+
+
     <div class="riderRegister">
         <h1 role="heading">Ride Information</h1>
     <br>
