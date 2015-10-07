@@ -78,9 +78,10 @@ window.fbAsyncInit = function() {
 //  See statusChangeCallback() for when this call is made.
 function callFbGraphApi(accessToken) {
     console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me?fields=id,name,email', function(response) {
+    FB.api('/me?fields=id,friends,name,email,picture,first_name', function(response) {
         response.accessToken = accessToken;
         console.log('Successful login for: ' + response.name);
+        console.log('Data from FB graph api:');
         console.log(response);
         response.accessToken = accessToken;
         $.ajax({
@@ -88,6 +89,7 @@ function callFbGraphApi(accessToken) {
             url: '/login',
             data: response,
             success: function(data) {
+                console.log('Data from server:');
                 console.log(data);
             }
         });

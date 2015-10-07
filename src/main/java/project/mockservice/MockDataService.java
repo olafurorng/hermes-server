@@ -59,7 +59,7 @@ public class MockDataService
 
         for (int i = 0; i < NUMBER_OF_MOCK_RIDER; i++)
         {
-            RiderListEntry riderListEntry = new RiderListEntry(new User(getRandomId(), getRandomName(),
+            RiderListEntry riderListEntry = new RiderListEntry(new User("test_access_token", getRandomId(), getRandomName(),
                     getRandomEmail(), getRandomRatings(), getRandomNumberOfRatings()),
                     getRandomLocation(), getRandomLocation(), getRandomDateInTheFuture());
             riderListEntries.add(riderListEntry);
@@ -74,7 +74,7 @@ public class MockDataService
 
         for (int i = 0; i < NUMBER_OF_MOCK_DRIVER; i++)
         {
-            DriverListEntry driverListEntry = new DriverListEntry(new User(getRandomId(), getRandomName(),
+            DriverListEntry driverListEntry = new DriverListEntry(new User("test_access_token", getRandomId(), getRandomName(),
                     getRandomEmail(), getRandomRatings(), getRandomNumberOfRatings()),
                     getRandomDateInTheFuture(), getRandomDateInTheFuture());
             driverListEntries.add(driverListEntry);

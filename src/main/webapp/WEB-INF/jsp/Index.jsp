@@ -41,7 +41,7 @@
   </nav>
   <header class="bg-header">
     <h1>Hermes</h1>
-    <button class="btn btn-block btn-social btn-facebook"><i class="fa fa-facebook"></i>Sign in with Facebook</button>
+    <button class="btn btn-block btn-social btn-facebook"><i class="fa fa-facebook"></i>Skr&aacute;&eth;u &thorn;ig inn me&eth; facebook</button>
   </header>
   <main>
     <div class="first_block_container">

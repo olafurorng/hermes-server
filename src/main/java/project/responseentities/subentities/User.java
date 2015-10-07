@@ -11,14 +11,17 @@ import project.serverentities.FullUser;
  */
 public class User
 {
-    private final String id;
+    private final String accessToken; // we user the fb accessToken to make our platform more secure
+    private final String id; // we use the fb id as the user id for our platform
     private final String name;
     private final String email;
     private final double starRating;
     private final int numberOfStarRatings;
 
-    public User(String id, String name, String email, double starRating, int numberOfStarRatings)
+    public User(String accessToken, String id, String name, String email,
+                double starRating, int numberOfStarRatings)
     {
+        this.accessToken = accessToken;
         this.id = id;
         this.name = name;
         this.email = email;
@@ -48,5 +51,10 @@ public class User
     public int getNumberOfStarRatings()
     {
         return numberOfStarRatings;
+    }
+
+    public String getAccessToken()
+    {
+        return accessToken;
     }
 }
