@@ -9,7 +9,7 @@
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
     <link href='/resources/theme1/css/style.css' rel='stylesheet' type='text/css'>
     <script src="/resources/theme1/build/jquery-1.11.3.min.js" />"></script>
-    <script src="/resources/theme1/build/main.js" />"></script>
+    <script src="/resources/theme1/src/main.js" />"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +40,7 @@
         <h5 role="heading">Skilaboð móttekin</h5>
         <p></p>
     </div>      
-    <form name="form1" id="form1" action="" method="post">
+    <form name="form" id="form" action="" method="post">
         <div>
         <div>
             <label for="simi" class="name">Phone:*</label>
@@ -66,7 +66,7 @@
         <label for="numberpeople" class="name">Number of people:</label>
         <br>
 
-        <div class="radios" id="r">
+        <div class="radios">
         <input type="radio" name="rGroup" value="1" id="r1" checked="checked" />
         <label class="radio" for="r1">1</label>
         <input type="radio" name="rGroup" value="2" id="r2" />
@@ -79,6 +79,14 @@
         <label class="radio" for="r5">5</label>
         <input type="radio" name="rGroup" value="6" id="r6" />
         <label class="radio" for="r6">6</label>
+        </div>
+        <div class="loc_des">
+            <label for="Location" class="name">Location to Destination:*</label>
+            <input type="text" id="location" name="location" class="ridertextbox" placeholder="Location">
+            <span> to </span>
+            <input type="text" id="destination" name="destination" class="ridertextbox" placeholder="Destination">
+            <label id="errorLocation"></label>     
+            <label id="errorDestination"></label>
         </div>
         <div>
             <label for="name" class="name">Message:</label>
