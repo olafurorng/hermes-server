@@ -164,6 +164,7 @@ function riderInfo(){
     var phone = ($('#phone')).val();
     var subject = ($('#subject')).val();
     var firstPrice=$( "#slider-range" ).slider( "values", 0 );
+    var secondPrice=$( "#slider-range" ).slider( "values", 1 );
     var selectedVal = "";
     var selected = $("input[type='radio'][name='rGroup']:checked");
     if (selected.length > 0) {
@@ -179,5 +180,4 @@ function riderInfo(){
     console.log(selectedVal);
     console.log(location);
     console.log(destination);
-    console.log(selected.val());
 }
