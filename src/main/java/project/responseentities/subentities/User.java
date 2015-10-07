@@ -11,15 +11,18 @@ import project.serverentities.FullUser;
  */
 public class User
 {
+    // TODO: create new class FullUser and put the accessToken there, as we don't want to send the web accessTokens from other people, like riders and drivers
     private final String accessToken; // we user the fb accessToken to make our platform more secure
     private final String id; // we use the fb id as the user id for our platform
     private final String name;
     private final String email;
     private final double starRating;
+    private final String profilePictureUrl;
     private final int numberOfStarRatings;
 
+
     public User(String accessToken, String id, String name, String email,
-                double starRating, int numberOfStarRatings)
+                double starRating, int numberOfStarRatings, String profilePictureUrl)
     {
         this.accessToken = accessToken;
         this.id = id;
@@ -27,6 +30,7 @@ public class User
         this.email = email;
         this.starRating = starRating;
         this.numberOfStarRatings = numberOfStarRatings;
+        this.profilePictureUrl = profilePictureUrl;
     }
 
     public String getName() {
@@ -56,5 +60,10 @@ public class User
     public String getAccessToken()
     {
         return accessToken;
+    }
+
+    public String getProfilePictureUrl()
+    {
+        return profilePictureUrl;
     }
 }

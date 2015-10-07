@@ -55,7 +55,7 @@ public class UserService extends AbstractService
 
                 checkIfExistingUserIsAuthorized(id, accessToken, accessTokenFromClient);
 
-                user = new User(accessToken, id, name, email, starRating, numberOfStarRatings);
+                user = new User(accessToken, id, name, email, starRating, numberOfStarRatings, ""); // TODO: picture url
             }
 
             resultSet.close();
