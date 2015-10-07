@@ -91,10 +91,12 @@ function callFbGraphApi(accessToken) {
             success: function(data) {
                 console.log('Data from server:');
                 console.log(data);
+                document.getElementById('app').innerHTML =
+                    'Velkominn, ' + data.user.name + '!\n' +
+                    'Skráður tölvupóstur hjá þér er ' + data.user.email + '\n' +
+                    'Þú ert með ' + data.user.starRating + ' stjörnur.';
             }
         });
-        document.getElementById('app').innerHTML =
-            'Thanks for logging in, ' + response.name + '!';
     });
 }
 

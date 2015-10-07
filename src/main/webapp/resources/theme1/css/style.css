@@ -254,13 +254,13 @@ color: #fff;
 }
 .riderRegister {
     position: absolute; 
-    background-color: #000; 
+    background-color: #999999;
     width: 60%; 
     right:20%; 
     top:10%; 
     display:none; 
     color: #FFFFFF;  
-    border: 1em solid #909090; 
+    border: 1em solid #666666;
     padding:1% 10% 5% 10%; 
 }
 .riderRegister h1{ 
@@ -324,11 +324,11 @@ textarea{
 .price{
     border:0; 
     color:#fff; 
-    background-color: #000;
+    background-color: #999999;
     font-weight:bold;
 }
 .radios .radio{
-    background-color:#B42BAD;
+    background-color:#666666;
     display:inline-block;
     padding:1.5% 0% 0% 1%;
     width:25px;
@@ -339,8 +339,8 @@ textarea{
     display:none
 }
 .radios input[type=radio]:checked + .radio{
-    background-color:#63E134;
-    color:#000;
+    background-color:#00B5D9;
+    color:#fff;
 }
 
 

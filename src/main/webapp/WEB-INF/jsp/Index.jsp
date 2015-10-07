@@ -6,7 +6,7 @@
 <html lang="is">
 <head>
     <meta charset="UTF-8">
-    <title>Hermes</title>
+    <title>ÍsFar</title>
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
     <link href='/resources/theme1/css/style.css' rel='stylesheet' type='text/css'>
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -28,9 +28,9 @@
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="">About us</a></li>
-          <li><a href="">Idea</a></li>
-          <li><a href="">Contact</a></li>
+          <li><a href="">Um ÍsFar</a></li>
+          <li><a href="">Öppin</a></li>
+          <li><a href="">Hafa samband</a></li>
         </ul>
       </div>
         <ul class="nav navbar-nav merki">
@@ -41,8 +41,8 @@
     </div> 
   </nav>
   <header class="bg-header">
-    <h1>Hermes</h1>
-    <button class="btn btn-block btn-social btn-facebook"><i class="fa fa-facebook"></i>Skr&aacute;&eth;u &thorn;ig inn me&eth; facebook</button>
+    <h1>ÍsFar</h1>
+    <button class="btn btn-block btn-social btn-facebook"><i class="fa fa-facebook"></i>Skráðu þig inn með facebook</button>
   </header>
   <main>
     <div class="first_block_container">
@@ -56,7 +56,7 @@
     </section>
   </main>
   <footer>
-    <p>&#9400; 2015 Project Hermes. All Rights Reserved. Terms of Use and Privacy</p>
+    <p>&#9400; 2015 Project ÍsFar. All Rights Reserved. Terms of Use and Privacy</p>
   </footer>
   
   <script src="/resources/theme1/src/facebook.js"></script>

@@ -18,7 +18,7 @@ $('input[name="rGroup"]' ).on( "click", riderInfo);
     $( "#slider-range" ).slider({
       range: true,
       min: 0,
-      max: 5000,
+      max: 10000,
       values: [ 1000, 2000 ],
       step: 100,
       slide: function( event, ui ) {
@@ -82,7 +82,7 @@ function senda(e) {
     var message = '';
     //Phone
     if (phone === ''){
-        $("#errorPhone").text("* Please put your phone number");
+        $("#errorPhone").text("* Vinsamlegast skráðu símanúmerið þitt, hvernig á annars fólk að geta náð í þig?");
         message+='<li>'+'You have to fill in phone number'+'</li>';
         valid = false;
         phoneElement.addClass('invalid');
@@ -99,11 +99,11 @@ function senda(e) {
         phoneElement.removeClass('invalid');
     }
     if (phone !='' && phone.match(/^[0-9]+$/) === null) {
-        $("#errorPhone").text("* Please use only digits in phone number");
+        $("#errorPhone").text("* Vinsamlegast hafðu aðeins tölustafi í símanúmerinu þínu, vefsíðan er ekki klárari en það að hún skilur bara tölustafi");
     };
     //Subject
     if (subject === ''){
-        $("#errorSubject").text("* Please fill in title");
+        $("#errorSubject").text("* Vinsamlegast settu inn titil, það er miklu flottara");
         message+='<li>'+'You have to fill in Title'+'</li>';
         valid = false;
         subjectElement.addClass('invalid');
@@ -114,7 +114,7 @@ function senda(e) {
     }
     //Location
     if (location === ''){
-        $("#errorLocation").text("* Please fill in location");
+        $("#errorLocation").text("* Vinsamlegast settu inn upphafsstað, hvernig á fólk annars að vita hvar á að sækja þig/ykkur");
         message+='<li>'+'You have to fill in Location'+'</li>';
         valid = false;
         locationElement.addClass('invalid');
@@ -125,7 +125,7 @@ function senda(e) {
     }
     //Destination
     if (destination === ''){
-        $("#errorDestination").text("* Please fill in destination");
+        $("#errorDestination").text("* Vinsamlegast settu inn áfangastað, hvernig á fólk annars að vita hvert á að skutla þér/ykkur");
         message+='<li>'+'You have to fill in destination'+'</li>';
         valid = false;
         destinationElement.addClass('invalid');
