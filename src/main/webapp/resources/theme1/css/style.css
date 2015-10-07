@@ -28,9 +28,9 @@ body {
 
 .bg-header {
     width: 100%;
-    background-image: url('http://www.teslamotors.com/sites/default/files/images/homepage/home_hero_70.jpg');
+    background-image: url('/resources/theme1/images/banner2.png');
     background-size: cover;
-    min-height: 450px;
+    height: 100%;
     background-position: center;
     padding: 50px 10%;
 }
