@@ -67,7 +67,7 @@ public class UserService extends AbstractService
         }
         catch (SQLException e)
         {
-            Log.e(LOGTAG, "Couldn't get user", e);
+            Log.e(LOGTAG, "Couldn't get user -- possible because it is new user, or it failed getting user");
         }
 
 
@@ -125,11 +125,11 @@ public class UserService extends AbstractService
         }
         catch (URISyntaxException e)
         {
-            Log.e(LOGTAG, "Couldn't create user", e);
+            Log.e(LOGTAG, "Couldn't create user because of URISyntaxException", e);
         }
         catch (SQLException e)
         {
-            Log.e(LOGTAG, "Couldn't create user", e);
+            Log.e(LOGTAG, "Couldn't create user because of SQLException", e);
         }
 
         return generatedAccessToken;
