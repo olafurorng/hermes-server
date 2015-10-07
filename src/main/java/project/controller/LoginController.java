@@ -12,6 +12,7 @@ import project.mockservice.MockDataService;
 import project.service.UserService;
 import project.responseentities.LoginResponse;
 import project.responseentities.subentities.User;
+import project.service.exceptions.UnauthorizedException;
 
 /**
  * Created by olafurorn on 9/26/15.
@@ -21,14 +22,14 @@ public class LoginController
 {
     private static final String LOGTAG = LoginController.class.getSimpleName();
 
-    private final UserService userModel;
+    private final UserService userService;
     private final MockDataService mockDataService;
 
 
     @Autowired
-    public LoginController(UserService userModel, MockDataService mockDataService)
+    public LoginController(UserService userService, MockDataService mockDataService)
     {
-        this.userModel = userModel;
+        this.userService = userService;
         this.mockDataService = mockDataService;
     }
 
@@ -46,23 +47,26 @@ public class LoginController
         // TODO: taka við fleiri upplýsingum sem við fáum frá facebook
 
 
-        if (id == null || id.isEmpty()
-                || accessToken == null || accessToken.isEmpty()
-                || name == null || name.isEmpty())
+
+
+        User user = null;
+        try {
+            user = userService.getUser(id, accessToken);
+        }
+        catch (UnauthorizedException e)
         {
+            Log.w(LOGTAG, e);
             return new ResponseEntity<LoginResponse>(HttpStatus.UNAUTHORIZED);
         }
-
-        User user = userModel.getUser(id);
 
         if (user == null)
         {
             // user doesn't exist and is a new user
             // user is created in database and we return 201
 
-            userModel.createUser(id, name, email);
-            user = new User(id, name, email, 0.0, 0); // TODO: bíða eftir success frá gagnagrunni og þá senda svar, annars senda 5xx villu
-
+            String accessTokenGeneratedFromServer = userService.createUser(id, name, email);
+            if (accessTokenGeneratedFromServer == null) return new ResponseEntity<LoginResponse>(HttpStatus.SERVICE_UNAVAILABLE);
+            user = new User(accessTokenGeneratedFromServer, id, name, email, 0.0, 0);
 
             LoginResponse loginResponse = new LoginResponse(
                     mockDataService.getMockDriverList(),

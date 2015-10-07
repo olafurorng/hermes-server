@@ -24,6 +24,24 @@ public class Log
     }
 
     /**
+     * Warnign logging
+     */
+    public static void w(final String LOGTAG, final String msg)
+    {
+        System.out.println("warning - " + LOGTAG + " : " + msg);
+    }
+
+    /**
+     * Warnign logging
+     */
+    public static void w(final String LOGTAG, Exception e)
+    {
+        System.out.println("warning - " + LOGTAG);
+        System.out.println(" - STACKTRACE: ");
+        e.printStackTrace();;
+    }
+
+    /**
      * Error logging
      */
     public static void e(final String LOGTAG, final Exception e)
