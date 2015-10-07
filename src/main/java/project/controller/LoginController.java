@@ -66,7 +66,7 @@ public class LoginController
 
             String accessTokenGeneratedFromServer = userService.createUser(id, name, email);
             if (accessTokenGeneratedFromServer == null) return new ResponseEntity<LoginResponse>(HttpStatus.SERVICE_UNAVAILABLE);
-            user = new User(accessTokenGeneratedFromServer, id, name, email, 0.0, 0);
+            user = new User(accessTokenGeneratedFromServer, id, name, email, 0.0, 0, ""); // TODO: add profile picture url
 
             LoginResponse loginResponse = new LoginResponse(
                     mockDataService.getMockDriverList(),

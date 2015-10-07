@@ -40,10 +40,11 @@ $('input[name="rGroup"]' ).on( "click", riderInfo);
                 'Halllllooooo, ';
             var riderDriverListTxt = '';
 
-            riderDriverListTxt += '<br><br><br><b>Þeim sem <u>bjóða</u> ísFar:</b><br><br><br>';
+            riderDriverListTxt += '<br><br><br><b><h1>Þeir sem <u>bjóða</u> ísFar:</h1></b><br><br><br>';
             for (var i = 0; i < data.driversList.length; i++)
             {
-                 riderDriverListTxt += 'Nafn: ' + data.driversList[i].driver.name + '<br>' +
+                 riderDriverListTxt += '<img src="' + data.driversList[i].driver.profilePictureUrl + '">' + '<br>' +
+                     'Nafn: ' + data.driversList[i].driver.name + '<br>' +
                      'Stjörnur: ' + data.driversList[i].driver.starRating + '<br>' +
                      'Er að keyra á milli ' + data.driversList[i].startDriving + ' og ' + data.driversList[i].stopDriving +
                      '<br>' +
@@ -52,10 +53,11 @@ $('input[name="rGroup"]' ).on( "click", riderInfo);
 
 
 
-            riderDriverListTxt += '<br><b>Þeim sem <u>vantar</u> ísFar:</b><br><br><br>';
+            riderDriverListTxt += '<br><b><h1>Þeim sem <u>vantar</u> ísFar:</h1></b><br><br><br>';
             for (var i = 0; i < data.ridersList.length; i++)
             {
-                riderDriverListTxt += 'Nafn: ' + data.ridersList[i].rider.name + '<br>' +
+                riderDriverListTxt += '<img src="' + data.ridersList[i].rider.profilePictureUrl + '">' + '<br>' +
+                    'Nafn: ' + data.ridersList[i].rider.name + '<br>' +
                     'Stjörnur: ' + data.ridersList[i].rider.starRating + '<br>' +
                     'Vantar ísFar frá ' + data.ridersList[i].currentLocation + ' að ' + data.ridersList[i].destination + '<br>' +
                     'Klukkan: ' + data.ridersList[i].pickUpDate +

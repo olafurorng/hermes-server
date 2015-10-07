@@ -25,7 +25,7 @@ public class MockDataService
             "Ólafur Örn Guðmundsson",
             "Hlynur Freyr Jónsson",
             "Viktor Pajdak",
-            "Susan Johnsen");
+            "Susan Boil");
 
     private final List<String> emails = Arrays.asList(
             "olafurorng@gmail.com",
@@ -47,6 +47,13 @@ public class MockDataService
             "Laugavegur 58",
             "Garðatorg");
 
+    private final List<String> profilePics = Arrays.asList(
+            "https://qph.is.quoracdn.net/main-thumb-1392447-50-jF3quI18qiBOm9aeQDBtBsaBsCq6p2rp.jpeg",
+            "https://qph.is.quoracdn.net/main-thumb-353-50-bzZD7XQANRYP8IejwdfadBEcFJx8AO8m.jpeg",
+            "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/c0.13.50.50/p50x50/21960_327711850629_2752763_n.jpg?oh=cfcf7779776a6c94df2469bd4ad6dba0&oe=565F95B0&__gda__=1453307283_9e2499c8a311f47a199392d5c99fe836",
+            "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpf1/v/t1.0-1/c16.19.50.50/p86x86/10985467_597016006076_2481139254452985815_n.jpg?oh=e75e96ba9ad084cd7acc2bc51a297d3d&oe=568D2956&__gda__=1452158311_66b0d2454a023ea63049a56eba895262"
+    );
+
 
     public MockDataService()
     {
@@ -59,8 +66,10 @@ public class MockDataService
 
         for (int i = 0; i < NUMBER_OF_MOCK_RIDER; i++)
         {
-            RiderListEntry riderListEntry = new RiderListEntry(new User("test_access_token", getRandomId(), getRandomName(),
-                    getRandomEmail(), getRandomRatings(), getRandomNumberOfRatings()),
+            User user = new User("test_access_token", getRandomId(), getRandomName(),
+                    getRandomEmail(), getRandomRatings(), getRandomNumberOfRatings(), getRandomProfilePic());
+
+            RiderListEntry riderListEntry = new RiderListEntry(user,
                     getRandomLocation(), getRandomLocation(), getRandomDateInTheFuture());
             riderListEntries.add(riderListEntry);
 
@@ -74,8 +83,11 @@ public class MockDataService
 
         for (int i = 0; i < NUMBER_OF_MOCK_DRIVER; i++)
         {
-            DriverListEntry driverListEntry = new DriverListEntry(new User("test_access_token", getRandomId(), getRandomName(),
-                    getRandomEmail(), getRandomRatings(), getRandomNumberOfRatings()),
+            User user = new User("test_access_token", getRandomId(), getRandomName(),
+                    getRandomEmail(), getRandomRatings(), getRandomNumberOfRatings(), getRandomProfilePic());
+
+
+            DriverListEntry driverListEntry = new DriverListEntry(user,
                     getRandomDateInTheFuture(), getRandomDateInTheFuture());
             driverListEntries.add(driverListEntry);
         }
@@ -124,4 +136,11 @@ public class MockDataService
         long randomLong = (long) (Math.random()*10000 + 1);
         return new Date(new java.util.Date().getTime() + randomLong);
     }
+
+    private String getRandomProfilePic()
+    {
+        int index = (int) (Math.random()*profilePics.size());
+        return profilePics.get(index);
+    }
 }
+
