@@ -37,9 +37,8 @@ public abstract class AbstractService
         // TODO: viljum við nota '!connection.isValid(VALID_TIMEOUT)'
         if  (connection == null || connection.isClosed() || !connection.isValid(VALID_TIMEOUT))
         {
-            Log.d("bar", "foo: " + System.getenv("dummy_breyta"));
             connection = DriverManager.getConnection("jdbc:mysql://"
-                            + "us-cdbr-iron-east-03.cleardb.net" /*+ ":3306"*/ + "/" + "heroku_236ba9bc2aca6c1",
+                            + "us-cdbr-iron-east-03.cleardb.net" + "/" + "heroku_236ba9bc2aca6c1",
                     "b77283a4841a4a", "b16f1ced");
         }
 
