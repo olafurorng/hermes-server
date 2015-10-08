@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>     
 </head>
 
 <body>
@@ -43,28 +43,22 @@
                 <span class="ice">ís</span>Far
             </p>
         </div>
-        <br>
         <div class="riderRegister_Body">   
             <form name="form" id="form" method="post">             
                 <div>           
                     <input type="text" id="phone" class="riderInput" name="phone" placeholder="Símanúmer">
                     <label id="errorPhone"></label>
                 </div>
-                <br>
-                <br>
                 <input type="text" id="location" name="location" class="locationInput" placeholder="Upphafsstaður">
                 <span class="loc_to_des"> til </span>
                 <input type="text" id="destination" name="destination" class="destinationInput" placeholder="Áfangastaður">
                 <label id="errorLocation"></label>     
                 <label id="errorDestination"></label>
-                <br>
-                <br>
                 <p>
                     <label for="amount">Verðhugmynd:</label>
                     <input type="text" id="amount" class="price">
                 </p>
-                <div id="slider-range"></div>
-                <br>       
+                <div id="slider-range"></div>    
                 <div class="radios">
                     <span>Fjöldi farþega:</span>
                     <input type="radio" name="rGroup" value="1" id="r1" checked="checked" />
@@ -81,10 +75,8 @@
                     <label class="radio" for="r6">6</label>
                 </div>     
                 <div>
-                    <br>
                     <textarea rows="4" cols="20" class="max" id="message" name="comments" placeholder="Auka athugasemdir"></textarea>
-                    <br>
-                    <button name="submit" class="riderButton">
+                    <button name="submit" class="button-0">
                         <i class="fa fa-taxi"></i>
                         Skrá far
                     </button>

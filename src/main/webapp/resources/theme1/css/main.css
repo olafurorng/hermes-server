@@ -88,7 +88,7 @@
 }
 .riderRegister {
     position: absolute; 
-    background-color: #A7DAFF;
+    background-color: #5DA4D3;
     width: 40%; 
     right:30%; 
     top:10%; 
@@ -98,11 +98,11 @@
     border-radius: 15px;
 }
 .riderRegister_Body {
-    padding:0% 2% 5% 2%; 
+    padding:3% 2% 5% 2%; 
 }
 
 .invalid { 
-    background: #FF9E9E;  
+    background: #FFB0B0;  
     width: 100%; 
     color: #000000; 
 }
@@ -130,21 +130,11 @@
     font-weight:bold;
     padding-right:3%
 }
-.riderButton {
-    padding: 1%; 
-    width: 80px; 
-    float: right;
-    color: #fff; 
-    margin-bottom:2%;
-    background-color:#1E519F;
-}
-.riderButton:hover {
-    background-color:#000;
-}
+
 #errorPhone, #errorSubject, #errorLocation, #errorDestination {
     float: left;
     width: 100%;
-    color: red;
+    color: #B60000;
     font-size:0.9em;
 }
 textarea {
@@ -163,6 +153,7 @@ textarea {
 }
 #amount {
     width:8.5em;
+    margin-bottom:2%;
 }
 .radios .radio {
     background-color:#fff;
@@ -171,13 +162,13 @@ textarea {
     line-height: 25px;
     width:25px;
     height:25px;
-    margin-right:5%;
+    margin: 5% 1% 5% 0;
 }
 .radios input[type=radio] {
     display:none
 }
 .radios input[type=radio]:checked + .radio {
-    background-color:#00B5D9;
+    background-color:#07C9F7;
     color:#fff;
 }
 
@@ -188,7 +179,39 @@ input:not([type]), input[type="text"] {
     height: 2em; 
     color: #000; 
     font-size:1em; 
+    margin-bottom:1.5%;
 }
+.button-0 {
+    float:right;
+    position: relative;
+    padding: 10px 30px;
+    margin: 0px 10px 10px 0px;
+    border-radius: 15px;
+    font-family: 'Helvetica', cursive;
+    font-size: 1.5em;
+    color: #FFF;
+    text-decoration: none;  
+    background-color: #000;
+    border-bottom: 5px solid #2980B9;
+    text-shadow: 0px -2px #2980B9;
+    /* Animation */
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+    border: none;
+    outline:none;
+}
+.button-0:hover, 
+.button-0:focus {
+    text-decoration: none;
+    color: #fff;
+}
+
+.button-0:active {
+    transform: translate(0px,5px);
+    -webkit-transform: translate(0px,5px);
+    border-bottom: 1px solid;
+}
+
 
 
 /* For placeholder in rider */
