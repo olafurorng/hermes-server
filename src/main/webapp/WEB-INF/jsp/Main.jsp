@@ -37,6 +37,7 @@
     <section class="rider-driver-list">
         <div id="rider-driver-data" class="container-fluid"></div>
     </section>
+    <div class="overlay"></div>
     <div class="riderRegister">
         <div class="riderRegister_Header">
             <p>Skrá 
