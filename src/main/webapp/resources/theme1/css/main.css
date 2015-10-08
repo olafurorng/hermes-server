@@ -16,24 +16,27 @@
     padding-top: 12px;
 }
 
-.riderContainer {
+.postContainer {
     width: 100%;
     max-width: 600px;
     background-color: white;
     margin-bottom: 20px;
     padding: 12px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 1px 5px 0 rgba(0, 0, 0, 0.12),
+        0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
-.riderContainer .userHead {
+.postContainer .userHead {
     display: flex;
     flex-direction: row;
 }
 
-.riderContainer .userName {
+.postContainer .userName {
     font-size: 14px;
 }
 
-.riderContainer img {
+.postContainer img {
     width: 50px;
     margin-right: 8px;
     height: 50px;
@@ -41,26 +44,30 @@
 
 .pickContainer {
     display: flex;
+    width: 100%;
     flex-direction: row;
     justify-content: center;
+    max-width: 600px;
+    align-self: center;
 }
 
 .pickContainer h5 {
-    width: 150px;
-    height: 150px;
     background-color: #50505B;
     display: flex;
+    flex: 1;
+    border: 1px solid #50505b;
+    margin: 10px 0;
+    height: 50px;
     justify-content: center;
     align-items: center;
     color: #FCFCFC;
     font-size: 26px;
-    border-radius: 75px;
 }
 
-.pickContainer h5 + h5 {
-    margin-left: 5%;
+.pickContainer > .notActiveTab {
+    background-color: #ececec;
+    color: black;
 }
-
 
 /* RideInfo */
 .add {

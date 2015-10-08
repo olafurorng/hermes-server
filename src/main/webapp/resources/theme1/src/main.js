@@ -1,9 +1,9 @@
-jQuery(document).ready(function($) {
+var userData;
+$(document).ready(function($) {
 
-  $("#rider").on("click", rider);
-  $("#driver").on("click", driver);
   $('input[name="rGroup"]').on("click", riderInfo);
-  document.querySelector('.selectRider').addEventListener('click', showRiders);
+  document.querySelector('.selectRider').addEventListener('click', showDrivers);
+  document.querySelector('.selectDriver').addEventListener('click', showRiders);
 
   //Makes max number of keys in textbox
   $('textarea').keydown(function(e) {
@@ -14,6 +14,8 @@ jQuery(document).ready(function($) {
   var form = document.getElementById('form');
   form.addEventListener('submit', senda, false);
 
+  $("#rider").on("click", rider);
+  
   //Price slider
   $(function() {
     $("#slider-range").slider({
@@ -35,13 +37,17 @@ jQuery(document).ready(function($) {
     url: '/driverrider',
     data: String,
     success: function(data) {
-      showRiders(data);
+      console.log(data);
+      userData = data;
+      showDrivers();
     }
   });
 
 });
 
-
+function rider(e) {
+    $(".riderRegister").show();
+}
 
 //Get out of rider with clicking outside of div
 $(document).mouseup(function(e) {
@@ -54,14 +60,6 @@ $(document).mouseup(function(e) {
     }
 });
 
-
-function rider(e) {
-    $(".riderRegister").show();
-}
-
-function driver(e) {
-
-}
 
 //Ride information, run when Ok is clicked
 function senda(e) {
@@ -129,26 +127,63 @@ function senda(e) {
     e.preventDefault();
 }
 
-function showRiders(data) {
-  console.log(data);
+function showRiders() {
   var userList = document.querySelector('.userList');
-  var riders = data.ridersList;
+  userList.innerHTML = '';
+  document.querySelector('.selectDriver').classList.remove('notActiveTab');
+  document.querySelector('.selectRider').classList.add('notActiveTab');
+  var riders = userData.ridersList;
   for (var i = 0; i < riders.length; i++) {
-    var container = $('<div class="riderContainer"></div>');
+    var container = $('<div class="postContainer"></div>');
     var userHead = $('<div class="userHead"></div>');
     var userBody = $('<div class="userBody"></div>');
+    var starContainer = $('<div class="starContainer"></div>');
+    var userInfo = $('<div class="userInfo"></div>');
+    for (var j = 0; j < riders[i].rider.starRating; j++) {
+      $('<span class="glyphicon glyphicon-star"></span>').appendTo(starContainer);
+    }
     $('<img src="' + riders[i].rider.profilePictureUrl + '">').appendTo(userHead);
-    $('<p class="userName">' + riders[i].rider.name + '</p>').appendTo(userHead);
+    $('<p class="userName">' + riders[i].rider.name + '</p>').appendTo(userInfo);
+    $(starContainer).appendTo(userInfo);
     $('<p>Frá: ' + riders[i].currentLocation + '</p>').appendTo(userBody);
     $('<p>Til: ' + riders[i].destination + '</p>').appendTo(userBody);
     $('<p>Verðhugmynd: 4000 kr.</p>').appendTo(userBody);
     $('<p>Þarf far fyrir fjóra</p>').appendTo(userBody);
     
+    userInfo.appendTo(userHead);    
     userHead.appendTo(container);
     userBody.appendTo(container);
     container.appendTo(userList);
   }
 
+}
+
+function showDrivers() {
+  var userList = document.querySelector('.userList');
+  var drivers = userData.driversList;
+  document.querySelector('.selectDriver').classList.add('notActiveTab');
+  document.querySelector('.selectRider').classList.remove('notActiveTab');
+  userList.innerHTML = '';
+  for (var i = 0; i < drivers.length; i++) {
+    var container = $('<div class="postContainer"></div>');
+    var userHead = $('<div class="userHead"></div>');
+    var userBody = $('<div class="userBody"></div>');
+    var starContainer = $('<div class="starContainer"></div>');
+    var userInfo = $('<div class="userInfo"></div>');
+    for (var j = 0; j < drivers[i].driver.starRating; j++) {
+      $('<span class="glyphicon glyphicon-star"></span>').appendTo(starContainer);
+    }
+    $('<img src="' + drivers[i].driver.profilePictureUrl + '">').appendTo(userHead);
+    $('<p class="userName">' + drivers[i].driver.name + '</p>').appendTo(userInfo);
+    $(starContainer).appendTo(userInfo);
+    $('<p>Byrjar: ' + drivers[i].startDriving + '</p>').appendTo(userBody);
+    $('<p>Endar: ' + drivers[i].stopDriving + '</p>').appendTo(userBody);
+    
+    userInfo.appendTo(userHead);
+    userHead.appendTo(container);
+    userBody.appendTo(container);
+    container.appendTo(userList);
+  }
 }
 
 

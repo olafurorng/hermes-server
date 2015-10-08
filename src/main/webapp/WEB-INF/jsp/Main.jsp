@@ -27,12 +27,12 @@
     <section class="whatToDo">
       <h1>I want to ...</h1>
     </section>
-    <section class="pickContainer">
-      <h5 class="selectDriver">Drive</h5>
-      <h5 class="selectRider">Ride</h5>
-    </section>
     <section class="add" id="rider">
         <a></a>
+    </section>
+    <section class="pickContainer">
+      <h5 class="selectRider">Ride</h5>
+      <h5 class="selectDriver">Drive</h5>
     </section>
     <section class="rider-driver-list">
         <div id="rider-driver-data" class="container-fluid"></div>
