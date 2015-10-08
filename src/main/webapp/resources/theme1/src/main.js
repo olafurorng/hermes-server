@@ -1,35 +1,12 @@
 jQuery(document).ready(function($) {
-
   $("#rider").on("click", rider);
   $("#driver").on("click", driver);
-  $('input[name="rGroup"]').on("click", riderInfo);
   document.querySelector('.selectRider').addEventListener('click', showRiders);
-
-  //Makes max number of keys in textbox
-  $('textarea').keydown(function(e) {
-    this.value = this.value.substr(0, 1000);
-    fjoldi = $(this).val().length;
-    $('#eftir').text((1000 - fjoldi) + ' eftir.');
-  });
-  var form = document.getElementById('form');
-  form.addEventListener('submit', senda, false);
-
-  //Price slider
-  $(function() {
-    $("#slider-range").slider({
-      range: true,
-      min: 0,
-      max: 10000,
-      values: [1000, 2000],
-      step: 100,
-      slide: function(event, ui) {
-          $("#amount").val(ui.values[0] + "kr" + " - " + ui.values[1] + "kr");
-      }
-    });
-    $("#amount").val($("#slider-range").slider("values", 0) + "kr" +
-        " - " + $("#slider-range").slider("values", 1) + "kr");
-  });
-    //getDriverRiderList
+  //RiderInfo textbox
+  textBoxKeycount();
+  //RiderInfo price slider
+  priceSlider();
+  //getDriverRiderList
   $.ajax({
     type: 'GET',
     url: '/driverrider',
@@ -41,22 +18,22 @@ jQuery(document).ready(function($) {
 
 });
 
-
-
 //Get out of rider with clicking outside of div
-$(document).mouseup(function(e) {
+$(document).mousedown(function(e) {
     var container = $(".riderRegister");
 
     if (!container.is(e.target) // if the target of the click isn't the container...
         && container.has(e.target).length === 0) // ... nor a descendant of the container
     {
         container.hide();
+        $(".overlay").hide();
     }
 });
 
 
 function rider(e) {
-    $(".riderRegister").show();
+    $(".riderRegister").hide().fadeIn(600);
+    $(".overlay").show();
 }
 
 function driver(e) {
@@ -122,7 +99,7 @@ function senda(e) {
         //riderInfo();
         //resets everything
         $('#form').get(0).reset();
-        $(".riderRegister").toggle();
+        $(".riderRegister").hide();
       }
     
     
@@ -150,7 +127,33 @@ function showRiders(data) {
   }
 
 }
-
+function textBoxKeycount(){
+  //Makes max number of keys in textbox
+  $('textarea').keydown(function(e) {
+    this.value = this.value.substr(0, 256);
+    fjoldi = $(this).val().length;
+    $('#eftir').text((256 - fjoldi) + ' eftir.');
+  });
+  var form = document.getElementById('form');
+  form.addEventListener('submit', senda, false);
+}
+//Price slider
+function priceSlider(){
+$(function() {
+    $("#slider-range").slider({
+      range: true,
+      min: 0,
+      max: 10000,
+      values: [1000, 2000],
+      step: 100,
+      slide: function(event, ui) {
+          $("#amount").val(ui.values[0] + "kr" + " - " + ui.values[1] + "kr");
+      }
+    });
+    $("#amount").val($("#slider-range").slider("values", 0) + "kr" +
+        " - " + $("#slider-range").slider("values", 1) + "kr");
+  });
+}
 
 //Gives final riderInfo
 function riderInfo() {

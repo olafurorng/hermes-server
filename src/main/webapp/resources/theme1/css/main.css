@@ -63,6 +63,16 @@
 
 
 /* RideInfo */
+.overlay {
+  position: fixed;
+  display:none; 
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.5);
+}
 .add {
     width: 50px;
     height: 50px;
@@ -87,7 +97,7 @@
      color:#07C9F7
 }
 .riderRegister {
-    position: absolute; 
+    position: fixed; 
     background-color: #5DA4D3;
     width: 40%; 
     right:30%; 
@@ -96,6 +106,8 @@
     color: #000;  
     border: 0.1em solid #666666;
     border-radius: 15px;
+    opacity: 0.95;
+    z-index: 11;
 }
 .riderRegister_Body {
     padding:3% 2% 5% 2%; 
