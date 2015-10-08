@@ -36,37 +36,6 @@ jQuery(document).ready(function($) {
     data: String,
     success: function(data) {
       showRiders(data);
-      // console.log("Data from /driverrider endpoint:");
-      // console.log(data);
-
-      // dsssd
-      // document.getElementById('rider-driver-data').innerHTML =
-      //     'Halllllooooo, ';
-      // var riderDriverListTxt = '';
-
-      // riderDriverListTxt += '<br><br><br><b><h1>Þeir sem <u>bjóða</u> ísFar:</h1></b><br><br><br>';
-      // for (var i = 0; i < data.driversList.length; i++) {
-      //     riderDriverListTxt += '<img src="' + data.driversList[i].driver.profilePictureUrl + '">' + '<br>' +
-      //         'Nafn: ' + data.driversList[i].driver.name + '<br>' +
-      //         'Stjörnur: ' + data.driversList[i].driver.starRating + '<br>' +
-      //         'Er að keyra á milli ' + data.driversList[i].startDriving + ' og ' + data.driversList[i].stopDriving +
-      //         '<br>' +
-      //         '<br>';
-      // }
-
-
-
-      // riderDriverListTxt += '<br><b><h1>Þá sem <u>vantar</u> ísFar:</h1></b><br><br><br>';
-      // for (var i = 0; i < data.ridersList.length; i++) {
-      //     riderDriverListTxt += '<img src="' + data.ridersList[i].rider.profilePictureUrl + '">' + '<br>' +
-      //         'Nafn: ' + data.ridersList[i].rider.name + '<br>' +
-      //         'Stjörnur: ' + data.ridersList[i].rider.starRating + '<br>' +
-      //         'Vantar ísFar frá ' + data.ridersList[i].currentLocation + ' að ' + data.ridersList[i].destination + '<br>' +
-      //         'Klukkan: ' + data.ridersList[i].pickUpDate +
-      //         '<br>' +
-      //         '<br>';
-      // }
-      // document.getElementById('rider-driver-data').innerHTML = '' + riderDriverListTxt;
     }
   });
 

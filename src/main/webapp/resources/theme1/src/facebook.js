@@ -79,16 +79,31 @@ window.fbAsyncInit = function() {
 function callFbGraphApi(accessToken) {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me?fields=id,friends,name,email,picture,first_name', function(response) {
-        response.accessToken = accessToken;
+        var accessTokenObj = localStorage.getItem('accessToken');
+        if (accessTokenObj) {
+            accessTokenObj = JSON.parse(accessTokenObj);
+            if (accessTokenObj.timestamp < new Date().getTime()) {
+                response.accessToken = '';
+                localStorage.removeItem('accessToken');
+            } else {
+                response.accessToken = accessTokenObj.accessToken;
+            }
+
+        } else {
+            response.accessToken = '';
+        }
         console.log('Successful login for: ' + response.name);
         console.log('Data from FB graph api:');
         console.log(response);
-        response.accessToken = accessToken;
         $.ajax({
             type: 'POST',
             url: '/login',
             data: response,
             success: function(data) {
+                var resultObj = {};
+                resultObj.timestamp = new Date().getTime() + 1000 * 60 * 60 * 24 * 30;
+                resultObj.accessToken = data.user.accessToken;
+                localStorage.setItem('accessToken', JSON.stringify(resultObj));
                 console.log('Data from server:');
                 console.log(data);
                 document.getElementById('app').innerHTML =
