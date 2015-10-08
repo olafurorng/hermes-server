@@ -193,7 +193,7 @@ input:not([type]), input[type="text"] {
     text-decoration: none;  
     background-color: #000;
     border-bottom: 5px solid #2980B9;
-    text-shadow: 0px -2px #2980B9;
+    text-shadow: 0px -2px #000;
     /* Animation */
     transition: all 0.1s;
     -webkit-transition: all 0.1s;
