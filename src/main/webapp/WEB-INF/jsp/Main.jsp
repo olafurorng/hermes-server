@@ -4,32 +4,32 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html lang="is">
-<head>
-    <meta charset="UTF-8">
-    <title>ÍsFar</title>
-    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
-    <link href='/resources/theme1/css/style.css' rel='stylesheet' type='text/css'>
-    <script src="/resources/theme1/build/jquery-1.11.3.min.js" />"></script>
-    <script src="/resources/theme1/src/main.js" />"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
+<head>
+  <meta charset="UTF-8">
+  <title>ÍsFar</title>
+  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+  <link href='/resources/theme1/css/style.css' rel='stylesheet' type='text/css'>
+  <script src="/resources/theme1/build/jquery-1.11.3.min.js" /></script>
+  <script src="/resources/theme1/src/main.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 </head>
+
 <body>
   <header class="basic-header">
     <h1>ÍsFar</h1>
   </header>
   <main>
     <section class="whatToDo">
-        <h1>I want to ...</h1>
+      <h1>I want to ...</h1>
     </section>
     <section class="pickContainer">
-        <a href="">Drive</a>
-        <a href="">Ride</a>
+      <h5 class="selectDriver">Drive</h5>
+      <h5 class="selectRider">Ride</h5>
     </section>
     <section class="add" id="rider">
         <a></a>
@@ -97,6 +97,12 @@
             </div>       
         </form>
     </div>
+    </div>
+        <section class="userList">
+
+        </section>
+
   </main>
 </body>
+
 </html>

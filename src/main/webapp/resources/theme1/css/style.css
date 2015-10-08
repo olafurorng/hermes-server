@@ -221,13 +221,46 @@ color: #fff;
     margin-bottom: 40px;
 }
 
+.userList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userBody {
+    padding-top: 12px;
+}
+
+.riderContainer {
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 12px;
+}
+
+.riderContainer .userHead {
+    display: flex;
+    flex-direction: row;
+}
+
+.riderContainer .userName {
+    font-size: 14px;
+}
+
+.riderContainer img {
+    width: 50px;
+    margin-right: 8px;
+    height: 50px;
+}
+
 .pickContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.pickContainer a {
+.pickContainer h5 {
     width: 150px;
     height: 150px;
     background-color: #50505B;
@@ -239,7 +272,7 @@ color: #fff;
     border-radius: 75px;
 }
 
-.pickContainer a + a{
+.pickContainer h5 + h5 {
     margin-left: 5%;
 }
 
@@ -321,25 +354,25 @@ color: #fff;
     font-weight:bold;
     padding-right:3%
 }
-.riderButton { 
+.riderButton {
     padding: 1%; 
     width: 80px; 
-    float: right; 
+    float: right;
     color: #fff; 
     margin-bottom:2%;
     background-color:#1E519F;
 }
 .riderButton:hover {
     background-color:#000;
-} 
-#errorPhone, #errorSubject, #errorLocation, #errorDestination { 
-    float: left;  
-    width: 100%; 
-    clear: both; 
-    float: left; 
-    color: red; 
 }
-textarea { 
+#errorPhone, #errorSubject, #errorLocation, #errorDestination {
+    float: left;
+    width: 100%;
+    clear: both;
+    float: left;
+    color: red;
+}
+textarea {
     width: 100%; 
     height: 160px;  
     font-size: 1.5em; 
@@ -356,7 +389,7 @@ textarea {
 #amount {
     width:7.5em
 }
-.radios .radio { 
+.radios .radio {
     background-color:#666666;
     display:inline-block;
     text-align: center;
@@ -393,6 +426,7 @@ input:not([type]), input[type="text"] {
         display: initial;
     }
 }
+
 
 /* For placeholder in rider */
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
