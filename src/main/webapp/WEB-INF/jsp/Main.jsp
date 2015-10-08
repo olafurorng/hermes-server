@@ -39,25 +39,24 @@
     </section>
     <div class="riderRegister">
         <div class="riderRegister_Header">
-            <p>Skrá ísFar</p>
+            <p>Skrá 
+                <span class="ice">ís</span>Far
+            </p>
         </div>
         <br>
-        <div class="riderRegister_Body">
-            <div class="utkoma">
-                <h5>Skilaboð móttekin</h5>
-                <p></p>
-            </div>      
+        <div class="riderRegister_Body">   
             <form name="form" id="form" method="post">             
                 <div>           
                     <input type="text" id="phone" class="riderInput" name="phone" placeholder="Símanúmer">
                     <label id="errorPhone"></label>
                 </div>
                 <br>
-                <div>            
-                    <br>
-                    <input type="text" id="subject" name="subject" class="riderInput" placeholder="Titill">
-                    <label id="errorSubject"></label>
-                </div>
+                <br>
+                <input type="text" id="location" name="location" class="locationInput" placeholder="Upphafsstaður">
+                <span class="loc_to_des"> til </span>
+                <input type="text" id="destination" name="destination" class="destinationInput" placeholder="Áfangastaður">
+                <label id="errorLocation"></label>     
+                <label id="errorDestination"></label>
                 <br>
                 <br>
                 <p>
@@ -65,38 +64,33 @@
                     <input type="text" id="amount" class="price">
                 </p>
                 <div id="slider-range"></div>
-                    <br>       
-                    <div class="radios">
-                        <span>Fjöldi farþega:</span>
-                        <input type="radio" name="rGroup" value="1" id="r1" checked="checked" />
-                        <label class="radio" for="r1">1</label>
-                        <input type="radio" name="rGroup" value="2" id="r2" />
-                        <label class="radio" for="r2">2</label>
-                        <input type="radio" name="rGroup" value="3" id="r3" />
-                        <label class="radio" for="r3">3</label>
-                        <input type="radio" name="rGroup" value="4" id="r4" />
-                        <label class="radio" for="r4">4</label>
-                        <input type="radio" name="rGroup" value="5" id="r5" />
-                        <label class="radio" for="r5">5</label>
-                        <input type="radio" name="rGroup" value="6" id="r6" />
-                        <label class="radio" for="r6">6</label>
-                    </div>     
-                    <input type="text" id="location" name="location" class="locationInput" placeholder="Upphafsstaður">
-                    <span class="loc_to_des"> til </span>
-                    <input type="text" id="destination" name="destination" class="destinationInput" placeholder="Áfangastaður">
-                    <label id="errorLocation"></label>     
-                    <label id="errorDestination"></label>
+                <br>       
+                <div class="radios">
+                    <span>Fjöldi farþega:</span>
+                    <input type="radio" name="rGroup" value="1" id="r1" checked="checked" />
+                    <label class="radio" for="r1">1</label>
+                    <input type="radio" name="rGroup" value="2" id="r2" />
+                    <label class="radio" for="r2">2</label>
+                    <input type="radio" name="rGroup" value="3" id="r3" />
+                    <label class="radio" for="r3">3</label>
+                    <input type="radio" name="rGroup" value="4" id="r4" />
+                    <label class="radio" for="r4">4</label>
+                    <input type="radio" name="rGroup" value="5" id="r5" />
+                    <label class="radio" for="r5">5</label>
+                    <input type="radio" name="rGroup" value="6" id="r6" />
+                    <label class="radio" for="r6">6</label>
+                </div>     
                 <div>
-                <br>
-                <textarea rows="4" cols="20" class="max" id="message" name="comments" placeholder="Auka athugasemdir"></textarea>
-                <br>
-                <button name="submit" class="riderButton">
-                    <i class="fa fa-taxi"></i>
-                    Skrá far
-                </button>
-            </div>       
-        </form>
-    </div>
+                    <br>
+                    <textarea rows="4" cols="20" class="max" id="message" name="comments" placeholder="Auka athugasemdir"></textarea>
+                    <br>
+                    <button name="submit" class="riderButton">
+                        <i class="fa fa-taxi"></i>
+                        Skrá far
+                    </button>
+                </div>       
+            </form>
+        </div>
     </div>
         <section class="userList">
 

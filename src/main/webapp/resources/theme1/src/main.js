@@ -65,16 +65,13 @@ function driver(e) {
 
 //Ride information, run when Ok is clicked
 function senda(e) {
-
     // this er formið, $(this) býr til jQuery hlut af forminu
     var form = $(this);
     // Get input from inputs ID's
     var phoneElement = $('#phone');
-    var subjectElement = $('#subject');
     var locationElement = $('#location');
     var destinationElement = $('#destination');
     var phone = phoneElement.val();
-    var subject = subjectElement.val();
     var location = locationElement.val();
     var destination = destinationElement.val();
     // Message is empty and everything works
@@ -82,7 +79,7 @@ function senda(e) {
     var message = '';
     //Phone
     if (phone === '') {
-        $("#errorPhone").text("* Vinsamlegast skráðu símanúmerið þitt, hvernig á annars fólk að geta náð í þig?");
+        $("#errorPhone").text("* Vinsamlegast skráðu símanúmerið þitt");
         message += '<li>' + 'You have to fill in phone number' + '</li>';
         valid = false;
         phoneElement.addClass('invalid');
@@ -97,21 +94,11 @@ function senda(e) {
         phoneElement.removeClass('invalid');
     }
     if (phone != '' && phone.match(/^[0-9]+$/) === null) {
-        $("#errorPhone").text("* Vinsamlegast hafðu aðeins tölustafi í símanúmerinu þínu, vefsíðan er ekki klárari en það að hún skilur bara tölustafi");
+        $("#errorPhone").text("* Vinsamlegast hafðu aðeins tölustafi í símanúmerinu þínu");
     };
-    //Subject
-    if (subject === '') {
-        $("#errorSubject").text("* Vinsamlegast settu inn titil, það er miklu flottara");
-        message += '<li>' + 'You have to fill in Title' + '</li>';
-        valid = false;
-        subjectElement.addClass('invalid');
-    } else {
-        $("#errorSubject").text("");
-        subjectElement.removeClass('invalid');
-    }
     //Location
     if (location === '') {
-        $("#errorLocation").text("* Vinsamlegast settu inn upphafsstað, hvernig á fólk annars að vita hvar á að sækja þig/ykkur");
+        $("#errorLocation").text("* Vinsamlegast settu inn upphafsstað");
         message += '<li>' + 'You have to fill in Location' + '</li>';
         valid = false;
         locationElement.addClass('invalid');
@@ -121,7 +108,7 @@ function senda(e) {
     }
     //Destination
     if (destination === '') {
-        $("#errorDestination").text("* Vinsamlegast settu inn áfangastað, hvernig á fólk annars að vita hvert á að skutla þér/ykkur");
+        $("#errorDestination").text("* Vinsamlegast settu inn áfangastað");
         message += '<li>' + 'You have to fill in destination' + '</li>';
         valid = false;
         destinationElement.addClass('invalid');
@@ -130,24 +117,15 @@ function senda(e) {
         destinationElement.removeClass('invalid');
     }
     //Shows result box with valid or unvalid
-    $('div.utkoma p').html(message);
-    if (!valid) {
-        $('div.utkoma').removeClass('valid');
-        $('h5').text("Errors came up!");
-        $('div.utkoma').addClass('invalid');
-    } else {
-        $('div.utkoma').removeClass('invalid');
-        $('h5').text("");
+    if (valid){
         //Return info here -->
         //riderInfo();
         //resets everything
+        $('#form').get(0).reset();
         $(".riderRegister").toggle();
-        $('#phone').val('');
-        $('#subject').val('');
-        $('#location').val('');
-        $('#destination').val('');
-    }
-    $('div.utkoma').show();
+      }
+    
+    
     e.preventDefault();
 }
 
@@ -179,7 +157,6 @@ function riderInfo() {
     //If everything is valid send info forward when OK is clicked
 
     var phone = ($('#phone')).val();
-    var subject = ($('#subject')).val();
     var firstPrice = $("#slider-range").slider("values", 0);
     var secondPrice = $("#slider-range").slider("values", 1);
     var selectedVal = "";
@@ -191,7 +168,6 @@ function riderInfo() {
     var destination = ($('#destination')).val();
 
     console.log(phone);
-    console.log(subject);
     console.log(firstPrice);
     console.log(secondPrice);
     console.log(selectedVal);
