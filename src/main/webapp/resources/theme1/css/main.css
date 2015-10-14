@@ -212,7 +212,7 @@ input:not([type]), input[type="text"] {
     font-size:1em; 
     margin-bottom:1.5%;
 }
-.button-0 {
+.submitRider {
     float:right;
     position: relative;
     padding: 10px 30px;
@@ -231,13 +231,13 @@ input:not([type]), input[type="text"] {
     border: none;
     outline:none;
 }
-.button-0:hover, 
-.button-0:focus {
+.submitRider:hover, 
+.submitRider:focus {
     text-decoration: none;
     color: #fff;
 }
 
-.button-0:active {
+.submitRider:active {
     transform: translate(0px,5px);
     -webkit-transform: translate(0px,5px);
     border-bottom: 1px solid;
@@ -247,7 +247,7 @@ input:not([type]), input[type="text"] {
     font-size:1.5em;
     margin-right:20px;
 }
-.clockButton {
+.clockButton, .clockButton2 {
   float:right;
   width:20px;
   background-color:#07C9F7;

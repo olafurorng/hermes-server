@@ -79,6 +79,35 @@ var Main = (function() {
           //resets everything
           $('#form').get(0).reset();
           $(".riderRegister").hide();
+
+
+          var data= {
+            phone_number:8694080,//($('#phone')).val();
+            low_price:$("#slider-range").slider("values", 0),
+            high_price: $("#slider-range").slider("values", 1),
+            number_of_people: $("input[type='radio'][name='rGroup']:checked").val(),//selected;
+            location: ($('#destination')).val(),
+            destination: ($('#destination')).val(),
+            message : document.getElementById('message').value,
+            pickup_time_timestamp: startingTime
+            }
+          $.ajax({
+            type: 'POST',
+            url: '/registerrider',
+            data: data,
+             statusCode: {
+            201: function() {
+                console.log("WE GOT 201!");
+            }
+        },
+            success: function(data) {
+                console.log("Skrá ísFar tókst");
+                
+
+            }
+        }).fail(function() {
+            console.log("Skrá ísFar mistókst");
+        });
         }    
       e.preventDefault();
   }
@@ -172,19 +201,13 @@ var Main = (function() {
     });
   }
 
-  //Gives final riderInfo
-  function riderInfo() {
-      //If everything is valid send info forward when OK is clicked
-      var phone = ($('#phone')).val();
-      var firstPrice = $("#slider-range").slider("values", 0);
-      var secondPrice = $("#slider-range").slider("values", 1);
-      var selectedVal = "";
-      var selected = $("input[type='radio'][name='rGroup']:checked");
-      if (selected.length > 0) {
-          selectedVal = selected.val();
-      }
-      var location = ($('#destination')).val();
-      var destination = ($('#destination')).val();
+  function addClockTime(e) {
+    addHour+=1;
+    e.preventDefault();
+  }
+  function addClockTime2(e) {
+    addHourSecondtime+=1;
+    e.preventDefault();
   }
 
   function startTime() {
@@ -217,15 +240,14 @@ var Main = (function() {
   }
 
   function init() {
-    $('input[name="rGroup"]').on("click", riderInfo);
     $('.selectRider').on('click', showDrivers);
     $('.selectDriver').on('click', showRiders);
     $('.submitRider').on('click', postInfo);
     $('.clockFrom').on('click', addClockTimeFrom);
     $('.clockTo').on('click', addClockTimeTo);
 
-    startTime();
 
+    startTime();
     //RiderInfo textbox
     textBoxKeycount();
     //RiderInfo price slider
