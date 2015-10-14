@@ -76,9 +76,11 @@ window.fbAsyncInit = function() {
 }(document, 'script', 'facebook-jssdk'));
 
 //  See statusChangeCallback() for when this call is made.
-function callFbGraphApi(accessToken) {
+function callFbGraphApi(fbAccessToken) {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me?fields=id,friends,name,email,picture,first_name', function(response) {
+
+        // add our own access token, generated from our server
         var accessTokenObj = localStorage.getItem('accessToken');
         if (accessTokenObj) {
             accessTokenObj = JSON.parse(accessTokenObj);
@@ -92,8 +94,17 @@ function callFbGraphApi(accessToken) {
         } else {
             response.accessToken = '';
         }
+
+        // adding the facebook access token
+        response.fb_access_token = '';
+        response.fb_access_token = fbAccessToken;
+
+        // manually getting pic url from the json object from fb
+        // because it was hard to receive the picture json object at the server
+        response.picture_url = response.picture.data.url;
+
         console.log('Successful login for: ' + response.name);
-        console.log('Data from FB graph api:');
+        console.log('Data from FB graph api and additional data:');
         console.log(response);
         $.ajax({
             type: 'POST',
