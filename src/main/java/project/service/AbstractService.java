@@ -37,6 +37,7 @@ public abstract class AbstractService
         // TODO: viljum við nota '!connection.isValid(VALID_TIMEOUT)'
         if  (connection == null || connection.isClosed() || !connection.isValid(VALID_TIMEOUT))
         {
+            // TODO: use system env. variables to store database info, and when that is done, change the database user and passw @ Heroku
             connection = DriverManager.getConnection("jdbc:mysql://"
                             + "us-cdbr-iron-east-03.cleardb.net" + "/" + "heroku_236ba9bc2aca6c1",
                     "b77283a4841a4a", "b16f1ced");
