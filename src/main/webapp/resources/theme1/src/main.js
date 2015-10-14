@@ -1,6 +1,8 @@
 var Main = (function() {
 
   var userData;
+  var addHour=0;
+  var addHourSecondtime=0;
     //Get out of rider with clicking outside of div
   $(document).mousedown(function(e) {
       var container = $(".riderRegister");
@@ -190,10 +192,43 @@ var Main = (function() {
       var destination = ($('#destination')).val();
   }
 
+  function checkTime(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+  }
+
+  function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    // add a zero in front of numbers<10
+    m = checkTime(m);
+    s = checkTime(s);
+
+    document.getElementById('time').innerHTML = h + addHour + ":" + m + ":" + s;
+    document.getElementById('time2').innerHTML = h + addHour + addHourSecondtime +":" + m + ":" + s;
+    t = setTimeout(function () {
+        startTime()
+    }, 500);
+  }
+  function addClockTime() {
+    addHour+=1;
+  }
+  function addClockTime2() {
+    addHourSecondtime+=1;
+  }
+
   function init() {
     $('input[name="rGroup"]').on("click", riderInfo);
     document.querySelector('.selectRider').addEventListener('click', showDrivers);
     document.querySelector('.selectDriver').addEventListener('click', showRiders);
+    document.getElementById('clockButton').addEventListener('click', addClockTime);
+    document.getElementById('clockButton2').addEventListener('click', addClockTime2);
+
+    startTime();
 
     //RiderInfo textbox
     textBoxKeycount();

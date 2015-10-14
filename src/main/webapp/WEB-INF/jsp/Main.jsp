@@ -50,9 +50,11 @@
                     <input type="text" id="phone" class="riderInput" name="phone" placeholder="Símanúmer">
                     <label id="errorPhone"></label>
                 </div>
-                <input type="text" id="location" name="location" class="locationInput" placeholder="Upphafsstaður">
-                <span class="loc_to_des"> til </span>
-                <input type="text" id="destination" name="destination" class="destinationInput" placeholder="Áfangastaður">
+                <div>
+                  <input type="text" id="location" name="location" class="locationInput" placeholder="Upphafsstaður">
+                  <span class="loc_to_des"> til </span>
+                  <input type="text" id="destination" name="destination" class="destinationInput" placeholder="Áfangastaður">
+                </div>
                 <label id="errorLocation"></label>     
                 <label id="errorDestination"></label>
                 <p>
@@ -74,10 +76,20 @@
                     <label class="radio" for="r5">5</label>
                     <input type="radio" name="rGroup" value="6" id="r6" />
                     <label class="radio" for="r6">6</label>
-                </div>     
+                </div>
+                <div class="clocks">
+                  <div class="firstTime">
+                    <div class="clock" id="time"></div>
+                    <button class="clockButton" id="clockButton">+</button>  
+                  </div>
+                  <div class="secondTime">
+                    <div class="clock" id="time2"></div>
+                    <button class="clockButton" id="clockButton2">+</button>  
+                  </div>
+                </div>
                 <div>
                     <textarea rows="4" cols="20" class="max" id="message" name="comments" placeholder="Auka athugasemdir"></textarea>
-                    <button name="submit" class="button-0">
+                    <button id="submitRider" class="button-0">
                         <i class="fa fa-taxi"></i>
                         Skrá far
                     </button>

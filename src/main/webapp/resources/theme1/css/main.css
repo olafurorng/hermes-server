@@ -121,7 +121,7 @@ section.wrong p {
     width: 40%; 
     right:30%; 
     top:10%; 
-    display:none; 
+    /*display:none; */
     color: #000;  
     border: 0.1em solid #666666;
     border-radius: 15px;
@@ -149,10 +149,10 @@ section.wrong p {
     width: 45%; 
 }
 .loc_to_des {
-    position: absolute; 
-    right:50%;
-    margin-top:2.5%; /* Laga */
     font-size:1em;
+    margin-left: auto;
+    margin-right: auto;
+    padding:0 1.5% 0 3%
 }
 .radios span { 
     height: 1.5em; 
@@ -178,7 +178,7 @@ textarea {
 .price {
     border:0; 
     color:#fff; 
-    background-color: #F1EB2D;
+    background-color: #fff;
     font-weight:bold;
     color:#000;
 }
@@ -193,7 +193,7 @@ textarea {
     line-height: 25px;
     width:25px;
     height:25px;
-    margin: 5% 1% 5% 0;
+    margin: 5% 1% 3% 0;
 }
 .radios input[type=radio] {
     display:none
@@ -242,7 +242,31 @@ input:not([type]), input[type="text"] {
     -webkit-transform: translate(0px,5px);
     border-bottom: 1px solid;
 }
-
+.clock {
+    float:left;
+    font-size:1.5em;
+    margin-right:20px;
+}
+.clockButton {
+  float:right;
+  width:20px;
+  background-color:#07C9F7;
+}
+.firstTime {
+  float:left;
+  background-color:#fff;
+  padding: 1% 2% 1% 2%;
+  margin-bottom: 3%;
+  margin-right:5%;
+}
+.secondTime {
+  float:left;
+  background-color:#fff;
+  padding: 1% 2% 1% 2%;
+  margin-bottom: 3%;
+}
+.clocks{
+}
 
 
 /* For placeholder in rider */
