@@ -1,7 +1,5 @@
 package project.responseentities.subentities;
 
-import java.sql.Date;
-
 /**
  * Created by olafurorn on 9/26/15.
  */
@@ -17,7 +15,7 @@ public class RiderListEntry
     private final long created; // timestamp of when the rider list entry was created
     private final int numberOfPeople;
 
-    public RiderListEntry(User rider, String currentLocation, String destination, Date pickUpDate, int lowPrice,
+    public RiderListEntry(User rider, String currentLocation, String destination, long pickUpDate, int lowPrice,
                           int highPrice, String message, long created, int numberOfPeople)
     {
         this.rider = rider;
@@ -26,7 +24,7 @@ public class RiderListEntry
         this.highPrice = highPrice;
         this.created = created;
         this.numberOfPeople = numberOfPeople;
-        this.pickUpDate = pickUpDate.getTime();
+        this.pickUpDate = pickUpDate;
         this.lowPrice = lowPrice;
         this.message = message;
     }
