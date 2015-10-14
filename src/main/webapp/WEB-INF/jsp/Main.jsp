@@ -64,32 +64,32 @@
                 <div id="slider-range"></div>    
                 <div class="radios">
                     <span>Fjöldi farþega:</span>
-                    <input type="radio" name="rGroup" value="1" id="r1" checked="checked" />
+                    <input type="radio" name="rGroup" value=1 id="r1" checked="checked" />
                     <label class="radio" for="r1">1</label>
-                    <input type="radio" name="rGroup" value="2" id="r2" />
+                    <input type="radio" name="rGroup" value=2 id="r2" />
                     <label class="radio" for="r2">2</label>
-                    <input type="radio" name="rGroup" value="3" id="r3" />
+                    <input type="radio" name="rGroup" value=3 id="r3" />
                     <label class="radio" for="r3">3</label>
-                    <input type="radio" name="rGroup" value="4" id="r4" />
+                    <input type="radio" name="rGroup" value=4 id="r4" />
                     <label class="radio" for="r4">4</label>
-                    <input type="radio" name="rGroup" value="5" id="r5" />
+                    <input type="radio" name="rGroup" value=5 id="r5" />
                     <label class="radio" for="r5">5</label>
-                    <input type="radio" name="rGroup" value="6" id="r6" />
+                    <input type="radio" name="rGroup" value=6 id="r6" />
                     <label class="radio" for="r6">6</label>
                 </div>
                 <div class="clocks">
                   <div class="firstTime">
                     <div class="clock" id="time"></div>
-                    <button class="clockButton" id="clockButton">+</button>  
+                    <button class="clockButton">+</button>  
                   </div>
                   <div class="secondTime">
                     <div class="clock" id="time2"></div>
-                    <button class="clockButton" id="clockButton2">+</button>  
+                    <button class="clockButton2">+</button>  
                   </div>
                 </div>
                 <div>
                     <textarea rows="4" cols="20" class="max" id="message" name="comments" placeholder="Auka athugasemdir"></textarea>
-                    <button id="submitRider" class="button-0">
+                    <button class="submitRider">
                         <i class="fa fa-taxi"></i>
                         Skrá far
                     </button>
