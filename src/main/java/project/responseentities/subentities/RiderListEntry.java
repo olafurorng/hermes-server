@@ -10,14 +10,25 @@ public class RiderListEntry
     private final User rider;
     private final String currentLocation;
     private final String destination;
-    private final Date pickUpDate;
+    private final long pickUpDate; // timestamp
+    private final int lowPrice;
+    private final int highPrice;
+    private final String message;
+    private final long created; // timestamp of when the rider list entry was created
+    private final int numberOfPeople;
 
-    public RiderListEntry(User rider, String currentLocation, String destination, Date pickUpDate)
+    public RiderListEntry(User rider, String currentLocation, String destination, Date pickUpDate, int lowPrice,
+                          int highPrice, String message, long created, int numberOfPeople)
     {
         this.rider = rider;
         this.currentLocation = currentLocation;
         this.destination = destination;
-        this.pickUpDate = pickUpDate;
+        this.highPrice = highPrice;
+        this.created = created;
+        this.numberOfPeople = numberOfPeople;
+        this.pickUpDate = pickUpDate.getTime();
+        this.lowPrice = lowPrice;
+        this.message = message;
     }
 
     public User getRider()
@@ -35,8 +46,33 @@ public class RiderListEntry
         return destination;
     }
 
-    public Date getPickUpDate()
+    public long getPickUpDate()
     {
         return pickUpDate;
+    }
+
+    public int getLowPrice()
+    {
+        return lowPrice;
+    }
+
+    public String getMessage()
+    {
+        return message;
+    }
+
+    public long getCreated()
+    {
+        return created;
+    }
+
+    public int getNumberOfPeople()
+    {
+        return numberOfPeople;
+    }
+
+    public int getHighPrice()
+    {
+        return highPrice;
     }
 }

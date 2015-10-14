@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import project.mockservice.MockDataService;
 import project.responseentities.DriverRiderResponse;
 import project.service.UserService;
@@ -30,7 +31,7 @@ public class DriverRiderController
     }
 
     @RequestMapping(value = "/driverrider", method = RequestMethod.GET)
-    public ResponseEntity<DriverRiderResponse> login(
+    public ResponseEntity<DriverRiderResponse> getDriverRider(
             //@RequestParam(value="accessToken") String accessToken, TODO: check the accessToken
     )
     {
@@ -39,6 +40,39 @@ public class DriverRiderController
                 mockDataService.getMockDriverList(),
                 mockDataService.getMockRiderList());
         return new ResponseEntity<DriverRiderResponse>(driverRiderResponse, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/registerrider", method = RequestMethod.POST)
+    public ResponseEntity<Object> registerRriver(
+            @RequestParam(value="phone_number") String phoneNumber,
+            @RequestParam(value="low_price") int lowPrice,
+            @RequestParam(value="high_price") int highPrice,
+            @RequestParam(value="number_of_people") int numberOfPeople,
+            @RequestParam(value="location") String location,
+            @RequestParam(value="destination") String destination,
+            @RequestParam(value="message") String message,
+            @RequestParam(value="pickup_time_timestamp") String pickUpTimeTimestamp
+            //@RequestParam(value="accessToken") String accessToken, TODO: check the accessToken
+    )
+    {
+        return new ResponseEntity<Object>(HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/registerdriver", method = RequestMethod.POST)
+    public ResponseEntity<Object> registerDriver(
+            @RequestParam(value="phone_number") String phoneNumber,
+            @RequestParam(value="low_price") int lowPrice,
+            @RequestParam(value="high_price") int highPrice,
+            @RequestParam(value="number_of_people") int numberOfPeople,
+            @RequestParam(value="place") String place,
+            @RequestParam(value="car_description") String carDescription,
+            @RequestParam(value="message") String message,
+            @RequestParam(value="start_time_timestamp") String startTimeTimestamp,
+            @RequestParam(value="end_time_timestamp") String endTimeTimestamp
+            //@RequestParam(value="accessToken") String accessToken, TODO: check the accessToken
+    )
+    {
+        return new ResponseEntity<Object>(HttpStatus.CREATED);
     }
 
 }

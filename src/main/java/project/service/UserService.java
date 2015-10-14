@@ -31,7 +31,7 @@ public class UserService extends AbstractService
      * @return null if user doesn't exist in database
      *         else the user object
      */
-    public User getUser(String userId, String accessTokenFromClient) throws UnauthorizedException
+    public User getUser(String userId, String accessTokenFromClient, String fbAccessToken) throws UnauthorizedException
     {
         User user = null;
         try
@@ -51,11 +51,15 @@ public class UserService extends AbstractService
                 final String email = resultSet.getString(DatabaseConstants.TABLE_USERS_COLUMN_EMAIL);
                 final double starRating = resultSet.getDouble(DatabaseConstants.TABLE_USERS_COLUMN_STAR_RATING);
                 final int numberOfStarRatings = resultSet.getInt(DatabaseConstants.TABLE_USERS_COLUMN_NUMBER_OF_STAR_RATINGS);
-                final String accessToken = resultSet.getString(DatabaseConstants.TABLE_USERS_ACCESS_TOKEN);
+                final String accessTokenFromDatabase = resultSet.getString(DatabaseConstants.TABLE_USERS_ACCESS_TOKEN);
+                final String pictureUrl = resultSet.getString(DatabaseConstants.TABLE_USERS_COLUMN_PICTURE_URL);
+                final String firstName = resultSet.getString(DatabaseConstants.TABLE_USERS_COLUMN_FIRST_NAME);
 
-                checkIfExistingUserIsAuthorized(id, accessToken, accessTokenFromClient);
+                checkIfExistingUserIsAuthorized(id, accessTokenFromDatabase, accessTokenFromClient, fbAccessToken);
 
-                user = new User(accessToken, id, name, email, starRating, numberOfStarRatings, ""); // TODO: picture url
+                user = new User(accessTokenFromDatabase, id, name, email, starRating, numberOfStarRatings,
+                        pictureUrl, firstName,
+                        null); // TODO: add phone number
             }
 
             resultSet.close();
@@ -84,15 +88,49 @@ public class UserService extends AbstractService
         return user;
     }
 
+
     private void checkIfExistingUserIsAuthorized(final String userId, final String accessTokenFromDatabase,
-                                                 final String accessTokenFromWebPage) throws UnauthorizedException
+                                                 final String accessTokenFromWebPage,
+                                                 final String fbAccessToken) throws UnauthorizedException
     {
-        if (userId == null || userId.isEmpty()
-                || accessTokenFromWebPage == null || accessTokenFromWebPage.isEmpty()
-                || accessTokenFromDatabase == null || accessTokenFromDatabase.isEmpty()
-                || !accessTokenFromDatabase.equals(accessTokenFromWebPage))
+        boolean isUserDataFromDatabaseInvalid = userId == null || userId.isEmpty()
+                || accessTokenFromDatabase == null || accessTokenFromDatabase.isEmpty();
+
+        boolean isAccessTokenFromDatabaseInvalid = accessTokenFromWebPage == null || accessTokenFromWebPage.isEmpty()
+                                                || accessTokenFromDatabase == null
+                                                || !accessTokenFromDatabase.equals(accessTokenFromWebPage);
+
+        if (isUserDataFromDatabaseInvalid)
         {
-            throw new UnauthorizedException();
+            throw new UnauthorizedException("user is not correct registered in database");
+        }
+        else
+        {
+            if (isAccessTokenFromDatabaseInvalid)
+            {
+                // lets check if fb access token is valid
+                if (fbAccessToken == null || fbAccessToken.isEmpty())
+                {
+                    throw new UnauthorizedException("an incorrect access token was sent from the web and the fb access " +
+                            "token was not sent");
+                }
+
+                /* TODO: create call to fb and check if 'fbAccessToken' is valid for userId
+                boolean fbAccessTokenIsValid = createCallToFbToCheckIfFbAccessTokenIsValid();
+                if (fbAccessTokenIsValid)
+                {
+                    throw new UnauthorizedException("an incorrect access token was sent from the web and the fb access " +
+                            "token which was sent from web was not correct");
+                }
+                else
+                {
+                    // user is authorized by the facebook id token from web
+                }*/
+            }
+            else
+            {
+                // user is authorized by the web sent correct access token which was generated from our server
+            }
         }
     }
 
@@ -100,7 +138,7 @@ public class UserService extends AbstractService
     /**
      * Create user in database
      */
-    public String createUser(String id, String name, String email)
+    public String createUser(String id, String name, String email, String firstName, String pictureUrl)
     {
         String generatedAccessToken = null;
         try
@@ -111,14 +149,18 @@ public class UserService extends AbstractService
                     DatabaseConstants.TABLE_USERS_COLUMN_USER_ID + ", " +
                     DatabaseConstants.TABLE_USERS_ACCESS_TOKEN + ", " +
                     DatabaseConstants.TABLE_USERS_COLUMN_NAME + ", " +
+                    DatabaseConstants.TABLE_USERS_COLUMN_FIRST_NAME + ", " +
+                    DatabaseConstants.TABLE_USERS_COLUMN_PICTURE_URL + ", " +
                     DatabaseConstants.TABLE_USERS_COLUMN_EMAIL
-                    + ") VALUES (?,?,?,?);";
+                    + ") VALUES (?,?,?,?,?,?);";
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setString(1, id);
             generatedAccessToken = generateUUID();
             preparedStatement.setString(2, generatedAccessToken);
             preparedStatement.setString(3, name);
-            preparedStatement.setString(4, email);
+            preparedStatement.setString(4, firstName);
+            preparedStatement.setString(5, pictureUrl);
+            preparedStatement.setString(6, email);
             preparedStatement.execute();
 
             preparedStatement.close();

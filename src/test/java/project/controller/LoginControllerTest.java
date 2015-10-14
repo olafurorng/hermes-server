@@ -27,7 +27,8 @@ public class LoginControllerTest extends TestCase
     {
         LoginController loginController = new LoginController(new UserService(), new MockDataService());
         ResponseEntity<LoginResponse> loginResponseResponseEntity =
-                loginController.login("test_access_token", "test_id", "test_name", "test_email");
+                loginController.login("test_access_token", "test_fb_access_token", "test_id", "test_name", "test_email",
+                        "test_first_name", null);
 
         assertTrue(loginResponseResponseEntity.getStatusCode().is2xxSuccessful());
         assertEquals(MockDataService.NUMBER_OF_MOCK_DRIVER, loginResponseResponseEntity.getBody().getDriversList().size());

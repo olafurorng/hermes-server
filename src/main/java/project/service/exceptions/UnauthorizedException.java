@@ -9,4 +9,9 @@ public class UnauthorizedException extends Exception
     {
         super("User is not authorized");
     }
+
+    public UnauthorizedException(String extraMessage)
+    {
+        super("User is not authorized - " + extraMessage);
+    }
 }

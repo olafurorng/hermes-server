@@ -35,11 +35,7 @@ public class MockDataService
             "vip9@hi.is");
 
     private final List<String> ids = Arrays.asList(
-            "7954123983290342",
-            "5434448985345409",
-            "5893763594275695",
-            "1230495844348884",
-            "5687392489905864");
+            "1177370922");
 
     private final List<String> locations = Arrays.asList(
             "KEF flugvöllur",
@@ -67,10 +63,13 @@ public class MockDataService
         for (int i = 0; i < NUMBER_OF_MOCK_RIDER; i++)
         {
             User user = new User("test_access_token", getRandomId(), getRandomName(),
-                    getRandomEmail(), getRandomRatings(), getRandomNumberOfRatings(), getRandomProfilePic());
+                    getRandomEmail(), getRandomRatings(), getRandomNumberOfRatings(), getRandomProfilePic(), "Stupid_name",
+                    getRandomPhoneNumber());
 
+            int randomPrice = getRandomPrice();
             RiderListEntry riderListEntry = new RiderListEntry(user,
-                    getRandomLocation(), getRandomLocation(), getRandomDateInTheFuture());
+                    getRandomLocation(), getRandomLocation(), getRandomDateInTheFuture(), randomPrice,
+                    randomPrice + 1500, getRandomMessageForRider(), getRandomTimestamp(), getRandomNumberOfPeople());
             riderListEntries.add(riderListEntry);
 
         }
@@ -84,16 +83,112 @@ public class MockDataService
         for (int i = 0; i < NUMBER_OF_MOCK_DRIVER; i++)
         {
             User user = new User("test_access_token", getRandomId(), getRandomName(),
-                    getRandomEmail(), getRandomRatings(), getRandomNumberOfRatings(), getRandomProfilePic());
+                    getRandomEmail(), getRandomRatings(), getRandomNumberOfRatings(), getRandomProfilePic(), "Stupid_name",
+                    getRandomPhoneNumber());
 
 
+            int randomPrice = getRandomPrice();
             DriverListEntry driverListEntry = new DriverListEntry(user,
-                    getRandomDateInTheFuture(), getRandomDateInTheFuture());
+                    getRandomDateInTheFuture(), getRandomDateInTheFuture(), randomPrice, randomPrice + 3000,
+                    getRandomNumberOfPeople(), getRandomCarDescription(), getRandomPlace(),
+                    getRandomMessageForDriver(), getRandomTimestamp());
             driverListEntries.add(driverListEntry);
         }
 
         return driverListEntries;
     }
+
+    private int getRandomPhoneNumber()
+    {
+        String phoneNumberAsString = "";
+        int randomNumberBetween0And9;
+        for (int i = 0; i < 7; i++)
+        {
+            randomNumberBetween0And9 = (int) (Math.random()*10);
+            phoneNumberAsString += randomNumberBetween0And9;
+        }
+
+        return Integer.parseInt(phoneNumberAsString);
+    }
+
+    private int getRandomPrice()
+    {
+        int index = (int) (Math.random()*4);
+        switch (index)
+        {
+            case 0:
+                return 1000;
+            case 1:
+                return 2000;
+            case 2:
+                return 3000;
+            default:
+                return 4000;
+        }
+    }
+
+    private int getRandomNumberOfPeople()
+    {
+        int index = (int) (Math.random()*4);
+        switch (index)
+        {
+            case 0:
+                return 1;
+            case 1:
+                return 2;
+            case 2:
+                return 3;
+            default:
+                return 4;
+        }
+    }
+
+    private long getRandomTimestamp()
+    {
+        int index = (int) (Math.random()*4);
+        switch (index)
+        {
+            case 0:
+                return 1444783219;
+            case 1:
+                return 1444790419;
+            case 2:
+                return 1444791439;
+            default:
+                return 1444856239;
+        }
+    }
+
+    private String getRandomMessageForRider()
+    {
+        int index = (int) (Math.random()*3);
+        switch (index)
+        {
+            case 0:
+                return "";
+            case 1:
+                return "Er í gula húsinu bakvið græna skúrinn fyrir ofan hæðina";
+            default:
+                return "Má alls ekki vera of seinn, Lorem Ipsum is simply dummy text of the printing and " +
+                        "typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever" +
+                        " since the 1500s, when an unknown printer";
+        }
+    }
+
+    private String getRandomMessageForDriver()
+    {
+        int index = (int) (Math.random()*3);
+        switch (index)
+        {
+            case 0:
+                return "";
+            case 1:
+                return "Er með bjór og sterkt áfengi";
+            default:
+                return "Er með tipp topp þjónustu, tek aðeins við greiðslum fyrirfram áður en aksture hefst!";
+        }
+    }
+
 
     private String getRandomName()
     {
@@ -141,6 +236,38 @@ public class MockDataService
     {
         int index = (int) (Math.random()*profilePics.size());
         return profilePics.get(index);
+    }
+
+    private String getRandomPlace()
+    {
+        int index = (int) (Math.random()*4);
+        switch (index)
+        {
+            case 0:
+                return "Höfuðborgasvæðið";
+            case 1:
+                return "Miðbær";
+            case 2:
+                return "Akureyri";
+            default:
+                return "Höfuðborgarasvæðið og flugvöllur";
+        }
+    }
+
+    private String getRandomCarDescription()
+    {
+        int index = (int) (Math.random()*4);
+        switch (index)
+        {
+            case 0:
+                return "Gulur Yaris";
+            case 1:
+                return "Hvítur Volvo - bílnúmer: DA-514";
+            case 2:
+                return "Land Cruiser jeppa";
+            default:
+                return "Svartri Teslu";
+        }
     }
 }
 

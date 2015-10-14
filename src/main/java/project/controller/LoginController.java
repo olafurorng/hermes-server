@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import project.mockservice.MockDataService;
-import project.service.UserService;
 import project.responseentities.LoginResponse;
 import project.responseentities.subentities.User;
+import project.service.UserService;
 import project.service.exceptions.UnauthorizedException;
 
 /**
@@ -33,25 +33,31 @@ public class LoginController
         this.mockDataService = mockDataService;
     }
 
+    /**
+     *
+     * @param accessToken our own, server generated access token
+     * @param fbAccessToken access token we get from facebook
+     * @param id fb user id of the user, which we also use as user id
+     * @param name full name of user
+     * @param firstName first name of user
+     * @return
+     */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<LoginResponse> login(
                                         @RequestParam(value="accessToken") String accessToken,
+                                        @RequestParam(value="fb_access_token") String fbAccessToken,
                                         @RequestParam(value="id") String id,
                                         @RequestParam(value="name") String name,
-                                        @RequestParam(value="email") String email
+                                        @RequestParam(value="email") String email,
+                                        @RequestParam(value="first_name") String firstName,
+                                        @RequestParam(value="picture_url") String pictureUrl
                                         )
     {
         Log.i(LOGTAG, "calling /login");
-        // TODO: checka á accessToken-inu
-
-        // TODO: taka við fleiri upplýsingum sem við fáum frá facebook
-
-
-
 
         User user = null;
         try {
-            user = userService.getUser(id, accessToken);
+            user = userService.getUser(id, accessToken, fbAccessToken);
         }
         catch (UnauthorizedException e)
         {
@@ -64,9 +70,10 @@ public class LoginController
             // user doesn't exist and is a new user
             // user is created in database and we return 201
 
-            String accessTokenGeneratedFromServer = userService.createUser(id, name, email);
+            String accessTokenGeneratedFromServer = userService.createUser(id, name, email, firstName, pictureUrl);
             if (accessTokenGeneratedFromServer == null) return new ResponseEntity<LoginResponse>(HttpStatus.SERVICE_UNAVAILABLE);
-            user = new User(accessTokenGeneratedFromServer, id, name, email, 0.0, 0, ""); // TODO: add profile picture url
+            user = new User(accessTokenGeneratedFromServer, id, name, email, 0.0, 0, pictureUrl, firstName,
+                    null); // phone number is null, as we can't get it from facebook
 
             LoginResponse loginResponse = new LoginResponse(
                     mockDataService.getMockDriverList(),
@@ -83,8 +90,5 @@ public class LoginController
                     user);
             return new ResponseEntity<LoginResponse>(loginResponse, HttpStatus.OK);
         }
-
-        // TODO: return-a fake gögnum af Driver-um og Rider-um
-
     }
 }
