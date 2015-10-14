@@ -1,8 +1,6 @@
 var Main = (function() {
 
   var userData;
-  var addHour=0;
-  var addHourSecondtime=0;
     //Get out of rider with clicking outside of div
   $(document).mousedown(function(e) {
       var container = $(".riderRegister");
@@ -81,8 +79,6 @@ var Main = (function() {
           //resets everything
           $('#form').get(0).reset();
           $(".riderRegister").hide();
-          addHour=0;
-          addHourSecondtime=0;
         }    
       e.preventDefault();
   }
