@@ -99,9 +99,9 @@ var Main = (function() {
       for (var j = 0; j < riders[i].rider.starRating; j++) {
         $('<span class="glyphicon glyphicon-star"></span>').appendTo(starContainer);
       }
-      $('<a target="_blank" href="www.facebook.com/' + riders[i].rider.id + '"><img src="' +
+      $('<a target="_blank" href="http://www.facebook.com/' + riders[i].rider.id + '"><img src="' +
         riders[i].rider.profilePictureUrl + '"></a>').appendTo(userHead);
-      $('<a target="_blank" class="userName" href="www.facebook.com/' + riders[i].rider.id + '">' +
+      $('<a target="_blank" class="userName" href="http://www.facebook.com/' + riders[i].rider.id + '">' +
         riders[i].rider.name + '</a>').appendTo(userInfo);
       $(starContainer).appendTo(userInfo);
       $('<p>Frá: ' + riders[i].currentLocation + '</p>').appendTo(userBody);
@@ -132,9 +132,9 @@ var Main = (function() {
       for (var j = 0; j < drivers[i].driver.starRating; j++) {
         $('<span class="glyphicon glyphicon-star"></span>').appendTo(starContainer);
       }
-      $('<a target="_blank" href="www.facebook.com/' + drivers[i].driver.id + '"><img src="' +
+      $('<a target="_blank" href="http://www.facebook.com/' + drivers[i].driver.id + '"><img src="' +
         drivers[i].driver.profilePictureUrl + '"></a>').appendTo(userHead);
-      $('<a target="_blank" class="userName" href="www.facebook.com/' + drivers[i].driver.id + '">' +
+      $('<a target="_blank" class="userName" href="http://www.facebook.com/' + drivers[i].driver.id + '">' +
         drivers[i].driver.name + '</a>').appendTo(userInfo);
       $(starContainer).appendTo(userInfo);
       $('<p>Byrjar: ' + drivers[i].startDriving + '</p>').appendTo(userBody);
