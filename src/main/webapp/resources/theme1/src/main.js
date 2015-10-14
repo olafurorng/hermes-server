@@ -18,6 +18,7 @@ var Main = (function() {
   function rider(e) {
       $(".riderRegister").hide().fadeIn(600);
       $(".overlay").show();
+      e.preventDefault();
   }
 
   //Ride information, run when Ok is clicked
@@ -80,9 +81,9 @@ var Main = (function() {
           //resets everything
           $('#form').get(0).reset();
           $(".riderRegister").hide();
-        }
-      
-      
+          addHour=0;
+          addHourSecondtime=0;
+        }    
       e.preventDefault();
   }
 
@@ -156,8 +157,6 @@ var Main = (function() {
       fjoldi = $(this).val().length;
       $('#eftir').text((256 - fjoldi) + ' eftir.');
     });
-    var form = document.getElementById('form');
-    form.addEventListener('submit', postInfo, false);
   }
   //Price slider
   function priceSlider(){
@@ -214,17 +213,20 @@ var Main = (function() {
         startTime()
     }, 500);
   }
-  function addClockTime() {
+  function addClockTime(e) {
     addHour+=1;
+    e.preventDefault();
   }
-  function addClockTime2() {
+  function addClockTime2(e) {
     addHourSecondtime+=1;
+    e.preventDefault();
   }
 
   function init() {
     $('input[name="rGroup"]').on("click", riderInfo);
     document.querySelector('.selectRider').addEventListener('click', showDrivers);
     document.querySelector('.selectDriver').addEventListener('click', showRiders);
+    document.getElementById('submitRider').addEventListener('click', postInfo);
     document.getElementById('clockButton').addEventListener('click', addClockTime);
     document.getElementById('clockButton2').addEventListener('click', addClockTime2);
 
