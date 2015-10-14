@@ -205,12 +205,16 @@ var Main = (function() {
     $.ajax({
       type: 'GET',
       url: '/driverrider',
-      data: String,
       success: function(data) {
         console.log(data);
         userData = data;
         showDrivers();
       }
+    }).fail(function() {
+      var userList = $('.userList');
+      $('.pickContainer').hide();
+      $('<section class="wrong"><h3>Whoops. This is awkward.</h3><p>Something went wrong</p>' +
+        '<p>Please try again</p></section>').appendTo(userList);
     });
   }
   return {
