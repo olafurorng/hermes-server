@@ -47,13 +47,13 @@
         <div class="riderRegister_Body">   
             <form name="form" id="form" method="post">             
                 <div>           
-                    <input type="text" id="phone" class="riderInput" name="phone" placeholder="Símanúmer">
+                    <input type="text" class="riderInput" name="phone" placeholder="Símanúmer">
                     <label id="errorPhone"></label>
                 </div>
                 <div>
-                  <input type="text" id="location" name="location" class="locationInput" placeholder="Upphafsstaður">
+                  <input type="text" name="location" class="locationInput" placeholder="Upphafsstaður">
                   <span class="loc_to_des"> til </span>
-                  <input type="text" id="destination" name="destination" class="destinationInput" placeholder="Áfangastaður">
+                  <input type="text" name="destination" class="destinationInput" placeholder="Áfangastaður">
                 </div>
                 <label id="errorLocation"></label>     
                 <label id="errorDestination"></label>
