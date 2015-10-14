@@ -75,19 +75,13 @@ public class LoginController
             user = new User(accessTokenGeneratedFromServer, id, name, email, 0.0, 0, pictureUrl, firstName,
                     null); // phone number is null, as we can't get it from facebook
 
-            LoginResponse loginResponse = new LoginResponse(
-                    mockDataService.getMockDriverList(),
-                    mockDataService.getMockRiderList(),
-                    user);
+            LoginResponse loginResponse = new LoginResponse(user);
             return new ResponseEntity<LoginResponse>(loginResponse, HttpStatus.CREATED);
         }
         else
         {
             // user exist and we return 200
-            LoginResponse loginResponse = new LoginResponse(
-                    mockDataService.getMockDriverList(),
-                    mockDataService.getMockRiderList(),
-                    user);
+            LoginResponse loginResponse = new LoginResponse(user);
             return new ResponseEntity<LoginResponse>(loginResponse, HttpStatus.OK);
         }
     }
