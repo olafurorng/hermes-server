@@ -81,11 +81,11 @@ var Main = (function() {
           $(".riderRegister").hide();
 
           var data= {
-            phone_number:parseInt(($('#phone')).val()),
+            phone_number:344, // parseInt(($('.riderInput')).val()); 
             price:$("#slider-range").slider("values", 0),
-            number_of_people: $("input[type='radio'][name='rGroup']:checked").val(),//selected;
-            location: ($('#destination')).val(),
-            destination: ($('#destination')).val(),
+            number_of_people: $("input[type='radio'][name='rGroup']:checked").val(),
+            location: ($('.locationInput')).val(),
+            destination: ($('.destinationInput')).val(),
             message : document.getElementById('message').value,
             pickup_time_timestamp: 4534
             }
@@ -93,7 +93,7 @@ var Main = (function() {
             type: 'POST',
             url: '/registerrider',
             data: data,
-             statusCode: {
+            statusCode: {
             201: function() {
                 console.log("WE GOT 201!");
             }
@@ -104,7 +104,8 @@ var Main = (function() {
         }).fail(function() {
             console.log("Skrá ísFar mistókst");
         });
-        }    
+
+        } 
       e.preventDefault();
   }
 
@@ -237,7 +238,6 @@ var Main = (function() {
     var today = new Date();
     var h = today.getHours();
     var m = (today.getMinutes() < 10) ? '0' + today.getMinutes() : today.getMinutes();
-    clockFrom=h*100+m;
     $('.timeFrom').html(h + ":" + m);
     $('.timeTo').html(h +":" + m);
   }
@@ -259,6 +259,7 @@ var Main = (function() {
     nextTime.setMinutes(current.text().substr(3, 2));
     minutes = (nextTime.getMinutes() < 10) ? '0' + nextTime.getMinutes() : nextTime.getMinutes();
     current.text(nextTime.getHours() + ':' + minutes);
+
     e.preventDefault();
   }
 
@@ -267,8 +268,7 @@ var Main = (function() {
     $('.selectDriver').on('click', showRiders);
     $('.submitRider').on('click', postInfo);
     $('.clockFrom').on('click', addClockTimeFrom);
-    $('.clockTo').on('click', addClockTimeTo);
-
+    $('.clockTo').on('click', addClockTimeTo);  
     startTime();
     //RiderInfo textbox
     textBoxKeycount();
