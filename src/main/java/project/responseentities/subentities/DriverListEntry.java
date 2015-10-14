@@ -1,15 +1,13 @@
 package project.responseentities.subentities;
 
-import java.sql.Date;
-
 /**
  * Created by olafurorn on 9/26/15.
  */
 public class DriverListEntry
 {
     private final User driver;
-    private final Date startDriving;
-    private final Date stopDriving;
+    private final long startDriving;
+    private final long stopDriving;
     private final int lowPrice;
     private final int highPrice;
     private final int numberOfPeople;
@@ -18,13 +16,14 @@ public class DriverListEntry
     private final String message;
     private final long created;
 
-    public DriverListEntry(User driver, Date startDriving, Date stopDriving, int lowPrice, int highPrice,
+    public DriverListEntry(User driver, long startDrivingTimestamp, long stopDrivingTimestamp,
+                           int lowPrice, int highPrice,
                            int numberOfPeople, String carDescription, String place, String message,
                            long created)
     {
         this.driver = driver;
-        this.startDriving = startDriving;
-        this.stopDriving = stopDriving;
+        this.startDriving = startDrivingTimestamp;
+        this.stopDriving = stopDrivingTimestamp;
         this.lowPrice = lowPrice;
         this.highPrice = highPrice;
         this.numberOfPeople = numberOfPeople;
@@ -39,12 +38,12 @@ public class DriverListEntry
         return driver;
     }
 
-    public Date getStartDriving()
+    public long getStartDriving()
     {
         return startDriving;
     }
 
-    public Date getStopDriving()
+    public long getStopDriving()
     {
         return stopDriving;
     }
