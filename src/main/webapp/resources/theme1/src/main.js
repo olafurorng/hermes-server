@@ -3,6 +3,8 @@ var Main = (function() {
   var userData;
   var addHour=0;
   var addHourSecondtime=0;
+  var startingTime;
+  var finishTime;
     //Get out of rider with clicking outside of div
   $(document).mousedown(function(e) {
       var container = $(".riderRegister");
@@ -83,6 +85,35 @@ var Main = (function() {
           $(".riderRegister").hide();
           addHour=0;
           addHourSecondtime=0;
+
+          var data= {
+            phone_number:8694080,//($('#phone')).val();
+            low_price:$("#slider-range").slider("values", 0),
+            high_price: $("#slider-range").slider("values", 1),
+            number_of_people: $("input[type='radio'][name='rGroup']:checked").val(),//selected;
+            location: ($('#destination')).val(),
+            destination: ($('#destination')).val(),
+            message : document.getElementById('message').value,
+            pickup_time_timestamp: startingTime
+            }
+          $.ajax({
+            type: 'POST',
+            url: '/registerrider',
+            data: data,
+             statusCode: {
+            201: function() {
+                console.log("WE GOT 201!");
+            }
+        },
+            success: function(data) {
+                console.log("Skrá ísFar tókst");
+                
+
+            }
+        }).fail(function() {
+            console.log("Skrá ísFar mistókst");
+        });
+
         }    
       e.preventDefault();
   }
@@ -176,43 +207,6 @@ var Main = (function() {
     });
   }
 
-  //Gives final riderInfo
-  function riderInfo() {
-      //If everything is valid send info forward when OK is clicked
-      var phone = ($('#phone')).val();
-      var firstPrice = $("#slider-range").slider("values", 0);
-      var secondPrice = $("#slider-range").slider("values", 1);
-      var selectedVal = "";
-      var selected = $("input[type='radio'][name='rGroup']:checked");
-      if (selected.length > 0) {
-          selectedVal = selected.val();
-      }
-      var location = ($('#destination')).val();
-      var destination = ($('#destination')).val();
-  }
-
-  function checkTime(i) {
-    if (i < 10) {
-        i = "0" + i;
-    }
-    return i;
-  }
-
-  function startTime() {
-    var today = new Date();
-    var h = today.getHours();
-    var m = today.getMinutes();
-    var s = today.getSeconds();
-    // add a zero in front of numbers<10
-    m = checkTime(m);
-    s = checkTime(s);
-
-    document.getElementById('time').innerHTML = h + addHour + ":" + m + ":" + s;
-    document.getElementById('time2').innerHTML = h + addHour + addHourSecondtime +":" + m + ":" + s;
-    t = setTimeout(function () {
-        startTime()
-    }, 500);
-  }
   function addClockTime(e) {
     addHour+=1;
     e.preventDefault();
@@ -221,17 +215,37 @@ var Main = (function() {
     addHourSecondtime+=1;
     e.preventDefault();
   }
+  function checkTime(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+  }
+  function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    // add a zero in front of numbers<10
+    m = checkTime(m);
+
+    document.getElementById('time').innerHTML = h + addHour + ":" + m ;
+    document.getElementById('time2').innerHTML = h + addHour + addHourSecondtime +":" + m;
+    startingTime=(h + addHour+1)*100+m;
+    finishTime=(h + addHour + addHourSecondtime+1)*100+m;
+    t = setTimeout(function () {
+        startTime()
+    }, 500);
+  }
+
 
   function init() {
-    $('input[name="rGroup"]').on("click", riderInfo);
     document.querySelector('.selectRider').addEventListener('click', showDrivers);
     document.querySelector('.selectDriver').addEventListener('click', showRiders);
-    document.getElementById('submitRider').addEventListener('click', postInfo);
-    document.getElementById('clockButton').addEventListener('click', addClockTime);
-    document.getElementById('clockButton2').addEventListener('click', addClockTime2);
-
+    document.querySelector('.submitRider').addEventListener('click', postInfo);
+    document.querySelector('.clockButton').addEventListener('click', addClockTime);
+    document.querySelector('.clockButton2').addEventListener('click', addClockTime2);
+    //RiderInfo clock
     startTime();
-
     //RiderInfo textbox
     textBoxKeycount();
     //RiderInfo price slider
