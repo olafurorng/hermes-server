@@ -28,6 +28,18 @@ section.wrong p {
     padding-top: 12px;
 }
 
+.driverInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.driverInfo span {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
 .postContainer {
     width: 100%;
     max-width: 600px;

@@ -148,8 +148,8 @@ var Main = (function() {
   function showDrivers() {
     var userList = document.querySelector('.userList');
     var drivers = userData.driversList;
-    document.querySelector('.selectDriver').classList.add('notActiveTab');
-    document.querySelector('.selectRider').classList.remove('notActiveTab');
+    $('.selectDriver').addClass('notActiveTab');
+    $('.selectRider').removeClass('notActiveTab');
     userList.innerHTML = '';
     for (var i = 0; i < drivers.length; i++) {
       var container = $('<div class="postContainer"></div>');
@@ -157,6 +157,13 @@ var Main = (function() {
       var userBody = $('<div class="userBody"></div>');
       var starContainer = $('<div class="starContainer"></div>');
       var userInfo = $('<div class="userInfo"></div>');
+      var driverInfo = $('<div class="driverInfoContainer clearfix"></div>');
+      var time = $('<section class="driverInfo col-md-2"></section>');
+      var location = $('<section class="driverInfo col-md-4"></section>');
+      var money = $('<section class="driverInfo col-md-3"></section>');
+      var people = $('<section class="driverInfo col-md-3"></section>');
+      var message = $('<article></article>')
+      
       for (var j = 0; j < drivers[i].driver.starRating; j++) {
         $('<span class="glyphicon glyphicon-star"></span>').appendTo(starContainer);
       }
@@ -165,9 +172,39 @@ var Main = (function() {
       $('<a target="_blank" class="userName" href="http://www.facebook.com/' + drivers[i].driver.id + '">' +
         drivers[i].driver.name + '</a>').appendTo(userInfo);
       $(starContainer).appendTo(userInfo);
-      $('<p>Byrjar: ' + drivers[i].startDriving + '</p>').appendTo(userBody);
-      $('<p>Endar: ' + drivers[i].stopDriving + '</p>').appendTo(userBody);
+
+      // Time
+      $('<span class="glyphicon glyphicon-time"></span>').appendTo(time);
+      $('<p>' + new Date(drivers[i].startDriving).toTimeString().substr(0, 5) + '</p>').appendTo(time);
+      $('<p>til</p>').appendTo(time);
+      $('<p>' + new Date(drivers[i].stopDriving).toTimeString().substr(0, 5) + '</p>').appendTo(time);
+
+      // Location
+      $('<span class="glyphicon glyphicon-map-marker"></span>').appendTo(location);
+      $('<p>' + drivers[i].place + '</p>').appendTo(location);
+      $('<p>' + drivers[i].carDescription + '</p>').appendTo(location);
+
+      // Money
+      $('<span class="glyphicon glyphicon-usd"></span>').appendTo(money);
+      $('<p>' + drivers[i].lowPrice + ' kr.</p>').appendTo(money);
+      $('<p>til</p>').appendTo(money);
+      $('<p>' + drivers[i].highPrice + ' kr.</p>').appendTo(money);
+
+      // People
+      $('<h4>Farþegafjöldi</h4>').appendTo(people);
+      $('<div><span class="glyphicon glyphicon-user"></span><span class="glyphicon glyphicon-user"></span></div>').appendTo(people);
+
+      // Message
+      $('<h3>Skilaboð</h3>').appendTo(message);
+      $('<p>' + drivers[i].message +'</p>').appendTo(message);
+
       
+      time.appendTo(driverInfo);
+      location.appendTo(driverInfo);
+      money.appendTo(driverInfo);
+      people.appendTo(driverInfo);
+      driverInfo.appendTo(userBody);
+      message.appendTo(userBody);
       userInfo.appendTo(userHead);
       userHead.appendTo(container);
       userBody.appendTo(container);
