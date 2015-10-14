@@ -116,12 +116,12 @@ section.wrong p {
      color:#07C9F7
 }
 .riderRegister {
-    position: fixed; 
+    position: fixed;
     background-color: #5DA4D3;
-    width: 40%; 
-    right:30%; 
-    top:10%; 
-    /*display:none; */
+    width: 40%;
+    right:30%;
+    top:10%;
+    display:none;
     color: #000;  
     border: 0.1em solid #666666;
     border-radius: 15px;
@@ -129,7 +129,7 @@ section.wrong p {
     z-index: 11;
 }
 .riderRegister_Body {
-    padding:3% 2% 5% 2%; 
+    padding:3% 2% 5% 2%;
 }
 
 .invalid { 
@@ -265,9 +265,6 @@ input:not([type]), input[type="text"] {
   padding: 1% 2% 1% 2%;
   margin-bottom: 3%;
 }
-.clocks{
-}
-
 
 /* For placeholder in rider */
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */

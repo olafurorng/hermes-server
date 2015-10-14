@@ -191,44 +191,42 @@ var Main = (function() {
       var destination = ($('#destination')).val();
   }
 
-  function checkTime(i) {
-    if (i < 10) {
-        i = "0" + i;
-    }
-    return i;
-  }
-
   function startTime() {
     var today = new Date();
     var h = today.getHours();
-    var m = today.getMinutes();
-    var s = today.getSeconds();
-    // add a zero in front of numbers<10
-    m = checkTime(m);
-    s = checkTime(s);
+    var m = (today.getMinutes() < 10) ? '0' + today.getMinutes() : today.getMinutes();
 
-    document.getElementById('time').innerHTML = h + addHour + ":" + m + ":" + s;
-    document.getElementById('time2').innerHTML = h + addHour + addHourSecondtime +":" + m + ":" + s;
-    t = setTimeout(function () {
-        startTime()
-    }, 500);
+    $('.timeFrom').html(h + ":" + m);
+    $('.timeTo').html(h +":" + m);
   }
-  function addClockTime(e) {
-    addHour+=1;
+  function addClockTimeFrom(e) {
+    var current = $('.timeFrom');
+    var nextTime = new Date();
+    var minutes;
+    nextTime.setHours(parseInt(current.text().substr(0, 2)) + 1);
+    nextTime.setMinutes(current.text().substr(3, 2));
+    minutes = (nextTime.getMinutes() < 10) ? '0' + nextTime.getMinutes() : nextTime.getMinutes();
+    current.text(nextTime.getHours() + ':' + minutes);
     e.preventDefault();
   }
-  function addClockTime2(e) {
-    addHourSecondtime+=1;
+  function addClockTimeTo(e) {
+    var current = $('.timeTo');
+    var nextTime = new Date();
+    var minutes;
+    nextTime.setHours(parseInt(current.text().substr(0, 2)) + 1);
+    nextTime.setMinutes(current.text().substr(3, 2));
+    minutes = (nextTime.getMinutes() < 10) ? '0' + nextTime.getMinutes() : nextTime.getMinutes();
+    current.text(nextTime.getHours() + ':' + minutes);
     e.preventDefault();
   }
 
   function init() {
     $('input[name="rGroup"]').on("click", riderInfo);
-    document.querySelector('.selectRider').addEventListener('click', showDrivers);
-    document.querySelector('.selectDriver').addEventListener('click', showRiders);
-    document.getElementById('submitRider').addEventListener('click', postInfo);
-    document.getElementById('clockButton').addEventListener('click', addClockTime);
-    document.getElementById('clockButton2').addEventListener('click', addClockTime2);
+    $('.selectRider').on('click', showDrivers);
+    $('.selectDriver').on('click', showRiders);
+    $('.submitRider').on('click', postInfo);
+    $('.clockFrom').on('click', addClockTimeFrom);
+    $('.clockTo').on('click', addClockTimeTo);
 
     startTime();
 

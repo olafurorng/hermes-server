@@ -31,8 +31,8 @@
         <a></a>
     </section>
     <section class="pickContainer">
-      <h5 class="selectRider">Bjóða ísFar</h5>
-      <h5 class="selectDriver">Fá ísFar</h5>
+      <h5 class="selectRider">Fá ísFar</h5>
+      <h5 class="selectDriver">Bjóða ísFar</h5>
     </section>
     <section class="rider-driver-list">
         <div id="rider-driver-data" class="container-fluid"></div>
@@ -79,12 +79,12 @@
                 </div>
                 <div class="clocks">
                   <div class="firstTime">
-                    <div class="clock" id="time"></div>
-                    <button class="clockButton" id="clockButton">+</button>  
+                    <div class="clock timeFrom"></div>
+                    <button class="clockButton clockFrom">+</button>  
                   </div>
                   <div class="secondTime">
-                    <div class="clock" id="time2"></div>
-                    <button class="clockButton" id="clockButton2">+</button>  
+                    <div class="clock timeTo"></div>
+                    <button class="clockButton clockTo">+</button>  
                   </div>
                 </div>
                 <div>
