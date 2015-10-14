@@ -44,7 +44,7 @@ public class DriverRiderController
 
     @RequestMapping(value = "/registerrider", method = RequestMethod.POST)
     public ResponseEntity<Object> registerRriver(
-            @RequestParam(value="phone_number") String phoneNumber,
+            @RequestParam(value="phone_number") int phoneNumber,
             @RequestParam(value="low_price") int lowPrice,
             @RequestParam(value="high_price") int highPrice,
             @RequestParam(value="number_of_people") int numberOfPeople,
@@ -60,7 +60,7 @@ public class DriverRiderController
 
     @RequestMapping(value = "/registerdriver", method = RequestMethod.POST)
     public ResponseEntity<Object> registerDriver(
-            @RequestParam(value="phone_number") String phoneNumber,
+            @RequestParam(value="phone_number") int phoneNumber,
             @RequestParam(value="low_price") int lowPrice,
             @RequestParam(value="high_price") int highPrice,
             @RequestParam(value="number_of_people") int numberOfPeople,
