@@ -12,6 +12,18 @@
     align-items: center;
 }
 
+section.wrong {
+    text-align: center;
+}
+
+section.wrong h2 {
+    font-size: 32px;
+}
+
+section.wrong p {
+    font-size: 24px;
+}
+
 .userBody {
     padding-top: 12px;
 }
