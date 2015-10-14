@@ -115,13 +115,14 @@ function callFbGraphApi(fbAccessToken) {
                 resultObj.timestamp = new Date().getTime() + 1000 * 60 * 60 * 24 * 30;
                 resultObj.accessToken = data.user.accessToken;
                 localStorage.setItem('accessToken', JSON.stringify(resultObj));
-                console.log('Data from server:');
                 console.log(data);
                 document.getElementById('app').innerHTML =
                     'Velkominn, ' + data.user.name + '!\n' +
                     'Skráður tölvupóstur hjá þér er ' + data.user.email + '\n' +
                     'Þú ert með ' + data.user.starRating + ' stjörnur.';
             }
+        }).fail(function() {
+            $('#app').append('<p>Innskráning mistókst. Vinsamlegast reyndu aftur</p>')
         });
     });
 }

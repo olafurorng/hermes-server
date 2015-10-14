@@ -213,8 +213,8 @@ var Main = (function() {
     }).fail(function() {
       var userList = $('.userList');
       $('.pickContainer').hide();
-      $('<section class="wrong"><h3>Whoops. This is awkward.</h3><p>Something went wrong</p>' +
-        '<p>Please try again</p></section>').appendTo(userList);
+      $('<section class="wrong"><h3>Úps. Þetta er vandræðalegt.</h3><p>Eitthvað fór úrskeiðis</p>' +
+        '<p>Vinsamlegast reyndu aftur</p></section>').appendTo(userList);
     });
   }
   return {
