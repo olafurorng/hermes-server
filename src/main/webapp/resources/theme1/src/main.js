@@ -24,9 +24,9 @@ var Main = (function() {
       // this er formið, $(this) býr til jQuery hlut af forminu
       var form = $(this);
       // Get input from inputs ID's
-      var phoneElement = $('#phone');
-      var locationElement = $('#location');
-      var destinationElement = $('#destination');
+      var phoneElement = $('.riderInput');
+      var locationElement = $('.locationInput');
+      var destinationElement = $('.destinationInput');
       var phone = phoneElement.val();
       var location = locationElement.val();
       var destination = destinationElement.val();
@@ -80,16 +80,14 @@ var Main = (function() {
           $('#form').get(0).reset();
           $(".riderRegister").hide();
 
-
           var data= {
-            phone_number:8694080,//($('#phone')).val();
-            low_price:$("#slider-range").slider("values", 0),
-            high_price: $("#slider-range").slider("values", 1),
+            phone_number:parseInt(($('#phone')).val()),
+            price:$("#slider-range").slider("values", 0),
             number_of_people: $("input[type='radio'][name='rGroup']:checked").val(),//selected;
             location: ($('#destination')).val(),
             destination: ($('#destination')).val(),
             message : document.getElementById('message').value,
-            pickup_time_timestamp: startingTime
+            pickup_time_timestamp: 4534
             }
           $.ajax({
             type: 'POST',
@@ -102,8 +100,6 @@ var Main = (function() {
         },
             success: function(data) {
                 console.log("Skrá ísFar tókst");
-                
-
             }
         }).fail(function() {
             console.log("Skrá ísFar mistókst");
@@ -200,21 +196,11 @@ var Main = (function() {
           " - " + $("#slider-range").slider("values", 1) + "kr");
     });
   }
-
-  function addClockTime(e) {
-    addHour+=1;
-    e.preventDefault();
-  }
-  function addClockTime2(e) {
-    addHourSecondtime+=1;
-    e.preventDefault();
-  }
-
   function startTime() {
     var today = new Date();
     var h = today.getHours();
     var m = (today.getMinutes() < 10) ? '0' + today.getMinutes() : today.getMinutes();
-
+    clockFrom=h*100+m;
     $('.timeFrom').html(h + ":" + m);
     $('.timeTo').html(h +":" + m);
   }
@@ -245,7 +231,6 @@ var Main = (function() {
     $('.submitRider').on('click', postInfo);
     $('.clockFrom').on('click', addClockTimeFrom);
     $('.clockTo').on('click', addClockTimeTo);
-
 
     startTime();
     //RiderInfo textbox
