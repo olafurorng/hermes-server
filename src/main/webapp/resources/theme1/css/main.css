@@ -156,6 +156,17 @@ section.wrong p {
 .locationInput { 
     width: 45%; 
 }
+
+.clocks h4 {
+    float: left;
+    margin: 0;
+}
+.clocks .selectHours {
+    margin: 0 10px;
+}
+.clocks {
+    margin-bottom: 12px;
+}
 .destinationInput { 
     float:right;
     width: 45%; 
