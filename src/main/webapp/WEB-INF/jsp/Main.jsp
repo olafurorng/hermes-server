@@ -78,19 +78,11 @@
                     <label class="radio" for="r6">6</label>
                 </div>
                 <div class="clocks">
-                  <div class="firstTime">
-                    <div class="clock timeFrom"></div>
-                    <button class="clockButton clockFrom">+</button>  
-                  </div>
-                  <div class="secondTime">
-                    <div class="clock timeTo"></div>
-                    <button class="clockButton clockTo">+</button>  
-
-                  </div>
+                  <h4>Tími</h4>
                 </div>
                 <div>
                     <textarea rows="4" cols="20" class="max" id="message" name="comments" placeholder="Auka athugasemdir"></textarea>
-                    <button class="submitRider">
+                    <button class="submitRider" type="button">
                         <i class="fa fa-taxi"></i>
                         Skrá far
                     </button>

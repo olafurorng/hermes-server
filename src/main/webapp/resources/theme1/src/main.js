@@ -16,6 +16,19 @@ var Main = (function() {
   function rider(e) {
       $(".riderRegister").hide().fadeIn(600);
       $(".overlay").show();
+      var now = new Date();
+      now.setMinutes(now.getMinutes() + 30); // Default is 30 minutes after you decide to post
+      var clocks = $('.clocks');
+      var selectHours = $('<select class="selectHours"></select>');
+      var selectMinutes= $('<select class="selectMinutes"></select>');
+      for (var i = 0; i < 24; i++) {
+        $('<option value="' + i +'">' + ('0' + i).slice(-2) + '</option>').appendTo(selectHours);
+        if (i < 12) $('<option value="' + i +'">' + ('0' + 5 * i).slice(-2) + '</option>').appendTo(selectMinutes);
+      }
+      $(selectHours).val(now.getHours());
+      $(selectMinutes).val(Math.floor(now.getMinutes() / 5));
+      $(selectHours).appendTo(clocks);
+      $(selectMinutes).appendTo(clocks);
       e.preventDefault();
   }
 
@@ -32,6 +45,9 @@ var Main = (function() {
       var destination = destinationElement.val();
       // Message is empty and everything works
       var valid = true;
+      var timestamp = new Date();
+      timestamp.setHours($('.selectHours').val());
+      timestamp.setMinutes($('.selectMinutes').val());
       var message = '';
       //Phone
       if (phone === '') {
@@ -87,23 +103,23 @@ var Main = (function() {
             location: ($('.locationInput')).val(),
             destination: ($('.destinationInput')).val(),
             message : document.getElementById('message').value,
-            pickup_time_timestamp: 4534
-            }
+            pickup_time_timestamp: timestamp.getTime()
+          }
           $.ajax({
             type: 'POST',
             url: '/registerrider',
             data: data,
             statusCode: {
-            201: function() {
+              201: function() {
                 console.log("WE GOT 201!");
-            }
-        },
+              }
+            },
             success: function(data) {
                 console.log("Skrá ísFar tókst");
             }
-        }).fail(function() {
+          }).fail(function() {
             console.log("Skrá ísFar mistókst");
-        });
+          });
 
         } 
       e.preventDefault();
@@ -241,34 +257,11 @@ var Main = (function() {
     $('.timeFrom').html(h + ":" + m);
     $('.timeTo').html(h +":" + m);
   }
-  function addClockTimeFrom(e) {
-    var current = $('.timeFrom');
-    var nextTime = new Date();
-    var minutes;
-    nextTime.setHours(parseInt(current.text().substr(0, 2)) + 1);
-    nextTime.setMinutes(current.text().substr(3, 2));
-    minutes = (nextTime.getMinutes() < 10) ? '0' + nextTime.getMinutes() : nextTime.getMinutes();
-    current.text(nextTime.getHours() + ':' + minutes);
-    e.preventDefault();
-  }
-  function addClockTimeTo(e) {
-    var current = $('.timeTo');
-    var nextTime = new Date();
-    var minutes;
-    nextTime.setHours(parseInt(current.text().substr(0, 2)) + 1);
-    nextTime.setMinutes(current.text().substr(3, 2));
-    minutes = (nextTime.getMinutes() < 10) ? '0' + nextTime.getMinutes() : nextTime.getMinutes();
-    current.text(nextTime.getHours() + ':' + minutes);
-
-    e.preventDefault();
-  }
 
   function init() {
     $('.selectRider').on('click', showDrivers);
     $('.selectDriver').on('click', showRiders);
-    $('.submitRider').on('click', postInfo);
-    $('.clockFrom').on('click', addClockTimeFrom);
-    $('.clockTo').on('click', addClockTimeTo);  
+    $('.submitRider').on('click', postInfo); 
     startTime();
     //RiderInfo textbox
     textBoxKeycount();
