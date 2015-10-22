@@ -27,8 +27,9 @@
     <section class="whatToDo">
       <h1>Mig langar að ...</h1>
     </section>
-    <section class="add" id="rider">
-        <a></a>
+    <section class="addRider">RIDER
+    </section>
+    <section class="addDriver">DRIVER
     </section>
     <section class="pickContainer">
       <h5 class="selectRider">Fá ísFar</h5>
@@ -38,25 +39,27 @@
         <div id="rider-driver-data" class="container-fluid"></div>
     </section>
     <div class="overlay"></div>
-    <div class="riderRegister">
-        <div class="riderRegister_Header">
-            <p>Skrá 
-                <span class="ice">ís</span>Far
-            </p>
+    <div class="register">
+        <div class="register_Header">
+          <div class="headerName">
+
+          </div>
         </div>
-        <div class="riderRegister_Body">   
+        <div class="register_Body">   
             <form name="form" id="form" method="post">             
-                <div>           
-                    <input type="text" class="riderInput" name="phone" placeholder="Símanúmer">
+                <div class="phone">           
+                    <input type="text" class="phoneInput" name="phone" placeholder="Símanúmer"/>
                     <label id="errorPhone"></label>
                 </div>
-                <div>
-                  <input type="text" name="location" class="locationInput" placeholder="Upphafsstaður">
-                  <span class="loc_to_des"> til </span>
-                  <input type="text" name="destination" class="destinationInput" placeholder="Áfangastaður">
+                <div class="car">
+
+                </div>
+                <div class="place">
+
                 </div>
                 <label id="errorLocation"></label>     
                 <label id="errorDestination"></label>
+                <label id="errorLocationArea"></label>
                 <p>
                     <label for="amount">Verðhugmynd:</label>
                     <input type="text" id="amount" class="price">
@@ -82,9 +85,8 @@
                 </div>
                 <div>
                     <textarea rows="4" cols="20" class="max" id="message" name="comments" placeholder="Auka athugasemdir"></textarea>
-                    <button class="submitRider" type="button">
-                        <i class="fa fa-taxi"></i>
-                        Skrá far
+                    <button class="submitRegister" type="button">
+                        <i class="fa fa-taxi"> Skrá far</i>                  
                     </button>
                 </div>       
             </form>

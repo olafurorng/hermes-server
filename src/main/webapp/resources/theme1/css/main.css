@@ -94,6 +94,23 @@ section.wrong p {
 }
 
 /* RideInfo */
+.addRider {
+    width: 50px;
+    height: 50px;
+    background:url("/resources/theme1/images/add.png");
+    background-size: contain; background-repeat: no-repeat;
+    display: flex;
+}
+
+.addDriver {
+    width: 50px;
+    height: 50px;
+    float:right;
+    background:url("/resources/theme1/images/add.png");
+    background-size: contain; background-repeat: no-repeat;
+    display: flex;
+}
+
 .overlay {
   position: fixed;
   display:none; 
@@ -104,19 +121,13 @@ section.wrong p {
   z-index: 10;
   background-color: rgba(0,0,0,0.5);
 }
-.add {
-    width: 50px;
-    height: 50px;
-    background:url("/resources/theme1/images/add.png");
-    background-size: contain; background-repeat: no-repeat;
-    display: flex;
-}
-.riderRegister_Header {
+
+.register_Header {
     background-color: #000;
     border-radius: 15px 15px 0 0;
-
 }
-.riderRegister_Header p {
+
+.register_Header p {
     font-family:Segoe UI Semibold,Helvetica,Arial,MS Sans Serif; 
     text-align: center; 
     font-size: 3em; 
@@ -124,10 +135,12 @@ section.wrong p {
     padding:2% 0% 2% 0%; 
     color:#fff;
 }
+
 .ice {
      color:#07C9F7
 }
-.riderRegister {
+
+.register {
     position: fixed;
     background-color: #5DA4D3;
     width: 40%;
@@ -140,8 +153,9 @@ section.wrong p {
     opacity: 0.95;
     z-index: 11;
 }
-.riderRegister_Body {
-    padding:3% 2% 5% 2%;
+
+.register_Body {
+    padding:0% 2% 5% 2%;
 }
 
 .invalid { 
@@ -149,55 +163,34 @@ section.wrong p {
     width: 100%; 
     color: #000000; 
 }
-.riderInput { 
-    float: left;  
-    width: 100%; 
-}
-.locationInput { 
-    width: 45%; 
-}
 
-.clocks h4 {
-    float: left;
-    margin: 0;
-}
-.clocks .selectHours {
-    margin: 0 10px;
-}
-.clocks {
-    margin-bottom: 12px;
-}
-.destinationInput { 
-    float:right;
-    width: 45%; 
-}
-.loc_to_des {
-    font-size:1em;
-    margin-left: auto;
-    margin-right: auto;
-    padding:0 1.5% 0 3%
-}
-.radios span { 
-    height: 1.5em; 
-    font-size:1em; 
-    color: #000; 
-    font-weight:bold;
-    padding-right:3%
-}
-
-#errorPhone, #errorSubject, #errorLocation, #errorDestination {
+#errorPhone, #errorSubject, #errorLocation, #errorDestination, #errorLocationArea, #errorCar {
     float: left;
     width: 100%;
     color: #B60000;
     font-size:0.9em;
 }
-textarea {
+
+.phoneInput, .locationAreaInput, .carDiscription {     
     width: 100%; 
-    height: 160px;  
-    font-size: 1em; 
-    color: #000; 
-    padding:1%;
 }
+
+.locationInput { 
+    width: 45%; 
+}
+
+.destinationInput { 
+    float:right;
+    width: 45%; 
+}
+
+.loc_to_des {
+    font-size:1em;
+    margin-left: auto;
+    margin-right: auto;
+    padding:0 1.5% 0 3%;
+}
+
 .price {
     border:0; 
     color:#fff; 
@@ -205,10 +198,20 @@ textarea {
     font-weight:bold;
     color:#000;
 }
+
 #amount {
     width:8.5em;
     margin-bottom:2%;
 }
+
+.radios span { 
+    height: 1.5em; 
+    font-size:1em; 
+    color: #000; 
+    font-weight:bold;
+    padding-right:3%;
+}
+
 .radios .radio {
     background-color:#fff;
     display:inline-block;
@@ -218,9 +221,11 @@ textarea {
     height:25px;
     margin: 5% 1% 3% 0;
 }
+
 .radios input[type=radio] {
     display:none
 }
+
 .radios input[type=radio]:checked + .radio {
     background-color:#07C9F7;
     color:#fff;
@@ -235,7 +240,29 @@ input:not([type]), input[type="text"] {
     font-size:1em; 
     margin-bottom:1.5%;
 }
-.submitRider {
+
+.clocks {
+    margin-bottom: 12px;
+}
+
+.clocks h4 {
+    float: left;
+    margin: 0;
+}
+
+.clocks .selectHours {
+    margin: 0 10px;
+}
+
+textarea {
+    width: 100%; 
+    height: 160px;  
+    font-size: 1em; 
+    color: #000; 
+    padding:1%;
+}
+
+.submitRegister {
     float:right;
     position: relative;
     padding: 10px 30px;
@@ -254,39 +281,16 @@ input:not([type]), input[type="text"] {
     border: none;
     outline:none;
 }
-.submitRider:hover, 
-.submitRider:focus {
+
+.submitRegister:hover, .submitRegiste:focus {
     text-decoration: none;
     color: #fff;
 }
 
-.submitRider:active {
+.submitRegister:active {
     transform: translate(0px,5px);
     -webkit-transform: translate(0px,5px);
     border-bottom: 1px solid;
-}
-.clock {
-    float:left;
-    font-size:1.5em;
-    margin-right:20px;
-}
-.clockButton, .clockButton2 {
-  float:right;
-  width:20px;
-  background-color:#07C9F7;
-}
-.firstTime {
-  float:left;
-  background-color:#fff;
-  padding: 1% 2% 1% 2%;
-  margin-bottom: 3%;
-  margin-right:5%;
-}
-.secondTime {
-  float:left;
-  background-color:#fff;
-  padding: 1% 2% 1% 2%;
-  margin-bottom: 3%;
 }
 
 /* For placeholder in rider */

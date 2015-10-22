@@ -1,9 +1,11 @@
 var Main = (function() {
 
   var userData;
+  var riderIsRegistered=false;
+  var driverIsRegistered=false;
     //Get out of rider with clicking outside of div
   $(document).mousedown(function(e) {
-      var container = $(".riderRegister");
+      var container = $(".register");
 
       if (!container.is(e.target) && // if the target of the click isn't the container...
           container.has(e.target).length === 0) // ... nor a descendant of the container
@@ -14,8 +16,30 @@ var Main = (function() {
   });
 
   function rider(e) {
-      $(".riderRegister").hide().fadeIn(600);
+      $(".register").hide().fadeIn(600);
       $(".overlay").show();
+      riderIsRegistered=true;
+      driverIsRegistered=false;
+      // Header
+      var headerName = $('.headerName');
+      $(headerName).empty();
+      var headName = ('<p>Skrá <span class="ice">ís</span>Far</p>');
+      $(headName).appendTo(headerName);
+
+      // Location and Destination
+      var place = $('.place');
+      $(place).empty();
+      var locationInput = $('<input type="text" name="location" class="locationInput" placeholder="Upphafsstaður">');
+      var to = $('<span class="loc_to_des"> til </span>');
+      var destinationInput= $('<input type="text" name="destination" class="destinationInput" placeholder="Áfangastaður">');
+      var errorLocation= $('<label id="errorLocation"></label>');   
+      var errorDestination= $('<label id="errorDestination"></label>');
+      $(locationInput).appendTo(place);
+      $(to).appendTo(place);
+      $(destinationInput).appendTo(place);
+      $(errorLocation).appendTo(place);
+      $(errorDestination).appendTo(place);
+      //Clock
       var now = new Date();
       now.setMinutes(now.getMinutes() + 30); // Default is 30 minutes after you decide to post
       var clocks = $('.clocks');
@@ -31,37 +55,67 @@ var Main = (function() {
       $('<h4>Tími</h4>').appendTo(clocks);
       $(selectHours).appendTo(clocks);
       $(selectMinutes).appendTo(clocks);
+      // Car
+      var car = $('.car');
+      $(car).empty();
+
       e.preventDefault();
   }
-
+  function driver(e) {
+      $(".register").hide().fadeIn(600);
+      $(".overlay").show();
+      riderIsRegistered=false;
+      driverIsRegistered=true;
+      // Header
+      var headerName = $('.headerName');
+      $(headerName).empty();
+      var headName = ('<p>Skrá <span class="ice">ís</span>Skutlara</p>');
+      $(headName).appendTo(headerName);
+      // Location
+      var place = $('.place');
+      $(place).empty();
+      var locationAreaInput= $('<input type="text" name="location" class="locationAreaInput" placeholder="Svæði, t.d. höfuðborgarsvæðið">');
+      var errorlocationArea = $('<label id="errorLocationArea"></label>');
+      $(locationAreaInput).appendTo(place);
+      $(errorlocationArea).appendTo(place);
+      // CarDiscription
+      var car = $('.car');
+      $(car).empty();
+      var carDiscription = $('<input type="text" name="carDiscription" class="carDiscription" placeholder="Lýsing á bíl">');
+      var errorCar = $('<label id="errorCar"></label>');
+      $(carDiscription).appendTo(car);
+      $(errorCar).appendTo(car);
+    }
   //Ride information, run when Ok is clicked
   function postInfo(e) {
       // this er formið, $(this) býr til jQuery hlut af forminu
       var form = $(this);
       // Get input from inputs ID's
-      var phoneElement = $('.riderInput');
+      var phoneElement = $('.phoneInput');
       var locationElement = $('.locationInput');
       var destinationElement = $('.destinationInput');
+      var locationAreaElement = $('.locationAreaInput');
+      var carElement = $('.carDiscription');
       var phone = phoneElement.val();
       var location = locationElement.val();
       var destination = destinationElement.val();
-      // Message is empty and everything works
-      var valid = true;
+      var locationArea = locationAreaElement.val();
+      var carDiscription = carElement.val();
+
       var timestamp = new Date();
       timestamp.setHours($('.selectHours').val());
       timestamp.setMinutes($('.selectMinutes').val());
-      var phoneNumber=parseInt(($('.riderInput')).val()); 
-      var message = '';
+      var phoneNumber=parseInt(phone); 
+
+      var valid = true;
       //Phone
       if (phone === '') {
           $("#errorPhone").text("* Vinsamlegast skráðu símanúmerið þitt");
-          message += '<li>' + 'You have to fill in phone number' + '</li>';
           valid = false;
           phoneElement.addClass('invalid');
       }
       //Check if its only numbers
       if (phone.match(/^[0-9]+$/) === null) {
-          message += '<li>' + 'You have to use only digits in phonenumber' + '</li>';
           valid = false;
           phoneElement.addClass('invalid');
       } else {
@@ -74,7 +128,6 @@ var Main = (function() {
       //Location
       if (location === '') {
           $("#errorLocation").text("* Vinsamlegast settu inn upphafsstað");
-          message += '<li>' + 'You have to fill in Location' + '</li>';
           valid = false;
           locationElement.addClass('invalid');
       } else {
@@ -84,22 +137,38 @@ var Main = (function() {
       //Destination
       if (destination === '') {
           $("#errorDestination").text("* Vinsamlegast settu inn áfangastað");
-          message += '<li>' + 'You have to fill in destination' + '</li>';
           valid = false;
           destinationElement.addClass('invalid');
       } else {
           $("#errorDestination").text("");
           destinationElement.removeClass('invalid');
       }
+      //Location Area
+      if (locationArea === '') {
+          $("#errorLocationArea").text("* Vinsamlegast settu inn keyrslusvæði");
+          valid = false;
+          locationAreaElement.addClass('invalid');
+      } else {
+          $("#errorLocationArea").text("");
+          locationAreaElement.removeClass('invalid');
+      }
+      //Car
+      if (carDiscription === '') {
+          $("#errorCar").text("* Vinsamlegast settu inn lýsingu á bíl");
+          valid = false;
+          carElement.addClass('invalid');
+      } else {
+          $("#errorCar").text("");
+          carElement.removeClass('invalid');
+      }
       //Shows result box with valid or unvalid
       if (valid){
-          //Return info here -->
-          //riderInfo();
           //resets everything
           $('#form').get(0).reset();
-          $(".riderRegister").hide();
+          $(".register").hide();
+          $(".overlay").hide();
 
-          var data= {
+          var riderdata= {
             phone_number:phoneNumber,
             price:$("#slider-range").slider("values", 0),
             number_of_people: $("input[type='radio'][name='rGroup']:checked").val(),
@@ -108,21 +177,53 @@ var Main = (function() {
             message : document.getElementById('message').value,
             pickup_time_timestamp: timestamp.getTime()
           }
-          $.ajax({
-            type: 'POST',
-            url: '/registerrider',
-            data: data,
-            statusCode: {
-              201: function() {
-                console.log("WE GOT 201!");
+          //Sends info to registerdriver
+          if(riderIsRegistered){
+            $.ajax({
+              type: 'POST',
+              url: '/registerrider',
+              data: riderdata,
+              statusCode: {
+                201: function() {
+                  console.log("WE GOT 201!");
+                }
+              },
+              success: function(data) {
+                  console.log("Skrá ísFar tókst");
               }
-            },
-            success: function(data) {
-                console.log("Skrá ísFar tókst");
-            }
-          }).fail(function() {
-            console.log("Skrá ísFar mistókst");
-          });
+            }).fail(function() {
+              console.log("Skrá ísFar mistókst");
+            });
+          }
+          var driverdata= {
+            phone_number:phoneNumber,
+            low_price:$("#slider-range").slider("values", 0),
+            high_price:$("#slider-range").slider("values", 1),
+            number_of_people: $("input[type='radio'][name='rGroup']:checked").val(),
+            place: ($('.locationAreaInput')).val(),
+            car_description: ($('.carDiscription')).val(),
+            message : document.getElementById('message').value,
+            start_time_timestamp: 345345345,
+            end_time_timestamp: 34534534
+          }  
+          //Sends info to registerdriver
+          if(driverIsRegistered){
+            $.ajax({
+              type: 'POST',
+              url: '/registerdriver',
+              data: driverdata,
+              statusCode: {
+                201: function() {
+                  console.log("WE GOT 201!");
+                }
+              },
+              success: function(data) {
+                  console.log("Skrá ísSkutl tókst");
+              }
+            }).fail(function() {
+              console.log("Skrá ísSkutl mistókst");
+            }); 
+          }
 
         } 
       e.preventDefault();
@@ -232,8 +333,8 @@ var Main = (function() {
     //Makes max number of keys in textbox
     $('textarea').keydown(function(e) {
       this.value = this.value.substr(0, 256);
-      fjoldi = $(this).val().length;
-      $('#eftir').text((256 - fjoldi) + ' eftir.');
+      //fjoldi = $(this).val().length;
+      //$('#eftir').text((256 - fjoldi) + ' eftir.');
     });
   }
   //Price slider
@@ -253,25 +354,19 @@ var Main = (function() {
           " - " + $("#slider-range").slider("values", 1) + "kr");
     });
   }
-  function startTime() {
-    var today = new Date();
-    var h = today.getHours();
-    var m = (today.getMinutes() < 10) ? '0' + today.getMinutes() : today.getMinutes();
-    $('.timeFrom').html(h + ":" + m);
-    $('.timeTo').html(h +":" + m);
-  }
 
   function init() {
     $('.selectRider').on('click', showDrivers);
     $('.selectDriver').on('click', showRiders);
-    $('.submitRider').on('click', postInfo); 
-    startTime();
-    //RiderInfo textbox
+    $('.submitRegister').on('click', postInfo);
+    $(".addRider").on("click", rider);
+    $(".addDriver").on("click", driver); 
+
+    //Max keyCount
     textBoxKeycount();
     //RiderInfo price slider
     priceSlider();
 
-    $("#rider").on("click", rider);
     //getDriverRiderList
     $.ajax({
       type: 'GET',
