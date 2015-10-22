@@ -31,7 +31,5 @@ public class LoginControllerTest extends TestCase
                         "test_first_name", null);
 
         assertTrue(loginResponseResponseEntity.getStatusCode().is2xxSuccessful());
-        /*assertEquals(MockDataService.NUMBER_OF_MOCK_DRIVER, loginResponseResponseEntity.getBody().getDriversList().size());
-        assertEquals(MockDataService.NUMBER_OF_MOCK_RIDER, loginResponseResponseEntity.getBody().getRidersList().size());*/
     }
 }

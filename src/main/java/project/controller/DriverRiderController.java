@@ -1,5 +1,6 @@
 package project.controller;
 
+import misc.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -71,6 +72,7 @@ public class DriverRiderController
             //@RequestParam(value="accessToken") String accessToken, TODO: check the accessToken
     )
     {
+        Log.i(LOGTAG, "calling /registerdriver");
         return new ResponseEntity<Object>(HttpStatus.CREATED);
     }
 
