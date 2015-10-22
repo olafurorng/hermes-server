@@ -78,7 +78,7 @@
                     <label class="radio" for="r6">6</label>
                 </div>
                 <div class="clocks">
-                  <h4>Tími</h4>
+                  
                 </div>
                 <div>
                     <textarea rows="4" cols="20" class="max" id="message" name="comments" placeholder="Auka athugasemdir"></textarea>

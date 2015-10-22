@@ -21,12 +21,14 @@ var Main = (function() {
       var clocks = $('.clocks');
       var selectHours = $('<select class="selectHours"></select>');
       var selectMinutes= $('<select class="selectMinutes"></select>');
+      $(clocks).empty();
       for (var i = 0; i < 24; i++) {
         $('<option value="' + i +'">' + ('0' + i).slice(-2) + '</option>').appendTo(selectHours);
         if (i < 12) $('<option value="' + i +'">' + ('0' + 5 * i).slice(-2) + '</option>').appendTo(selectMinutes);
       }
       $(selectHours).val(now.getHours());
       $(selectMinutes).val(Math.floor(now.getMinutes() / 5));
+      $('<h4>Tími</h4>').appendTo(clocks);
       $(selectHours).appendTo(clocks);
       $(selectMinutes).appendTo(clocks);
       e.preventDefault();
