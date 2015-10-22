@@ -46,7 +46,8 @@
   </header>
   <main>
     <div class="first_block_container">
-        <section class="first_left_block"></section>
+        <section class="first_left_block">
+      </section>
         <section class="first_right_block">
         <div id="app" class="container-fluid"></div>
         </section>
