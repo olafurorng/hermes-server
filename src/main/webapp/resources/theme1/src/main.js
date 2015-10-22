@@ -50,6 +50,7 @@ var Main = (function() {
       var timestamp = new Date();
       timestamp.setHours($('.selectHours').val());
       timestamp.setMinutes($('.selectMinutes').val());
+      var phoneNumber=parseInt(($('.riderInput')).val()); 
       var message = '';
       //Phone
       if (phone === '') {
@@ -99,7 +100,7 @@ var Main = (function() {
           $(".riderRegister").hide();
 
           var data= {
-            phone_number:344, // parseInt(($('.riderInput')).val()); 
+            phone_number:phoneNumber,
             price:$("#slider-range").slider("values", 0),
             number_of_people: $("input[type='radio'][name='rGroup']:checked").val(),
             location: ($('.locationInput')).val(),
