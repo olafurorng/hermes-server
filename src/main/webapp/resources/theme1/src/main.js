@@ -1,8 +1,9 @@
 var Main = (function() {
 
   var userData;
-  var riderIsRegistered=false;
-  var driverIsRegistered=false;
+  var riderIsRegistered = false;
+  var driverIsRegistered = false;
+  var addRiderDriver = false;
     //Get out of rider with clicking outside of div
   $(document).mousedown(function(e) {
       var container = $(".register");
@@ -11,34 +12,20 @@ var Main = (function() {
           container.has(e.target).length === 0) // ... nor a descendant of the container
       {
           container.hide();
-          $(".overlay").hide();
+          $(".addContainer").on("click",showRegisterForm);
       }
   });
 
-  function rider(e) {
+  function showRegisterForm(e) {
+      $(".addContainer").off("click");
       $(".register").hide().fadeIn(600);
-      $(".overlay").show();
-      riderIsRegistered=true;
-      driverIsRegistered=false;
       // Header
       var headerName = $('.headerName');
       $(headerName).empty();
-      var headName = ('<p>Skrá <span class="ice">ís</span>Far</p>');
-      $(headName).appendTo(headerName);
-
-      // Location and Destination
+      // Place
       var place = $('.place');
       $(place).empty();
-      var locationInput = $('<input type="text" name="location" class="locationInput" placeholder="Upphafsstaður">');
-      var to = $('<span class="loc_to_des"> til </span>');
-      var destinationInput= $('<input type="text" name="destination" class="destinationInput" placeholder="Áfangastaður">');
-      var errorLocation= $('<label id="errorLocation"></label>');   
-      var errorDestination= $('<label id="errorDestination"></label>');
-      $(locationInput).appendTo(place);
-      $(to).appendTo(place);
-      $(destinationInput).appendTo(place);
-      $(errorLocation).appendTo(place);
-      $(errorDestination).appendTo(place);
+
       //Clock
       var now = new Date();
       now.setMinutes(now.getMinutes() + 30); // Default is 30 minutes after you decide to post
@@ -53,27 +40,37 @@ var Main = (function() {
       $(selectHours).val(now.getHours());
       $(selectMinutes).val(Math.floor(now.getMinutes() / 5));
       $('<h4>Tími</h4>').appendTo(clocks);
+
+      if(addRiderDriver){
+      riderIsRegistered=true;
+      driverIsRegistered=false;
+      // Header
+      var headName = ('<p>Skrá <span class="ice">ís</span>Far</p>');
+      // Location and Destination
+      var locationInput = $('<input type="text" name="location" class="locationInput" placeholder="Upphafsstaður">');
+      var to = $('<span class="loc_to_des"> til </span>');
+      var destinationInput= $('<input type="text" name="destination" class="destinationInput" placeholder="Áfangastaður">');
+      var errorLocation= $('<label id="errorLocation"></label>');   
+      var errorDestination= $('<label id="errorDestination"></label>');
+      $(locationInput).appendTo(place);
+      $(to).appendTo(place);
+      $(destinationInput).appendTo(place);
+      $(errorLocation).appendTo(place);
+      $(errorDestination).appendTo(place);
+
       $(selectHours).appendTo(clocks);
       $(selectMinutes).appendTo(clocks);
       // Car
       var car = $('.car');
       $(car).empty();
+      }
 
-      e.preventDefault();
-  }
-  function driver(e) {
-      $(".register").hide().fadeIn(600);
-      $(".overlay").show();
+      if(!addRiderDriver){
       riderIsRegistered=false;
       driverIsRegistered=true;
       // Header
-      var headerName = $('.headerName');
-      $(headerName).empty();
       var headName = ('<p>Skrá <span class="ice">ís</span>Skutlara</p>');
-      $(headName).appendTo(headerName);
       // Location
-      var place = $('.place');
-      $(place).empty();
       var locationAreaInput= $('<input type="text" name="location" class="locationAreaInput" placeholder="Svæði, t.d. höfuðborgarsvæðið">');
       var errorlocationArea = $('<label id="errorLocationArea"></label>');
       $(locationAreaInput).appendTo(place);
@@ -85,7 +82,14 @@ var Main = (function() {
       var errorCar = $('<label id="errorCar"></label>');
       $(carDescription).appendTo(car);
       $(errorCar).appendTo(car);
-    }
+      // 2 Clocks
+      $(selectHours).appendTo(clocks);
+      $(selectMinutes).appendTo(clocks);
+      }
+      $(headName).appendTo(headerName);
+
+      e.preventDefault();
+  }
   //Ride information, run when Ok is clicked
   function postInfo(e) {
       // this er formið, $(this) býr til jQuery hlut af forminu
@@ -177,7 +181,7 @@ var Main = (function() {
           //resets everything
           $('#form').get(0).reset();
           $(".register").hide();
-          $(".overlay").hide();
+          $(".addContainer").on("click", init);
 
           var riderdata= {
             phone_number:phoneNumber,
@@ -245,6 +249,7 @@ var Main = (function() {
   }
 
   function showRiders() {
+    addRiderDriver=false;
     var userList = $('.userList');
     userList.empty();
     $('.selectDriver').removeClass('notActiveTab');
@@ -278,6 +283,7 @@ var Main = (function() {
   }
 
   function showDrivers() {
+    addRiderDriver=true;
     var userList = $('.userList');
     var drivers = userData.driversList;
     $('.selectDriver').addClass('notActiveTab');
@@ -341,6 +347,7 @@ var Main = (function() {
       userHead.appendTo(container);
       userBody.appendTo(container);
       container.appendTo(userList);
+
     }
   }
 
@@ -374,8 +381,8 @@ var Main = (function() {
     $('.selectRider').on('click', showDrivers);
     $('.selectDriver').on('click', showRiders);
     $('.submitRegister').on('click', postInfo);
-    $(".addRider").on("click", rider);
-    $(".addDriver").on("click", driver); 
+    $(".addContainer").on("click", showRegisterForm);
+
 
     //Max keyCount
     textBoxKeycount();

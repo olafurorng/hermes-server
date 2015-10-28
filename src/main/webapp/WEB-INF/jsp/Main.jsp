@@ -24,21 +24,11 @@
     <h1>ÍsFar</h1>
   </header>
   <main>
-    <section class="whatToDo">
-      <h1>Mig langar að ...</h1>
-    </section>
-    <section class="addRider">RIDER
-    </section>
-    <section class="addDriver">DRIVER
-    </section>
     <section class="pickContainer">
       <h5 class="selectRider">Fá ísFar</h5>
       <h5 class="selectDriver">Bjóða ísFar</h5>
     </section>
-    <section class="rider-driver-list">
-        <div id="rider-driver-data" class="container-fluid"></div>
-    </section>
-    <div class="overlay"></div>
+    <section class="addContainer">
     <div class="register">
         <div class="register_Header">
           <div class="headerName">
@@ -92,6 +82,11 @@
             </form>
         </div>
     </div>
+    </section>
+    <section class="rider-driver-list">
+        <div id="rider-driver-data" class="container-fluid"></div>
+    </section>
+    
         <section class="userList">
 
         </section>
