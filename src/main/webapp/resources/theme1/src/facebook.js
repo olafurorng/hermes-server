@@ -114,6 +114,7 @@ function callFbGraphApi(fbAccessToken) {
                 var resultObj = {};
                 resultObj.timestamp = new Date().getTime() + 1000 * 60 * 60 * 24 * 30;
                 resultObj.accessToken = data.user.accessToken;
+                resultObj.userId = data.user.id;
                 localStorage.setItem('accessToken', JSON.stringify(resultObj));
                 console.log(data);
                 document.getElementById('app').innerHTML =

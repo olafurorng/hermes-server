@@ -163,6 +163,17 @@ var Main = (function() {
       }
       //Shows result box with valid or unvalid
       if (valid){
+          var accessTokenObj = localStorage.getItem('accessToken');
+          var userId;
+          if (accessTokenObj) {
+            accessTokenObj = JSON.parse(accessTokenObj);
+            if (accessTokenObj.timestamp < new Date().getTime()) {
+              response.accessToken = '';
+              localStorage.removeItem('accessToken');
+            } else {
+              userId = accessTokenObj.userId;
+            }
+          }
           //resets everything
           $('#form').get(0).reset();
           $(".register").hide();
@@ -175,8 +186,10 @@ var Main = (function() {
             location: ($('.locationInput')).val(),
             destination: ($('.destinationInput')).val(),
             message : $('message').val(),
+            userId: userId,
             pickup_time_timestamp: timestamp.getTime()
           }
+          console.log(riderdata);
           //Sends info to registerdriver
           if(riderIsRegistered){
             $.ajax({
@@ -204,8 +217,10 @@ var Main = (function() {
             car_description: ($('.carDescription')).val(),
             message : $('message').val(),
             start_time_timestamp: 345345345,
-            end_time_timestamp: 34534534
+            end_time_timestamp: 34534534,
+            userId: userId
           }  
+          console.log(driverdata);
           //Sends info to registerdriver
           if(driverIsRegistered){
             $.ajax({

@@ -52,7 +52,7 @@ public class DriverRiderController
             @RequestParam(value="destination") String destination,
             @RequestParam(value="message") String message,
             @RequestParam(value="pickup_time_timestamp") long pickUpTimeTimestamp
-            //@RequestParam(value="accessToken") String accessToken, TODO: check the accessToken
+            @RequestParam(value="usedId") String userId
     )
     {
         return new ResponseEntity<Object>(HttpStatus.CREATED);
