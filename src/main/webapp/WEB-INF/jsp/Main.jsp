@@ -25,8 +25,8 @@
   </header>
   <main>
     <section class="pickContainer">
-      <h5 class="selectRider">Fá ísFar</h5>
-      <h5 class="selectDriver">Bjóða ísFar</h5>
+      <h5 class="selectRider">Bjóða ísFar</h5>
+      <h5 class="selectDriver">Fá ísFar</h5>
     </section>
     <section class="addContainer">
     <div class="register">

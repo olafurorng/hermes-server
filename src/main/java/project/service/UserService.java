@@ -51,11 +51,11 @@ public class UserService extends AbstractService
                 final String email = resultSet.getString(DatabaseConstants.TABLE_USERS_COLUMN_EMAIL);
                 final double starRating = resultSet.getDouble(DatabaseConstants.TABLE_USERS_COLUMN_STAR_RATING);
                 final int numberOfStarRatings = resultSet.getInt(DatabaseConstants.TABLE_USERS_COLUMN_NUMBER_OF_STAR_RATINGS);
-                final String accessTokenFromDatabase = resultSet.getString(DatabaseConstants.TABLE_USERS_ACCESS_TOKEN);
+                final String accessTokenFromDatabase = resultSet.getString(DatabaseConstants.TABLE_USERS_COLUMN_ACCESS_TOKEN);
                 final String pictureUrl = resultSet.getString(DatabaseConstants.TABLE_USERS_COLUMN_PICTURE_URL);
                 final String firstName = resultSet.getString(DatabaseConstants.TABLE_USERS_COLUMN_FIRST_NAME);
 
-                checkIfExistingUserIsAuthorized(id, accessTokenFromDatabase, accessTokenFromClient, fbAccessToken);
+                //checkIfExistingUserIsAuthorized(id, accessTokenFromDatabase, accessTokenFromClient, fbAccessToken); // TODO: enable again
 
                 user = new User(accessTokenFromDatabase, id, name, email, starRating, numberOfStarRatings,
                         pictureUrl, firstName,
@@ -147,7 +147,7 @@ public class UserService extends AbstractService
 
             final String sqlQuery = "INSERT  INTO " + DatabaseConstants.TABLE_USERS + " (" +
                     DatabaseConstants.TABLE_USERS_COLUMN_USER_ID + ", " +
-                    DatabaseConstants.TABLE_USERS_ACCESS_TOKEN + ", " +
+                    DatabaseConstants.TABLE_USERS_COLUMN_ACCESS_TOKEN + ", " +
                     DatabaseConstants.TABLE_USERS_COLUMN_NAME + ", " +
                     DatabaseConstants.TABLE_USERS_COLUMN_FIRST_NAME + ", " +
                     DatabaseConstants.TABLE_USERS_COLUMN_PICTURE_URL + ", " +

@@ -247,6 +247,7 @@ var Main = (function() {
           $(".register").hide();
           $(".addContainer").on("click", init);
         } 
+
       e.preventDefault();
   }
 

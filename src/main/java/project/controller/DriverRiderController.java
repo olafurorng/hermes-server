@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import project.mockservice.MockDataService;
 import project.responseentities.DriverRiderResponse;
+import project.service.DriverRiderService;
 import project.service.UserService;
 
 /**
@@ -21,13 +22,16 @@ public class DriverRiderController
     private static final String LOGTAG = DriverRiderController.class.getSimpleName();
 
     private final UserService userModel;
+    private final DriverRiderService driverRiderService;
     private final MockDataService mockDataService;
 
 
     @Autowired
-    public DriverRiderController(UserService userModel, MockDataService mockDataService)
+    public DriverRiderController(UserService userService, DriverRiderService driverRiderService,
+                                 MockDataService mockDataService)
     {
-        this.userModel = userModel;
+        this.userModel = userService;
+        this.driverRiderService = driverRiderService;
         this.mockDataService = mockDataService;
     }
 
@@ -37,14 +41,15 @@ public class DriverRiderController
     )
     {
         // user exist and we return 200
+
         DriverRiderResponse driverRiderResponse = new DriverRiderResponse(
-                mockDataService.getMockDriverList(),
-                mockDataService.getMockRiderList());
+                driverRiderService.getDriverListEntry(),
+                driverRiderService.getRiderListEntry());
         return new ResponseEntity<DriverRiderResponse>(driverRiderResponse, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/registerrider", method = RequestMethod.POST)
-    public ResponseEntity<Object> registerRriver(
+    public ResponseEntity<Object> registerRider(
             @RequestParam(value="phone_number") int phoneNumber,
             @RequestParam(value="price") int price,
             @RequestParam(value="number_of_people") int numberOfPeople,
@@ -52,9 +57,25 @@ public class DriverRiderController
             @RequestParam(value="destination") String destination,
             @RequestParam(value="message") String message,
             @RequestParam(value="pickup_time_timestamp") long pickUpTimeTimestamp,
-            @RequestParam(value="usedId") String userId
+            @RequestParam(value="user_id") String userId
+            //@RequestParam(value="accessToken") String accessToken, TODO: check the accessToken
     )
     {
+        // TODO: olafur: remove this hardcode:
+        userId = "10207343100033883";
+
+
+
+
+        Log.i(LOGTAG, "calling /registerrider");
+        driverRiderService.createRiderListEntry(phoneNumber,
+                price,
+                numberOfPeople,
+                location,
+                destination,
+                message,
+                pickUpTimeTimestamp,
+                userId);
         return new ResponseEntity<Object>(HttpStatus.CREATED);
     }
 
@@ -69,10 +90,25 @@ public class DriverRiderController
             @RequestParam(value="message") String message,
             @RequestParam(value="start_time_timestamp") long startTimeTimestamp,
             @RequestParam(value="end_time_timestamp") long endTimeTimestamp,
-            @RequestParam(value="userId") String userId
+            @RequestParam(value="user_id") String userId
+            //@RequestParam(value="accessToken") String accessToken, TODO: check the accessToken
     )
     {
+        // TODO: olafur: remove this hardcode:
+        userId = "10207343100033883";
+
+
         Log.i(LOGTAG, "calling /registerdriver");
+        driverRiderService.createDriverListEntry(phoneNumber,
+                lowPrice,
+                highPrice,
+                numberOfPeople,
+                place,
+                carDescription,
+                message,
+                startTimeTimestamp,
+                endTimeTimestamp,
+                userId);
         return new ResponseEntity<Object>(HttpStatus.CREATED);
     }
 
