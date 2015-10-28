@@ -61,12 +61,6 @@ public class DriverRiderController
             //@RequestParam(value="accessToken") String accessToken, TODO: check the accessToken
     )
     {
-        // TODO: olafur: remove this hardcode:
-        userId = "10207343100033883";
-
-
-
-
         Log.i(LOGTAG, "calling /registerrider");
         driverRiderService.createRiderListEntry(phoneNumber,
                 price,
@@ -94,10 +88,6 @@ public class DriverRiderController
             //@RequestParam(value="accessToken") String accessToken, TODO: check the accessToken
     )
     {
-        // TODO: olafur: remove this hardcode:
-        userId = "10207343100033883";
-
-
         Log.i(LOGTAG, "calling /registerdriver");
         driverRiderService.createDriverListEntry(phoneNumber,
                 lowPrice,
