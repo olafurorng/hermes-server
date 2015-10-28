@@ -22,16 +22,45 @@ section.wrong p {
     padding-top: 12px;
 }
 
-.driverInfo {
+.userInfo {
+    display: flex;
+    width: 100px;
+    flex-direction: column;
+}
+
+.driverInfoContainer {
     display: flex;
     flex-direction: column;
+}
+
+.driverInfo {
+    display: flex;
+    flex-direction: row;
     align-items: center;
     text-align: center;
 }
 
-.driverInfo span {
-    font-size: 24px;
-    margin-bottom: 12px;
+.driverInfo > i {
+    font-size: 20px;
+    margin: 0 8px;
+}
+
+.driverInfo>span {
+    font-size: 20px;
+    margin: 0 8px 12px;
+}
+
+.passengersContainer > i {
+    font-size: 20px;
+}
+
+.passengersContainer {
+    margin-left: 10px;
+}
+
+.driverInfo p {
+    font-size: 16px;
+    text-align: left;
 }
 
 .postContainer {
@@ -55,9 +84,9 @@ section.wrong p {
 }
 
 .postContainer img {
-    width: 50px;
+    width: 100px;
     margin-right: 8px;
-    height: 50px;
+    height: 100px;
 }
 
 .pickContainer {
@@ -176,7 +205,7 @@ section.wrong p {
     font-size:0.9em;
 }
 
-.phoneInput, .locationAreaInput, .carDiscription {     
+.phoneInput, .locationAreaInput, .carDescription {     
     width: 100%; 
 }
 
