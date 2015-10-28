@@ -78,12 +78,12 @@ var Main = (function() {
       var errorlocationArea = $('<label id="errorLocationArea"></label>');
       $(locationAreaInput).appendTo(place);
       $(errorlocationArea).appendTo(place);
-      // CarDiscription
+      // CarDescription
       var car = $('.car');
       $(car).empty();
-      var carDiscription = $('<input type="text" name="carDiscription" class="carDiscription" placeholder="Lýsing á bíl">');
+      var carDescription = $('<input type="text" name="carDescription" class="carDescription" placeholder="Lýsing á bíl">');
       var errorCar = $('<label id="errorCar"></label>');
-      $(carDiscription).appendTo(car);
+      $(carDescription).appendTo(car);
       $(errorCar).appendTo(car);
     }
   //Ride information, run when Ok is clicked
@@ -95,12 +95,12 @@ var Main = (function() {
       var locationElement = $('.locationInput');
       var destinationElement = $('.destinationInput');
       var locationAreaElement = $('.locationAreaInput');
-      var carElement = $('.carDiscription');
+      var carElement = $('.carDescription');
       var phone = phoneElement.val();
       var location = locationElement.val();
       var destination = destinationElement.val();
       var locationArea = locationAreaElement.val();
-      var carDiscription = carElement.val();
+      var carDescription = carElement.val();
 
       var timestamp = new Date();
       timestamp.setHours($('.selectHours').val());
@@ -153,7 +153,7 @@ var Main = (function() {
           locationAreaElement.removeClass('invalid');
       }
       //Car
-      if (carDiscription === '') {
+      if (carDescription === '') {
           $("#errorCar").text("* Vinsamlegast settu inn lýsingu á bíl");
           valid = false;
           carElement.addClass('invalid');
@@ -174,7 +174,7 @@ var Main = (function() {
             number_of_people: $("input[type='radio'][name='rGroup']:checked").val(),
             location: ($('.locationInput')).val(),
             destination: ($('.destinationInput')).val(),
-            message : document.getElementById('message').value,
+            message : $('message').val(),
             pickup_time_timestamp: timestamp.getTime()
           }
           //Sends info to registerdriver
@@ -201,8 +201,8 @@ var Main = (function() {
             high_price:$("#slider-range").slider("values", 1),
             number_of_people: $("input[type='radio'][name='rGroup']:checked").val(),
             place: ($('.locationAreaInput')).val(),
-            car_description: ($('.carDiscription')).val(),
-            message : document.getElementById('message').value,
+            car_description: ($('.carDescription')).val(),
+            message : $('message').val(),
             start_time_timestamp: 345345345,
             end_time_timestamp: 34534534
           }  
@@ -230,10 +230,10 @@ var Main = (function() {
   }
 
   function showRiders() {
-    var userList = document.querySelector('.userList');
+    var userList = $('.userList');
     userList.innerHTML = '';
-    document.querySelector('.selectDriver').classList.remove('notActiveTab');
-    document.querySelector('.selectRider').classList.add('notActiveTab');
+    $('.selectDriver').removeClass('notActiveTab');
+    $('.selectRider').addClass('notActiveTab');
     var riders = userData.ridersList;
     for (var i = 0; i < riders.length; i++) {
       var container = $('<div class="postContainer"></div>');
@@ -263,7 +263,7 @@ var Main = (function() {
   }
 
   function showDrivers() {
-    var userList = document.querySelector('.userList');
+    var userList = $('.userList');
     var drivers = userData.driversList;
     $('.selectDriver').addClass('notActiveTab');
     $('.selectRider').removeClass('notActiveTab');
@@ -275,54 +275,54 @@ var Main = (function() {
       var starContainer = $('<div class="starContainer"></div>');
       var userInfo = $('<div class="userInfo"></div>');
       var driverInfo = $('<div class="driverInfoContainer clearfix"></div>');
-      var time = $('<section class="driverInfo col-md-2"></section>');
-      var location = $('<section class="driverInfo col-md-4"></section>');
-      var money = $('<section class="driverInfo col-md-3"></section>');
-      var people = $('<section class="driverInfo col-md-3"></section>');
+      var time = $('<section class="driverInfo"></section>');
+      var location = $('<section class="driverInfo"></section>');
+      var carDescription = $('<section class="driverInfo"></section>');
+      var money = $('<section class="driverInfo"></section>');
+      var people = $('<section class="driverInfo"></section>');
       var message = $('<article></article>')
       
       for (var j = 0; j < drivers[i].driver.starRating; j++) {
         $('<span class="glyphicon glyphicon-star"></span>').appendTo(starContainer);
       }
       $('<a target="_blank" href="http://www.facebook.com/' + drivers[i].driver.id + '"><img src="' +
-        drivers[i].driver.profilePictureUrl + '"></a>').appendTo(userHead);
+        drivers[i].driver.profilePictureUrl + '"></a>').appendTo(userInfo);
       $('<a target="_blank" class="userName" href="http://www.facebook.com/' + drivers[i].driver.id + '">' +
         drivers[i].driver.name + '</a>').appendTo(userInfo);
       $(starContainer).appendTo(userInfo);
 
       // Time
       $('<span class="glyphicon glyphicon-time"></span>').appendTo(time);
-      $('<p>' + new Date(drivers[i].startDriving).toTimeString().substr(0, 5) + '</p>').appendTo(time);
-      $('<p>til</p>').appendTo(time);
-      $('<p>' + new Date(drivers[i].stopDriving).toTimeString().substr(0, 5) + '</p>').appendTo(time);
+      $('<p>' + new Date(drivers[i].startDriving).toTimeString().substr(0, 5) +
+        '-' + new Date(drivers[i].stopDriving).toTimeString().substr(0, 5) + '</p>').appendTo(time);
 
       // Location
       $('<span class="glyphicon glyphicon-map-marker"></span>').appendTo(location);
       $('<p>' + drivers[i].place + '</p>').appendTo(location);
-      $('<p>' + drivers[i].carDescription + '</p>').appendTo(location);
+
+      // Car description
+      $('<i class="fa fa-car"></i>').appendTo(carDescription);
+      $('<p>' + drivers[i].carDescription + '</p>').appendTo(carDescription);
 
       // Money
       $('<span class="glyphicon glyphicon-usd"></span>').appendTo(money);
-      $('<p>' + drivers[i].lowPrice + ' kr.</p>').appendTo(money);
-      $('<p>til</p>').appendTo(money);
-      $('<p>' + drivers[i].highPrice + ' kr.</p>').appendTo(money);
+      $('<p>' + drivers[i].lowPrice + '-' + drivers[i].highPrice + ' kr.</p>').appendTo(money);
 
       // People
-      $('<h4>Farþegafjöldi</h4>').appendTo(people);
-      $('<div><span class="glyphicon glyphicon-user"></span><span class="glyphicon glyphicon-user"></span></div>').appendTo(people);
+      $('<div class="passengersContainer"><i class="fa fa-user-times">' + drivers[i].numberOfPeople + '</i></div>').appendTo(people);
 
       // Message
-      $('<h3>Skilaboð</h3>').appendTo(message);
       $('<p>' + drivers[i].message +'</p>').appendTo(message);
 
       
-      time.appendTo(driverInfo);
       location.appendTo(driverInfo);
+      carDescription.appendTo(driverInfo);
+      time.appendTo(driverInfo);
       money.appendTo(driverInfo);
       people.appendTo(driverInfo);
-      driverInfo.appendTo(userBody);
       message.appendTo(userBody);
       userInfo.appendTo(userHead);
+      driverInfo.appendTo(userHead);
       userHead.appendTo(container);
       userBody.appendTo(container);
       container.appendTo(userList);
