@@ -51,7 +51,7 @@ public class DriverRiderController
             @RequestParam(value="location") String location,
             @RequestParam(value="destination") String destination,
             @RequestParam(value="message") String message,
-            @RequestParam(value="pickup_time_timestamp") long pickUpTimeTimestamp
+            @RequestParam(value="pickup_time_timestamp") long pickUpTimeTimestamp,
             @RequestParam(value="usedId") String userId
     )
     {
@@ -68,8 +68,8 @@ public class DriverRiderController
             @RequestParam(value="car_description") String carDescription,
             @RequestParam(value="message") String message,
             @RequestParam(value="start_time_timestamp") long startTimeTimestamp,
-            @RequestParam(value="end_time_timestamp") long endTimeTimestamp
-            //@RequestParam(value="accessToken") String accessToken, TODO: check the accessToken
+            @RequestParam(value="end_time_timestamp") long endTimeTimestamp,
+            @RequestParam(value="userId") String userId
     )
     {
         Log.i(LOGTAG, "calling /registerdriver");
