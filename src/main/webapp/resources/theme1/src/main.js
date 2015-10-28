@@ -231,7 +231,7 @@ var Main = (function() {
 
   function showRiders() {
     var userList = $('.userList');
-    userList.innerHTML = '';
+    userList.empty();
     $('.selectDriver').removeClass('notActiveTab');
     $('.selectRider').addClass('notActiveTab');
     var riders = userData.ridersList;
@@ -267,7 +267,7 @@ var Main = (function() {
     var drivers = userData.driversList;
     $('.selectDriver').addClass('notActiveTab');
     $('.selectRider').removeClass('notActiveTab');
-    userList.innerHTML = '';
+    userList.empty();
     for (var i = 0; i < drivers.length; i++) {
       var container = $('<div class="postContainer"></div>');
       var userHead = $('<div class="userHead"></div>');
