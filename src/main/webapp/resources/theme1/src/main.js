@@ -165,6 +165,7 @@ var Main = (function() {
           $("#errorCar").text("");
           carElement.removeClass('invalid');
       }
+
       //Shows result box with valid or unvalid
       if (valid){
           var accessTokenObj = localStorage.getItem('accessToken');
@@ -179,17 +180,16 @@ var Main = (function() {
             }
           }
           //resets everything
-          $('#form').get(0).reset();
-          $(".register").hide();
-          $(".addContainer").on("click", init);
-
+         
+          console.log(location);
+          console.log(($('.locationInput')).val());
           var riderdata= {
             phone_number:phoneNumber,
             price:$("#slider-range").slider("values", 0),
             number_of_people: $("input[type='radio'][name='rGroup']:checked").val(),
             location: ($('.locationInput')).val(),
             destination: ($('.destinationInput')).val(),
-            message : $('message').val(),
+            message : $('#message').val(),
             userId: userId,
             pickup_time_timestamp: timestamp.getTime()
           }
@@ -219,7 +219,7 @@ var Main = (function() {
             number_of_people: $("input[type='radio'][name='rGroup']:checked").val(),
             place: ($('.locationAreaInput')).val(),
             car_description: ($('.carDescription')).val(),
-            message : $('message').val(),
+            message : $('#message').val(),
             start_time_timestamp: 345345345,
             end_time_timestamp: 34534534,
             userId: userId
@@ -243,7 +243,9 @@ var Main = (function() {
               console.log("Skrá ísSkutl mistókst");
             }); 
           }
-
+          $('#form').get(0).reset();
+          $(".register").hide();
+          $(".addContainer").on("click", init);
         } 
       e.preventDefault();
   }
