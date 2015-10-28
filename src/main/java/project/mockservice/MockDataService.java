@@ -69,7 +69,7 @@ public class MockDataService
             int randomPrice = getRandomPrice();
             RiderListEntry riderListEntry = new RiderListEntry(user,
                     getRandomLocation(), getRandomLocation(), getRandomTimestamp(), randomPrice,
-                    randomPrice + 1500, getRandomMessageForRider(), getRandomTimestamp(), getRandomNumberOfPeople());
+                    getRandomMessageForRider(), getRandomTimestamp(), getRandomNumberOfPeople());
             riderListEntries.add(riderListEntry);
 
         }

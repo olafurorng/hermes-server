@@ -190,7 +190,7 @@ var Main = (function() {
             location: ($('.locationInput')).val(),
             destination: ($('.destinationInput')).val(),
             message : $('#message').val(),
-            userId: userId,
+            user_id: userId,
             pickup_time_timestamp: timestamp.getTime()
           }
           console.log(riderdata);
@@ -222,7 +222,7 @@ var Main = (function() {
             message : $('#message').val(),
             start_time_timestamp: 345345345,
             end_time_timestamp: 34534534,
-            userId: userId
+            user_id: userId
           }  
           console.log(driverdata);
           //Sends info to registerdriver
@@ -247,6 +247,7 @@ var Main = (function() {
           $(".register").hide();
           $(".addContainer").on("click", init);
         } 
+
       e.preventDefault();
   }
 
