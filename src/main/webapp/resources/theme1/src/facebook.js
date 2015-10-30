@@ -78,7 +78,7 @@ window.fbAsyncInit = function() {
 //  See statusChangeCallback() for when this call is made.
 function callFbGraphApi(fbAccessToken) {
     console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me?fields=id,friends,name,email,picture,first_name', function(response) {
+    FB.api('/me?fields=id,friends,name,email,picture.type(large),first_name', function(response) {
 
         // add our own access token, generated from our server
         var accessTokenObj = localStorage.getItem('accessToken');
