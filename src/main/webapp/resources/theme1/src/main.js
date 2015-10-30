@@ -23,6 +23,9 @@ var Main = (function() {
   });
 
   function showRegisterForm(e) {
+      // Limit phonenumber to numbers
+      var phoneInput = $('.phoneInput');
+      phoneInput.on('keypress', limitToNumbers);
       // Unable to open Register Form when its already open
       $(".addContainer").off("click");
       registerFormOpen=true;
@@ -120,6 +123,7 @@ var Main = (function() {
       var destination = destinationElement.val();
       var locationArea = locationAreaElement.val();
       var carDescription = carElement.val();
+
       // Create timestamp from clocks
       var timestamp = new Date();
       var timestampFrom = new Date();
@@ -136,18 +140,10 @@ var Main = (function() {
           $("#errorPhone").text("* Vinsamlegast skráðu símanúmerið þitt");
           valid = false;
           phoneElement.addClass('invalid');
-      }
-      // Check if its only numbers
-      if (phone.match(/^[0-9]+$/) === null) {
-          valid = false;
-          phoneElement.addClass('invalid');
       } else {
           $("#errorPhone").text("");
-          phoneElement.removeClass('invalid');
-      }
-      if (phone !== '' && phone.match(/^[0-9]+$/) === null) {
-          $("#errorPhone").text("* Vinsamlegast hafðu aðeins tölustafi í símanúmerinu þínu");
-      }      
+          phoneElement.removeClass('invalid');   
+        }
       // Location
       if (location === '') {
           $("#errorLocation").text("* Vinsamlegast settu inn upphafsstað");
@@ -273,6 +269,10 @@ var Main = (function() {
     $("#errorPhone").text("");
     $('.phoneInput').removeClass('invalid');
     // -----------------------------------------------------
+    var addContainerText= $('.addContainerText');
+    var containerText = $('Skrá Far');
+    $(containerText).appendTo(addContainerText);
+
     addRiderDriver = true;
     changeForm = true;
 
@@ -315,8 +315,10 @@ var Main = (function() {
     $("#errorPhone").text("");
     $('.phoneInput').removeClass('invalid');
     // -----------------------------------------------------
+
     addRiderDriver=false;
     changeForm = true;
+
 
     var userList = $('.userList');
     var drivers = userData.driversList;
@@ -393,6 +395,14 @@ var Main = (function() {
       //$('#eftir').text((256 - fjoldi) + ' eftir.');
     });
   }
+  // Takmörkum innslátt í reiknireit við tölur og '.'
+  function limitToNumbers (e) {
+    var c = e.keyCode;
+
+    if (!((48 <= c && c <= 57) || c === 46)) {
+      e.preventDefault();
+  }
+}
   // Price slider
   function priceSlider(){
   $(function() {
