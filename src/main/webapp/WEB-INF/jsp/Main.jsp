@@ -26,8 +26,12 @@
   </header>
   <main>
     <section class="pickContainer">
-      <h5 class="selectRider">Bjóða ísFar</h5>
-      <h5 class="selectDriver">Fá ísFar</h5>
+      <div class="selectContainer">
+        <h5 class="selectRider activeTab">Bjóða ísFar</h5>
+        <div class="verticalLine"></div>
+        <h5 class="selectDriver notActiveTab">Fá ísFar</h5>
+      </div>
+      <button class="btn btn-default addButton">Bæta við</button>
     </section>
     <section class="addContainer">
     <div class="addContainerText"></div>

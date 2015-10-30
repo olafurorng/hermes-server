@@ -5,7 +5,6 @@ var Main = (function() {
   var riderDriverIsRegistered = false;
   // Controles what form is shown
   var addRiderDriver = true;
-  var registerFormOpen = false;
   var changeForm = true;
 
     //Get out of register when clicked outside of container
@@ -14,11 +13,9 @@ var Main = (function() {
       if (!container.is(e.target) && // if the target of the click isn't the container...
           container.has(e.target).length === 0) // ... nor a descendant of the container
       {
-        if(registerFormOpen){
-          container.stop().slideFadeToggle();
-          $(".addContainer").on("click",showRegisterForm);
+        if(e.target.className.indexOf('addButton') === -1) {
+          container.slideUp();
         }
-      registerFormOpen=false;
     }
   });
 
@@ -27,9 +24,7 @@ var Main = (function() {
       var phoneInput = $('.phoneInput');
       phoneInput.on('keypress', limitToNumbers);
       // Unable to open Register Form when its already open
-      $(".addContainer").off("click");
-      registerFormOpen=true;
-      $(".register").stop().slideFadeToggle();
+      $(".register").slideDown();
       // Only create new Form when showRider/showDriver is changed
       if(changeForm){
       // In both forms empty and create header, place, car, clock
@@ -109,7 +104,6 @@ var Main = (function() {
 
   //Ride information, run when Ok is clicked
   function postInfo(e) {
-      registerFormOpen=true;
       // this er formið, $(this) býr til jQuery hlut af forminu
       var form = $(this);
       // Get input values
@@ -279,6 +273,7 @@ var Main = (function() {
     var userList = $('.userList');
     userList.empty();
     $('.selectDriver').removeClass('notActiveTab');
+    $('.selectDriver').addClass('activeTab');
     $('.selectRider').addClass('notActiveTab');
     var riders = userData.ridersList;
     for (var i = 0; i < riders.length; i++) {
@@ -324,6 +319,7 @@ var Main = (function() {
     var drivers = userData.driversList;
     $('.selectDriver').addClass('notActiveTab');
     $('.selectRider').removeClass('notActiveTab');
+    $('.selectRider').addClass('activeTab');
     userList.empty();
     for (var i = 0; i < drivers.length; i++) {
       var container = $('<div class="postContainer"></div>');
@@ -428,7 +424,7 @@ var Main = (function() {
     $('.selectRider').on('click', showDrivers);
     $('.selectDriver').on('click', showRiders);
     $('.submitRegister').on('click', postInfo);
-    $(".addContainer").on("click", showRegisterForm);
+    $(".addButton").on("click", showRegisterForm);
     // Max keyCount
     textBoxKeycount();
     // RiderInfo price slider

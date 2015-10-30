@@ -92,17 +92,20 @@ section.wrong p {
 .pickContainer {
     display: flex;
     width: 100%;
+    position: relative;
+    margin-bottom: 6px;
     flex-direction: row;
-    justify-content: center;
     max-width: 600px;
+    justify-content: space-between;
+    margin-top: 20px;
+    background-color: #FFFFFF;
     align-self: center;
 }
 .addContainer {
     width: 100%;
     max-width: 600px;
     background-color: white;
-    margin-bottom: 20px;
-    min-height: 20px;
+    margin-bottom: 10px;
     border-radius: 3px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
         0 1px 5px 0 rgba(0, 0, 0, 0.12),
@@ -114,22 +117,63 @@ section.wrong p {
 }
 
 .pickContainer h5 {
-    background-color: #3F51B5;
+    background-color: #FFFFFF;
     display: flex;
-    flex: 1;
-    border: 1px solid #3F51B5;
-    margin: 10px 0;
+    margin: 0;
+    padding: 0 15px;
     height: 50px;
-    font-family: 'Roboto';
+    position: relative;
     justify-content: center;
     align-items: center;
-    color: #FCFCFC;
-    font-size: 26px;
+    color: #3F51B5;
+    font-size: 15px;
 }
 
-.pickContainer > .notActiveTab {
-    background-color: #E8EAF6;
-    color: #3F51B5;
+.pickContainer h5:after {
+    bottom: 0;
+    content: '';
+    height: 3px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    -webkit-transition: opacity .4s ease-out;
+}
+
+.activeTab:after {
+    background-color: #3F51B5;
+}
+
+.pickContainer .notActiveTab {
+    color: rgb(78, 86, 101);
+}
+
+.notActiveTab:after {
+    opacity: 0;
+    background-color: #e9eaed;
+}
+
+.notActiveTab:hover:after {
+    background-color: #e9eaed;
+    opacity: 1;
+    /*-webkit-transition: border-bottom 0.5s ease;*/
+}
+
+.verticalLine {
+    width: 1px;
+    background-color: rgba(0,0,0,0.2);
+    margin: 10px 0;
+}
+
+.selectContainer {
+    display: flex;
+}
+
+.addButton {
+    background-color: #3F51B5;
+    color: #FFFFFF;
+    height: 34px;
+    align-self: center;
+    margin-right: 10px;
 }
 
 /* RideInfo */
