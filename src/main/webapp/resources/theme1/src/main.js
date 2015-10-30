@@ -66,9 +66,9 @@ var Main = (function() {
       // Header
       var headName = ('<p>Skrá <span class="ice">ís</span>Far</p>');
       // Location and Destination
-      var locationInput = $('<input type="text" name="location" class="locationInput" placeholder="Upphafsstaður">');
+      var locationInput = $('<input type="text" name="location" class="form-control locationInput" placeholder="Upphafsstaður">');
       var to = $('<span class="loc_to_des"> til </span>');
-      var destinationInput= $('<input type="text" name="destination" class="destinationInput" placeholder="Áfangastaður">');
+      var destinationInput= $('<input type="text" name="destination" class="destinationInput form-control" placeholder="Áfangastaður">');
       var errorLocation= $('<label id="errorLocation"></label>');   
       var errorDestination= $('<label id="errorDestination"></label>');
       $(locationInput).appendTo(place);

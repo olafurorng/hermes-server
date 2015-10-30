@@ -39,8 +39,9 @@
         </div>
         <div class="register_Body">   
             <form name="form" id="form" method="post">             
-                <div class="phone">           
-                    <input type="text" class="phoneInput" name="phone" placeholder="Símanúmer"/>
+                <div class="phone">
+                    <label class="sr-only" for="phone">Phone</label>          
+                    <input type="text" id="phone" class="phoneInput form-control" name="phone" placeholder="Símanúmer"/>
                 </div>
                 <label id="errorPhone"></label>
                 <div class="car">
@@ -52,10 +53,8 @@
                 <label id="errorLocation"></label>     
                 <label id="errorDestination"></label>
                 <label id="errorLocationArea"></label>
-                <p>
-                    <label for="amount"><span class="glyphicon glyphicon-usd"></span></label>
-                    <input type="text" id="amount" class="price">
-                </p>
+                <label for="amount"><span class="glyphicon glyphicon-usd"></span></label>
+                <input type="text" id="amount" class="price form-control">
                 <div id="slider-range"></div>    
                 <div class="radios">
                     <span>Farþegafjöldi <i class="fa fa-user-times"></i></span>
@@ -76,7 +75,7 @@
                   
                 </div>
                 <div>
-                    <textarea rows="4" cols="20" class="message" name="comments" placeholder="Auka athugasemdir"></textarea>
+                    <textarea rows="4" cols="20" class="message form-control" name="comments" placeholder="Auka athugasemdir"></textarea>
                     <button class="submitRegister" type="button">
                         <i class="fa fa-taxi"> Skrá far</i>                  
                     </button>

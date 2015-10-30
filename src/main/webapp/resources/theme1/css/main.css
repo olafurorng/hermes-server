@@ -102,7 +102,8 @@ section.wrong p {
     max-width: 600px;
     background-color: white;
     margin-bottom: 20px;
-    padding-bottom: 20px;
+    min-height: 20px;
+    border-radius: 3px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
         0 1px 5px 0 rgba(0, 0, 0, 0.12),
         0 3px 1px -2px rgba(0, 0, 0, 0.2);
@@ -119,6 +120,7 @@ section.wrong p {
     border: 1px solid #3F51B5;
     margin: 10px 0;
     height: 50px;
+    font-family: 'Roboto';
     justify-content: center;
     align-items: center;
     color: #FCFCFC;
@@ -126,7 +128,7 @@ section.wrong p {
 }
 
 .pickContainer > .notActiveTab {
-    background-color: #c5cae9;
+    background-color: #E8EAF6;
     color: #3F51B5;
 }
 
@@ -160,12 +162,10 @@ section.wrong p {
 }
 
 .register_Header {
-    background-color: #000;
-    border-radius: 15px 15px 0 0;
+    background-color: #1A237E;
 }
 
 .register_Header p {
-    font-family:Segoe UI Semibold,Helvetica,Arial,MS Sans Serif; 
     text-align: center; 
     font-size: 3em; 
     font-weight: bold; 
@@ -173,17 +173,13 @@ section.wrong p {
     color:#fff;
 }
 
-.ice {
-     color:#07C9F7
-}
-
 .register {
-    background-color: #5DA4D3;
+    background-color: #E8EAF6;
     width: 100%;
     display:none;
     color: #000;  
     border: 0.1em solid #666666;
-    border-radius: 15px;
+    border-radius: 3px;
     opacity: 0.95;
     z-index: 11;
 }
@@ -210,7 +206,8 @@ section.wrong p {
 }
 
 .locationInput { 
-    width: 45%; 
+    width: 45%;
+    display: inline;
 }
 
 .destinationInput { 
@@ -229,6 +226,7 @@ section.wrong p {
     border:0; 
     color:#fff; 
     background-color: #fff;
+    display: inline;
     font-weight:bold;
     color:#000;
 }
@@ -261,7 +259,7 @@ section.wrong p {
 }
 
 .radios input[type=radio]:checked + .radio {
-    background-color:#07C9F7;
+    background-color: #3F51B5;
     color:#fff;
 }
 
@@ -300,15 +298,13 @@ textarea {
     float:right;
     position: relative;
     padding: 10px 30px;
-    margin: 0px 10px 10px 0px;
-    border-radius: 15px;
-    font-family: 'Helvetica', cursive;
+    margin: 10px 0px 10px;
+    border-radius: 3px;
     font-size: 1.5em;
     color: #FFF;
     text-decoration: none;  
-    background-color: #000;
+    background-color: #ff4081;
     border-bottom: 5px solid #2980B9;
-    text-shadow: 0px -2px #000;
     /* Animation */
     transition: all 0.1s;
     -webkit-transition: all 0.1s;
