@@ -9,6 +9,7 @@
   <meta charset="UTF-8">
   <title>ÍsFar</title>
   <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <link href='/resources/theme1/css/main.css' rel='stylesheet' type='text/css'>
   <script src="/resources/theme1/src/jquery-1.11.3.min.js"></script>
   <script src="/resources/theme1/src/main.js"></script>
@@ -25,8 +26,12 @@
   </header>
   <main>
     <section class="pickContainer">
-      <h5 class="selectRider">Bjóða ísFar</h5>
-      <h5 class="selectDriver">Fá ísFar</h5>
+      <div class="selectContainer">
+        <h5 class="selectRider activeTab">Bjóða ísFar</h5>
+        <div class="verticalLine"></div>
+        <h5 class="selectDriver notActiveTab">Fá ísFar</h5>
+      </div>
+      <button class="btn btn-default addButton">Bæta við</button>
     </section>
     <section class="addContainer">
     <div class="addContainerText"></div>
@@ -38,8 +43,9 @@
         </div>
         <div class="register_Body">   
             <form name="form" id="form" method="post">             
-                <div class="phone">           
-                    <input type="text" class="phoneInput" name="phone" placeholder="Símanúmer"/>
+                <div class="phone">
+                    <label class="sr-only" for="phone">Phone</label>          
+                    <input type="text" id="phone" class="phoneInput form-control" name="phone" placeholder="Símanúmer"/>
                 </div>
                 <label id="errorPhone"></label>
                 <div class="car">
@@ -51,10 +57,8 @@
                 <label id="errorLocation"></label>     
                 <label id="errorDestination"></label>
                 <label id="errorLocationArea"></label>
-                <p>
-                    <label for="amount"><span class="glyphicon glyphicon-usd"></span></label>
-                    <input type="text" id="amount" class="price">
-                </p>
+                <label for="amount"><span class="glyphicon glyphicon-usd"></span></label>
+                <input type="text" id="amount" class="price form-control">
                 <div id="slider-range"></div>    
                 <div class="radios">
                     <span>Farþegafjöldi <i class="fa fa-user-times"></i></span>
@@ -75,7 +79,7 @@
                   
                 </div>
                 <div>
-                    <textarea rows="4" cols="20" class="message" name="comments" placeholder="Auka athugasemdir"></textarea>
+                    <textarea rows="4" cols="20" class="message form-control" name="comments" placeholder="Auka athugasemdir"></textarea>
                     <button class="submitRegister" type="button">
                         <i class="fa fa-taxi"> Skrá far</i>                  
                     </button>

@@ -5,7 +5,6 @@ var Main = (function() {
   var riderDriverIsRegistered = false;
   // Controles what form is shown
   var addRiderDriver = true;
-  var registerFormOpen = false;
   var changeForm = true;
 
     //Get out of register when clicked outside of container
@@ -14,11 +13,9 @@ var Main = (function() {
       if (!container.is(e.target) && // if the target of the click isn't the container...
           container.has(e.target).length === 0) // ... nor a descendant of the container
       {
-        if(registerFormOpen){
-          container.stop().slideFadeToggle();
-          $(".addContainer").on("click",showRegisterForm);
+        if(e.target.className.indexOf('addButton') === -1) {
+          container.slideUp();
         }
-      registerFormOpen=false;
     }
   });
 
@@ -27,9 +24,7 @@ var Main = (function() {
       var phoneInput = $('.phoneInput');
       phoneInput.on('keypress', limitToNumbers);
       // Unable to open Register Form when its already open
-      $(".addContainer").off("click");
-      registerFormOpen=true;
-      $(".register").stop().slideFadeToggle();
+      $(".register").slideDown();
       // Only create new Form when showRider/showDriver is changed
       if(changeForm){
       // In both forms empty and create header, place, car, clock
@@ -66,9 +61,9 @@ var Main = (function() {
       // Header
       var headName = ('<p>Skrá <span class="ice">ís</span>Far</p>');
       // Location and Destination
-      var locationInput = $('<input type="text" name="location" class="locationInput" placeholder="Upphafsstaður">');
+      var locationInput = $('<input type="text" name="location" class="form-control locationInput" placeholder="Upphafsstaður">');
       var to = $('<span class="loc_to_des"> til </span>');
-      var destinationInput= $('<input type="text" name="destination" class="destinationInput" placeholder="Áfangastaður">');
+      var destinationInput= $('<input type="text" name="destination" class="destinationInput form-control" placeholder="Áfangastaður">');
       var errorLocation= $('<label id="errorLocation"></label>');   
       var errorDestination= $('<label id="errorDestination"></label>');
       $(locationInput).appendTo(place);
@@ -109,7 +104,6 @@ var Main = (function() {
 
   //Ride information, run when Ok is clicked
   function postInfo(e) {
-      registerFormOpen=true;
       // this er formið, $(this) býr til jQuery hlut af forminu
       var form = $(this);
       // Get input values
@@ -279,28 +273,24 @@ var Main = (function() {
     var userList = $('.userList');
     userList.empty();
     $('.selectDriver').removeClass('notActiveTab');
+    $('.selectDriver').addClass('activeTab');
     $('.selectRider').addClass('notActiveTab');
     var riders = userData.ridersList;
     for (var i = 0; i < riders.length; i++) {
       var container = $('<div class="postContainer"></div>');
       var userHead = $('<div class="userHead"></div>');
       var userBody = $('<div class="userBody"></div>');
-      var starContainer = $('<div class="starContainer"></div>');
       var userInfo = $('<div class="userInfo"></div>');
-      for (var j = 0; j < riders[i].rider.starRating; j++) {
-        $('<span class="glyphicon glyphicon-star"></span>').appendTo(starContainer);
-      }
       $('<a target="_blank" href="http://www.facebook.com/' + riders[i].rider.id + '"><img src="' +
-        riders[i].rider.profilePictureUrl + '"></a>').appendTo(userHead);
+        riders[i].rider.profilePictureUrl + '"></a>').appendTo(userInfo);
       $('<a target="_blank" class="userName" href="http://www.facebook.com/' + riders[i].rider.id + '">' +
-        riders[i].rider.name + '</a>').appendTo(userInfo);
-      $(starContainer).appendTo(userInfo);
+        riders[i].rider.name + '</a>').appendTo(userHead);
       $('<p>Frá: ' + riders[i].currentLocation + '</p>').appendTo(userBody);
       $('<p>Til: ' + riders[i].destination + '</p>').appendTo(userBody);
       $('<p>Verðhugmynd: 4000 kr.</p>').appendTo(userBody);
       $('<p>Þarf far fyrir fjóra</p>').appendTo(userBody);
       
-      userInfo.appendTo(userHead);
+      userInfo.appendTo(userBody);
       userHead.appendTo(container);
       userBody.appendTo(container);
       container.appendTo(userList);
@@ -324,19 +314,22 @@ var Main = (function() {
     var drivers = userData.driversList;
     $('.selectDriver').addClass('notActiveTab');
     $('.selectRider').removeClass('notActiveTab');
+    $('.selectRider').addClass('activeTab');
     userList.empty();
     for (var i = 0; i < drivers.length; i++) {
       var container = $('<div class="postContainer"></div>');
       var userHead = $('<div class="userHead"></div>');
       var userBody = $('<div class="userBody"></div>');
-      var starContainer = $('<div class="starContainer"></div>');
       var userInfo = $('<div class="userInfo"></div>');
       var driverInfo = $('<div class="driverInfoContainer clearfix"></div>');
       var time = $('<section class="driverInfo"></section>');
       var location = $('<section class="driverInfo"></section>');
       var carDescription = $('<section class="driverInfo"></section>');
       var money = $('<section class="driverInfo"></section>');
+      var leftDriverInfo = $('<div></div>');
+      var rightDriverInfo = $('<div></div>');
       var people = $('<section class="driverInfo"></section>');
+      var phone = $('<section class="driverInfo"></section>');
       var message = $('<article></article>')
       
       for (var j = 0; j < drivers[i].driver.starRating; j++) {
@@ -345,8 +338,7 @@ var Main = (function() {
       $('<a target="_blank" href="http://www.facebook.com/' + drivers[i].driver.id + '"><img src="' +
         drivers[i].driver.profilePictureUrl + '"></a>').appendTo(userInfo);
       $('<a target="_blank" class="userName" href="http://www.facebook.com/' + drivers[i].driver.id + '">' +
-        drivers[i].driver.name + '</a>').appendTo(userInfo);
-      $(starContainer).appendTo(userInfo);
+        drivers[i].driver.name + '</a>').appendTo(userHead);
 
       // Time
       $('<span class="glyphicon glyphicon-time"></span>').appendTo(time);
@@ -368,18 +360,25 @@ var Main = (function() {
       // People
       $('<div class="passengersContainer"><i class="fa fa-user-times">' + drivers[i].numberOfPeople + '</i></div>').appendTo(people);
 
+      // Phone
+      $('<span class="glyphicon glyphicon-phone"></span>').appendTo(phone);
+      $('<p>' + (drivers[i].driver.phonenumber || "5812345") + '</p>').appendTo(phone);
+
       // Message
       $('<p>' + drivers[i].message +'</p>').appendTo(message);
 
       
-      location.appendTo(driverInfo);
-      carDescription.appendTo(driverInfo);
-      time.appendTo(driverInfo);
-      money.appendTo(driverInfo);
-      people.appendTo(driverInfo);
+      location.appendTo(leftDriverInfo);
+      carDescription.appendTo(leftDriverInfo);
+      time.appendTo(leftDriverInfo);
+      money.appendTo(rightDriverInfo);
+      people.appendTo(rightDriverInfo);
+      phone.appendTo(rightDriverInfo);
+      userInfo.appendTo(userBody);
+      leftDriverInfo.appendTo(driverInfo);
+      rightDriverInfo.appendTo(driverInfo);
+      driverInfo.appendTo(userInfo)
       message.appendTo(userBody);
-      userInfo.appendTo(userHead);
-      driverInfo.appendTo(userHead);
       userHead.appendTo(container);
       userBody.appendTo(container);
       container.appendTo(userList);
@@ -428,7 +427,7 @@ var Main = (function() {
     $('.selectRider').on('click', showDrivers);
     $('.selectDriver').on('click', showRiders);
     $('.submitRegister').on('click', postInfo);
-    $(".addContainer").on("click", showRegisterForm);
+    $(".addButton").on("click", showRegisterForm);
     // Max keyCount
     textBoxKeycount();
     // RiderInfo price slider

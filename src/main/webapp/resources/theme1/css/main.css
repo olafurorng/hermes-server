@@ -24,20 +24,26 @@ section.wrong p {
 
 .userInfo {
     display: flex;
-    width: 100px;
-    flex-direction: column;
+    flex-direction: row;
+    margin-bottom: 10px;
 }
 
 .driverInfoContainer {
     display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.driverInfoContainer div {
+    display: flex;
     flex-direction: column;
+    flex: 1;
 }
 
 .driverInfo {
     display: flex;
     flex-direction: row;
     align-items: center;
-    text-align: center;
 }
 
 .driverInfo > i {
@@ -52,6 +58,7 @@ section.wrong p {
 
 .passengersContainer > i {
     font-size: 20px;
+    height: 32px;
 }
 
 .passengersContainer {
@@ -83,6 +90,10 @@ section.wrong p {
     font-size: 14px;
 }
 
+.userHead a {
+    color: #3F51B5;
+}
+
 .postContainer img {
     width: 100px;
     margin-right: 8px;
@@ -92,17 +103,21 @@ section.wrong p {
 .pickContainer {
     display: flex;
     width: 100%;
+    position: relative;
+    margin-bottom: 6px;
     flex-direction: row;
-    justify-content: center;
     max-width: 600px;
+    justify-content: space-between;
+    margin-top: 20px;
+    background-color: #FFFFFF;
     align-self: center;
 }
 .addContainer {
     width: 100%;
     max-width: 600px;
     background-color: white;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
+    margin-bottom: 10px;
+    border-radius: 3px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
         0 1px 5px 0 rgba(0, 0, 0, 0.12),
         0 3px 1px -2px rgba(0, 0, 0, 0.2);
@@ -113,21 +128,63 @@ section.wrong p {
 }
 
 .pickContainer h5 {
-    background-color: #50505B;
+    background-color: #FFFFFF;
     display: flex;
-    flex: 1;
-    border: 1px solid #50505b;
-    margin: 10px 0;
+    margin: 0;
+    padding: 0 15px;
     height: 50px;
+    position: relative;
     justify-content: center;
     align-items: center;
-    color: #FCFCFC;
-    font-size: 26px;
+    color: #3F51B5;
+    font-size: 15px;
 }
 
-.pickContainer > .notActiveTab {
-    background-color: #ececec;
-    color: black;
+.pickContainer h5:after {
+    bottom: 0;
+    content: '';
+    height: 4px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    -webkit-transition: opacity .4s ease-out;
+}
+
+.activeTab:after {
+    background-color: #3F51B5;
+}
+
+.pickContainer .notActiveTab {
+    color: rgb(78, 86, 101);
+}
+
+.notActiveTab:after {
+    opacity: 0;
+    background-color: #e9eaed;
+}
+
+.notActiveTab:hover:after {
+    background-color: #e9eaed;
+    opacity: 1;
+    /*-webkit-transition: border-bottom 0.5s ease;*/
+}
+
+.verticalLine {
+    width: 1px;
+    background-color: rgba(0,0,0,0.2);
+    margin: 10px 0;
+}
+
+.selectContainer {
+    display: flex;
+}
+
+.addButton {
+    background-color: #3F51B5;
+    color: #FFFFFF;
+    height: 34px;
+    align-self: center;
+    margin-right: 10px;
 }
 
 /* RideInfo */
@@ -160,12 +217,10 @@ section.wrong p {
 }
 
 .register_Header {
-    background-color: #000;
-    border-radius: 15px 15px 0 0;
+    background-color: #1A237E;
 }
 
 .register_Header p {
-    font-family:Segoe UI Semibold,Helvetica,Arial,MS Sans Serif; 
     text-align: center; 
     font-size: 3em; 
     font-weight: bold; 
@@ -173,17 +228,13 @@ section.wrong p {
     color:#fff;
 }
 
-.ice {
-     color:#07C9F7
-}
-
 .register {
-    background-color: #5DA4D3;
+    background-color: #E8EAF6;
     width: 100%;
     display:none;
     color: #000;  
     border: 0.1em solid #666666;
-    border-radius: 15px;
+    border-radius: 3px;
     opacity: 0.95;
     z-index: 11;
 }
@@ -210,7 +261,8 @@ section.wrong p {
 }
 
 .locationInput { 
-    width: 45%; 
+    width: 45%;
+    display: inline;
 }
 
 .destinationInput { 
@@ -229,6 +281,7 @@ section.wrong p {
     border:0; 
     color:#fff; 
     background-color: #fff;
+    display: inline;
     font-weight:bold;
     color:#000;
 }
@@ -261,7 +314,7 @@ section.wrong p {
 }
 
 .radios input[type=radio]:checked + .radio {
-    background-color:#07C9F7;
+    background-color: #3F51B5;
     color:#fff;
 }
 
@@ -300,15 +353,13 @@ textarea {
     float:right;
     position: relative;
     padding: 10px 30px;
-    margin: 0px 10px 10px 0px;
-    border-radius: 15px;
-    font-family: 'Helvetica', cursive;
+    margin: 10px 0px 10px;
+    border-radius: 3px;
     font-size: 1.5em;
     color: #FFF;
     text-decoration: none;  
-    background-color: #000;
+    background-color: #ff4081;
     border-bottom: 5px solid #2980B9;
-    text-shadow: 0px -2px #000;
     /* Animation */
     transition: all 0.1s;
     -webkit-transition: all 0.1s;
