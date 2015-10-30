@@ -113,10 +113,10 @@ section.wrong p {
 }
 
 .pickContainer h5 {
-    background-color: #50505B;
+    background-color: #3F51B5;
     display: flex;
     flex: 1;
-    border: 1px solid #50505b;
+    border: 1px solid #3F51B5;
     margin: 10px 0;
     height: 50px;
     justify-content: center;
@@ -126,8 +126,8 @@ section.wrong p {
 }
 
 .pickContainer > .notActiveTab {
-    background-color: #ececec;
-    color: black;
+    background-color: #c5cae9;
+    color: #3F51B5;
 }
 
 /* RideInfo */
