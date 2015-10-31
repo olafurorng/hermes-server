@@ -4,7 +4,7 @@ var Main = (function() {
   // Controles what data and input should post
   var riderDriverIsRegistered = false;
   // Controles what form is shown
-  var addRiderDriver = true;
+  var addRiderDriver = false;
   var changeForm = true;
 
     //Get out of register when clicked outside of container
@@ -22,7 +22,7 @@ var Main = (function() {
   function showRegisterForm(e) {
       // Limit phonenumber to numbers
       var phoneInput = $('.phoneInput');
-      phoneInput.on('keypress', limitToNumbers);
+      phoneInput.on('keypress', limitToNumbers);     
       // Unable to open Register Form when its already open
       $(".register").slideDown();
       // Only create new Form when showRider/showDriver is changed
@@ -32,6 +32,9 @@ var Main = (function() {
       $(headerName).empty();
       var place = $('.place');
       $(place).empty();
+      var locationIcon = $('<span class="glyphicon glyphicon-map-marker"></span>');
+      $(locationIcon).appendTo(place);
+
       var car = $('.car');
       $(car).empty();
       // Clock
@@ -62,7 +65,7 @@ var Main = (function() {
       var headName = ('<p>Skrá <span class="ice">ís</span>Far</p>');
       // Location and Destination
       var locationInput = $('<input type="text" name="location" class="form-control locationInput" placeholder="Upphafsstaður">');
-      var to = $('<span class="loc_to_des"> til </span>');
+      var to = $('<span class="loc_to_des"> <img src="/resources/theme1/images/locationTo.png" alt="arrowTo"></img></span');
       var destinationInput= $('<input type="text" name="destination" class="destinationInput form-control" placeholder="Áfangastaður">');
       var errorLocation= $('<label id="errorLocation"></label>');   
       var errorDestination= $('<label id="errorDestination"></label>');
@@ -84,8 +87,10 @@ var Main = (function() {
       $(locationAreaInput).appendTo(place);
       $(errorlocationArea).appendTo(place);
       // CarDescription
+      var carLogo = $('<i class="fa fa-car"></i>');
       var carDescription = $('<input type="text" name="carDescription" class="carDescription" placeholder="Lýsing á bíl">');
       var errorCar = $('<label id="errorCar"></label>');
+      $(carLogo).appendTo(car);
       $(carDescription).appendTo(car);
       $(errorCar).appendTo(car);
       // Second Clock
