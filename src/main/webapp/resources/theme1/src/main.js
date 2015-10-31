@@ -187,71 +187,45 @@ var Main = (function() {
             } else {
               userId = accessTokenObj.userId;
             }
-          }         
-          var riderdata= {
-            phone_number:phoneNumber,
-            price:$("#slider-range").slider("values", 0),
-            number_of_people: $("input[type='radio'][name='rGroup']:checked").val(),
-            location: location,
-            destination: destination,
-            message : $('.message').val(),
-            user_id: userId,
-            pickup_time_timestamp: timestamp.getTime()
           }
-          console.log(riderdata);
-          //Sends info to registerdriver
-          if(riderDriverIsRegistered){
-            $.ajax({
-              type: 'POST',
-              url: '/registerrider',
-              data: riderdata,
-              statusCode: {
-                201: function() {
-                  console.log("WE GOT 201!");
-                }
-              },
-              success: function(data) {
-                  console.log("Skrá ísFar tókst");
-              }
-            }).fail(function() {
-              console.log("Skrá ísFar mistókst");
-            });
-          }
-          var driverdata= {
-            phone_number:phoneNumber,
-            low_price:$("#slider-range").slider("values", 0),
+          var data = {
+            phone_number: phoneNumber,
+            price: $("#slider-range").slider("values", 0),
+            low_price: $("#slider-range").slider("values", 0),
             high_price:$("#slider-range").slider("values", 1),
             number_of_people: $("input[type='radio'][name='rGroup']:checked").val(),
             place: locationArea,
-            car_description: carDescription,
+            location: location,
+            destination: destination,
             message : $('.message').val(),
+            car_description: carDescription,
+            user_id: userId,
+            pickup_time_timestamp: timestamp.getTime(),
             start_time_timestamp: timestampFrom.getTime(),
-            end_time_timestamp: timestamp.getTime(),
-            user_id: userId
-          }  
-          console.log(driverdata);
-          //Sends info to registerdriver
-          if(!riderDriverIsRegistered ){
-            $.ajax({
-              type: 'POST',
-              url: '/registerdriver',
-              data: driverdata,
-              statusCode: {
-                201: function() {
-                  console.log("WE GOT 201!");
-                }
-              },
-              success: function(data) {
-                  console.log("Skrá ísSkutl tókst");
-              }
-            }).fail(function() {
-              console.log("Skrá ísSkutl mistókst");
-            }); 
+            end_time_timestamp: timestamp.getTime()
           }
-          // Resets every form, close form and update init
+          console.log(data);
+          //Sends info to registerdriver
+          var url = riderDriverIsRegistered ? '/registerrider' : '/registerdriver';
+          $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+            statusCode: {
+              201: function() {
+                console.log("WE GOT 201!");
+              }
+            },
+            success: function(data) {
+                console.log("Skrá ísFar tókst");
+                getData();
+            }
+          }).fail(function() {
+            console.log("Skrá ísFar mistókst");
+          });
+          // Resets every form, close form
           $('#form').get(0).reset();
-          $(".register").stop().slideFadeToggle();
-          $(".addContainer").on("click", init);
+          $(".register").slideUp();
         }
       e.preventDefault();
   }
@@ -423,16 +397,7 @@ var Main = (function() {
     return this.animate({opacity: 'toggle', height: 'toggle'}, speed, easing, callback);
   };
 
-  function init() {
-    $('.selectRider').on('click', showDrivers);
-    $('.selectDriver').on('click', showRiders);
-    $('.submitRegister').on('click', postInfo);
-    $(".addButton").on("click", showRegisterForm);
-    // Max keyCount
-    textBoxKeycount();
-    // RiderInfo price slider
-    priceSlider();
-    // getDriverRiderList
+  function getData() {
     $.ajax({
       type: 'GET',
       url: '/driverrider',
@@ -447,6 +412,19 @@ var Main = (function() {
       $('<section class="wrong"><h3>Úps. Þetta er vandræðalegt.</h3><p>Eitthvað fór úrskeiðis</p>' +
         '<p>Vinsamlegast reyndu aftur</p></section>').appendTo(userList);
     });
+  }
+
+  function init() {
+    $('.selectRider').on('click', showDrivers);
+    $('.selectDriver').on('click', showRiders);
+    $('.submitRegister').on('click', postInfo);
+    $(".addButton").on("click", showRegisterForm);
+    // Max keyCount
+    textBoxKeycount();
+    // RiderInfo price slider
+    priceSlider();
+    // getDriverRiderList
+    getData();
   }
   return {
     init: init
