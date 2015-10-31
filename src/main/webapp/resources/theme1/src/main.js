@@ -314,8 +314,8 @@ var Main = (function() {
       for (var j = 0; j < drivers[i].driver.starRating; j++) {
         $('<span class="glyphicon glyphicon-star"></span>').appendTo(starContainer);
       }
-      $('<a target="_blank" href="http://www.facebook.com/' + drivers[i].driver.id + '"><img src="' +
-        drivers[i].driver.profilePictureUrl + '"></a>').appendTo(userInfo);
+      $('<a target="_blank" class="imgContainer" href="http://www.facebook.com/' + drivers[i].driver.id + 
+        '" style="background-image: url(' + drivers[i].driver.profilePictureUrl + ')"></a>').appendTo(userInfo);
       $('<a target="_blank" class="userName" href="http://www.facebook.com/' + drivers[i].driver.id + '">' +
         drivers[i].driver.name + '</a>').appendTo(userHead);
 
