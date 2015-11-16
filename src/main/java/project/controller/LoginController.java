@@ -14,6 +14,8 @@ import project.responseentities.subentities.User;
 import project.service.UserService;
 import project.service.exceptions.UnauthorizedException;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by olafurorn on 9/26/15.
  */
@@ -43,7 +45,7 @@ public class LoginController
      * @return
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<LoginResponse> login(
+    public ResponseEntity<LoginResponse> login(HttpServletRequest request,
                                         @RequestParam(value="accessToken") String accessToken,
                                         @RequestParam(value="fb_access_token") String fbAccessToken,
                                         @RequestParam(value="id") String id,
@@ -76,12 +78,15 @@ public class LoginController
                     null); // phone number is null, as we can't get it from facebook
 
             LoginResponse loginResponse = new LoginResponse(user);
+            request.getSession().setAttribute("user", user.getId());
             return new ResponseEntity<LoginResponse>(loginResponse, HttpStatus.CREATED);
         }
         else
         {
             // user exist and we return 200
+            Log.i("this is user", "" + user.getId());
             LoginResponse loginResponse = new LoginResponse(user);
+            request.getSession().setAttribute("user", "" + user.getId());
             return new ResponseEntity<LoginResponse>(loginResponse, HttpStatus.OK);
         }
     }
