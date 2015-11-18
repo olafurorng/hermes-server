@@ -66,7 +66,7 @@ var Main = (function() {
       // Location and Destination
       var locationInput = $('<input type="text" name="location" class="form-control locationInput" placeholder="Upphafsstaður">');
       var to = $('<span class="loc_to_des"> <img src="/resources/theme1/images/locationTo.png" alt="arrowTo"></img></span');
-      var destinationInput= $('<input type="text" name="destination" class="destinationInput form-control" placeholder="Áfangastaður">');
+      var destinationInput= $('<input type="text" name="destination" class="form-control destinationInput" placeholder="Áfangastaður">');
       var errorLocation= $('<label id="errorLocation"></label>');   
       var errorDestination= $('<label id="errorDestination"></label>');
       $(locationInput).appendTo(place);
@@ -82,13 +82,13 @@ var Main = (function() {
       // Header
       var headName = ('<p>Skrá <span class="ice">ís</span>Skutlara</p>');
       // Location
-      var locationAreaInput= $('<input type="text" name="location" class="locationAreaInput" placeholder="Svæði, t.d. höfuðborgarsvæðið">');
+      var locationAreaInput= $('<input type="text" name="location" class="form-control locationAreaInput" placeholder="Svæði, t.d. höfuðborgarsvæðið">');
       var errorlocationArea = $('<label id="errorLocationArea"></label>');
       $(locationAreaInput).appendTo(place);
       $(errorlocationArea).appendTo(place);
       // CarDescription
       var carLogo = $('<i class="fa fa-car"></i>');
-      var carDescription = $('<input type="text" name="carDescription" class="carDescription" placeholder="Lýsing á bíl">');
+      var carDescription = $('<input type="text" name="carDescription" class="form-control carDescription" placeholder="Lýsing á bíl">');
       var errorCar = $('<label id="errorCar"></label>');
       $(carLogo).appendTo(car);
       $(carDescription).appendTo(car);
