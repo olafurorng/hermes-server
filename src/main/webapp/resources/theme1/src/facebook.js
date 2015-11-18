@@ -33,12 +33,6 @@ function loginToFb() {
 // Button.  See the onlogin handler attached to it in the sample
 // code below.
 function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
-    });
-}
-
-window.fbAsyncInit = function() {
     FB.init({
         appId: '636984166405294',
         cookie: true, // enable cookies to allow the server to access
@@ -58,12 +52,10 @@ window.fbAsyncInit = function() {
     //    your app or not.
     //
     // These three cases are handled in the callback function.
-
     FB.getLoginStatus(function(response) {
         statusChangeCallback(response);
     });
-
-};
+}
 
 // Load the SDK asynchronously
 (function(d, s, id) {

@@ -235,49 +235,7 @@ var Main = (function() {
       e.preventDefault();
   }
 
-  function showRiders() {
-    // Reset every form when showRiders/showDrivers is changed
-    $('#form').get(0).reset();
-    // Hægt að gera betur ----------------------------------
-    $("#errorPhone").text("");
-    $('.phoneInput').removeClass('invalid');
-    // -----------------------------------------------------
-    var addContainerText= $('.addContainerText');
-    var containerText = $('Skrá Far');
-    $(containerText).appendTo(addContainerText);
-
-    addRiderDriver = true;
-    changeForm = true;
-
-    var userList = $('.userList');
-    userList.empty();
-    $('.selectDriver').removeClass('notActiveTab');
-    $('.selectDriver').addClass('activeTab');
-    $('.selectRider').addClass('notActiveTab');
-    var riders = userData.ridersList;
-    for (var i = 0; i < riders.length; i++) {
-      var container = $('<div class="postContainer"></div>');
-      var userHead = $('<div class="userHead"></div>');
-      var userBody = $('<div class="userBody"></div>');
-      var userInfo = $('<div class="userInfo"></div>');
-      $('<a target="_blank" href="http://www.facebook.com/' + riders[i].rider.id + '"><img src="' +
-        riders[i].rider.profilePictureUrl + '"></a>').appendTo(userInfo);
-      $('<a target="_blank" class="userName" href="http://www.facebook.com/' + riders[i].rider.id + '">' +
-        riders[i].rider.name + '</a>').appendTo(userHead);
-      $('<p>Frá: ' + riders[i].currentLocation + '</p>').appendTo(userBody);
-      $('<p>Til: ' + riders[i].destination + '</p>').appendTo(userBody);
-      $('<p>Verðhugmynd: 4000 kr.</p>').appendTo(userBody);
-      $('<p>Þarf far fyrir fjóra</p>').appendTo(userBody);
-      
-      userInfo.appendTo(userBody);
-      userHead.appendTo(container);
-      userBody.appendTo(container);
-      container.appendTo(userList);
-    }
-
-  }
-
-  function showDrivers() {
+  function showList(type) {
     // Reset every form when showRiders/showDrivers is changed
     $('#form').get(0).reset();
     // Hægt að gera betur ----------------------------------
@@ -285,17 +243,13 @@ var Main = (function() {
     $('.phoneInput').removeClass('invalid');
     // -----------------------------------------------------
 
-    addRiderDriver=false;
+    addRiderDriver = type === 'rider';
     changeForm = true;
-
-
+    var data = (type === 'driver') ? userData.driversList : userData.ridersList;
     var userList = $('.userList');
     var drivers = userData.driversList;
-    $('.selectDriver').addClass('notActiveTab');
-    $('.selectRider').removeClass('notActiveTab');
-    $('.selectRider').addClass('activeTab');
     userList.empty();
-    for (var i = 0; i < drivers.length; i++) {
+    for (var i = 0; i < data.length; i++) {
       var container = $('<div class="postContainer"></div>');
       var userHead = $('<div class="userHead"></div>');
       var userBody = $('<div class="userBody"></div>');
@@ -303,65 +257,73 @@ var Main = (function() {
       var driverInfo = $('<div class="driverInfoContainer clearfix"></div>');
       var time = $('<section class="driverInfo"></section>');
       var location = $('<section class="driverInfo"></section>');
-      var carDescription = $('<section class="driverInfo"></section>');
+      var topRight = $('<section class="driverInfo"></section>');
       var money = $('<section class="driverInfo"></section>');
-      var leftDriverInfo = $('<div></div>');
-      var rightDriverInfo = $('<div></div>');
+      var leftUserInfo = $('<div></div>');
+      var rightUserInfo = $('<div></div>');
       var people = $('<section class="driverInfo"></section>');
       var phone = $('<section class="driverInfo"></section>');
-      var message = $('<article></article>')
+      var message = $('<article></article>');
+      var timeText = (type === 'rider') ? new Date(data[i].pickUpDate).toTimeString().substr(0, 5): 
+        new Date(data[i].startDriving).toTimeString().substr(0, 5) +
+        '-' + new Date(data[i].stopDriving).toTimeString().substr(0, 5);
+      var locationText = (type === 'rider') ? data[i].currentLocation + '&rarr;' + data[i].destination : data[i].place;
+      var moneyText = (type === 'rider') ? data[i].price : data[i].lowPrice + '-' + data[i].highPrice;
       
-      for (var j = 0; j < drivers[i].driver.starRating; j++) {
+      for (var j = 0; j < data[i].user.starRating; j++) {
         $('<span class="glyphicon glyphicon-star"></span>').appendTo(starContainer);
       }
-      $('<a target="_blank" class="imgContainer" href="http://www.facebook.com/' + drivers[i].driver.id + 
-        '" style="background-image: url(' + drivers[i].driver.profilePictureUrl + ')"></a>').appendTo(userInfo);
-      $('<a target="_blank" class="userName" href="http://www.facebook.com/' + drivers[i].driver.id + '">' +
-        drivers[i].driver.name + '</a>').appendTo(userHead);
+      $('<a target="_blank" class="imgContainer" href="http://www.facebook.com/' + data[i].user.id + 
+        '" style="background-image: url(' + data[i].user.profilePictureUrl + ')"></a>').appendTo(userInfo);
+      $('<a target="_blank" class="userName" href="http://www.facebook.com/' + data[i].user.id + '">' +
+        data[i].user.name + '</a>').appendTo(userHead);
 
       // Time
       $('<span class="glyphicon glyphicon-time"></span>').appendTo(time);
-      $('<p>' + new Date(drivers[i].startDriving).toTimeString().substr(0, 5) +
-        '-' + new Date(drivers[i].stopDriving).toTimeString().substr(0, 5) + '</p>').appendTo(time);
+      $('<p>' + timeText + '</p>').appendTo(time);
 
       // Location
       $('<span class="glyphicon glyphicon-map-marker"></span>').appendTo(location);
-      $('<p>' + drivers[i].place + '</p>').appendTo(location);
+      $('<p>' + locationText + '</p>').appendTo(location);
 
-      // Car description
-      $('<i class="fa fa-car"></i>').appendTo(carDescription);
-      $('<p>' + drivers[i].carDescription + '</p>').appendTo(carDescription);
+      // Top right
+      if (type === 'driver') {
+        $('<i class="fa fa-car"></i>').appendTo(topRight);
+        $('<p>' + data[i].carDescription + '</p>').appendTo(topRight);
+      } else {
+        // $('<span class="glyphicon glyphicon-map-marker"></span>').appendTo(topRight);
+         // $('<p></p>').appendTo(topRight);
+      }
 
       // Money
       $('<span class="glyphicon glyphicon-usd"></span>').appendTo(money);
-      $('<p>' + drivers[i].lowPrice + '-' + drivers[i].highPrice + ' kr.</p>').appendTo(money);
+      $('<p>' + moneyText + ' kr.</p>').appendTo(money);
 
       // People
-      $('<div class="passengersContainer"><i class="fa fa-user-times">' + drivers[i].numberOfPeople + '</i></div>').appendTo(people);
+      $('<div class="passengersContainer"><i class="fa fa-user-times">' + data[i].numberOfPeople + '</i></div>').appendTo(people);
 
       // Phone
       $('<span class="glyphicon glyphicon-phone"></span>').appendTo(phone);
-      $('<p>' + (drivers[i].driver.phonenumber || "5812345") + '</p>').appendTo(phone);
+      $('<p>' + (data[i].user.phonenumber || "5812345") + '</p>').appendTo(phone);
 
       // Message
-      $('<p>' + drivers[i].message +'</p>').appendTo(message);
+      $('<p>' + data[i].message +'</p>').appendTo(message);
 
       
-      location.appendTo(leftDriverInfo);
-      carDescription.appendTo(leftDriverInfo);
-      time.appendTo(leftDriverInfo);
-      money.appendTo(rightDriverInfo);
-      people.appendTo(rightDriverInfo);
-      phone.appendTo(rightDriverInfo);
+      location.appendTo(leftUserInfo);
+      topRight.appendTo(rightUserInfo);
+      time.appendTo(leftUserInfo);
+      money.appendTo(leftUserInfo);
+      people.appendTo(rightUserInfo);
+      phone.appendTo(rightUserInfo);
       userInfo.appendTo(userBody);
-      leftDriverInfo.appendTo(driverInfo);
-      rightDriverInfo.appendTo(driverInfo);
+      leftUserInfo.appendTo(driverInfo);
+      rightUserInfo.appendTo(driverInfo);
       driverInfo.appendTo(userInfo)
       message.appendTo(userBody);
       userHead.appendTo(container);
       userBody.appendTo(container);
       container.appendTo(userList);
-
     }
   }
 
@@ -407,11 +369,13 @@ var Main = (function() {
       type: 'GET',
       url: '/driverrider',
       success: function(data) {
+        console.log('success');
         console.log(data);
         userData = data;
-        showDrivers();
+        showList('driver');
       }
     }).fail(function() {
+      console.log('fail');
       var userList = $('.userList');
       $('.pickContainer').hide();
       $('<section class="wrong"><h3>Úps. Þetta er vandræðalegt.</h3><p>Eitthvað fór úrskeiðis</p>' +
@@ -420,8 +384,13 @@ var Main = (function() {
   }
 
   function init() {
-    $('.selectRider').on('click', showDrivers);
-    $('.selectDriver').on('click', showRiders);
+    $('.selectType').on('click', function() {
+      $('.selectType').addClass('notActiveTab');
+      $('.selectType').removeClass('activeTab');
+      $(this).removeClass('notActiveTab');
+      $(this).addClass('activeTab');
+      showList(this.dataset.type); 
+    });
     $('.submitRegister').on('click', postInfo);
     $(".addButton").on("click", showRegisterForm);
     // Max keyCount
