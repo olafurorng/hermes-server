@@ -249,7 +249,7 @@ var Main = (function() {
     var userList = $('.userList');
     var drivers = userData.driversList;
     userList.empty();
-    for (var i = 0; i < data.length; i++) {
+    for (var i = data.length - 1; i >= 0; i--) {
       var container = $('<div class="postContainer"></div>');
       var userHead = $('<div class="userHead"></div>');
       var userBody = $('<div class="userBody"></div>');
