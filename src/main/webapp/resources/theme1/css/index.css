@@ -9,7 +9,7 @@
     align-items: flex-start;
     padding: 5%;
     justify-content: flex-end;
-    background-position: center;
+    background-position: left;
 }
 
 .headerContainer {
@@ -81,7 +81,7 @@
 
 .itemContainer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-top: 20px;
     font-family: 'Roboto';
     text-align: center;
@@ -115,6 +115,11 @@
     text-align: center;
 }
 
-@media screen and (min-width: 1200px) {
-
+@media screen and (min-width: 400px) {
+    .itemContainer {
+        flex-direction: row;
+    }
+    .bg-header {
+        background-position: center;
+    }
 }
