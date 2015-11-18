@@ -270,9 +270,6 @@ var Main = (function() {
       var locationText = (type === 'rider') ? data[i].currentLocation + '&rarr;' + data[i].destination : data[i].place;
       var moneyText = (type === 'rider') ? data[i].price : data[i].lowPrice + '-' + data[i].highPrice;
       
-      for (var j = 0; j < data[i].user.starRating; j++) {
-        $('<span class="glyphicon glyphicon-star"></span>').appendTo(starContainer);
-      }
       $('<a target="_blank" class="imgContainer" href="http://www.facebook.com/' + data[i].user.id + 
         '" style="background-image: url(' + data[i].user.profilePictureUrl + ')"></a>').appendTo(userInfo);
       $('<a target="_blank" class="userName" href="http://www.facebook.com/' + data[i].user.id + '">' +
@@ -341,8 +338,8 @@ var Main = (function() {
 
     if (!((48 <= c && c <= 57) || c === 46)) {
       e.preventDefault();
+    }
   }
-}
   // Price slider
   function priceSlider(){
   $(function() {

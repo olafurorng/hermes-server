@@ -1,5 +1,13 @@
 @import url('/resources/theme1/css/style.css');
 
+main {
+    max-width: 600px;
+    font-size: 12px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
 .userList {
     display: flex;
     flex-direction: column;

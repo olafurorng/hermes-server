@@ -1,17 +1,26 @@
 @import url('/resources/theme1/css/style.css');
 .bg-header {
     width: 100%;
-    background-image: url('/resources/theme1/images/banner2.png');
+    background-image: url('/resources/theme1/images/background.png');
     background-size: cover;
     height: 100%;
+    position: absolute;
+    display: flex;
+    align-items: flex-start;
+    padding: 5%;
+    justify-content: flex-end;
     background-position: center;
-    padding: 50px 10%;
+}
+
+.headerContainer {
+    height: 100vh;
 }
 
 
 .basic-header h1 {
     margin: 0;
 }
+
 
 .btn-social {
     position: relative;
@@ -46,99 +55,25 @@
     color: #fff;
     background-color: #3b5998;
     height: 35px;
+    width: 100%;
+    max-width: 400px;
     border-color: rgba(0,0,0,0.2);
 }
 
-
-/* First Block*/
-.first_block_container{
+.about {
     width: 100%;
-    height: 300px; /*Tímabundinn breyta*/
+    background: #fff url(https://d1a3f4spazzrp4.cloudfront.net/web-fresh/pattern-grid@2x.jpg) repeat left top;
+    min-height: 400px;
+    padding: 30px;
 }
 
-.first_left_block {
-    background-color: rgba(114, 214, 57, 0.8); 
-    float:left; 
-    width:50%; 
-    height: 300px; /*Tímabundinn breyta*/
+.about h3 {
+    margin: 0;
+    text-align: center;
+    color: rgb(34, 34, 34);
+    font-size: 37px;
+    font-family: 'Roboto';
 }
-
-.first_right_block {
-    background-color: rgba(224, 192, 180, 0.8);
-    float: right;
-    width: 50%;
-    padding: 15% 0% 0% 0%;
-    height: 300px; /*Tímabundinn breyta*/
-}
-
-
-/* Second Block */
-
-.second_block {
-    width: 100%;
-    float: left;
-    background-color: rgba(247, 244, 41, 0.8);
-    border: 5px solid #D0CD09;
-    height: 400px; /*Tímabundinn breyta*/
-}
-
-/* Facebook, Twitter, Snapchat */
-.merki{
-    float: right;
-}
-.twitter_img {
-    height: auto; 
-    width: auto; 
-    max-width: 10%; 
-    min-height: 10%;
-    display:block;
-    background:transparent url("/resources/theme1/images/twitter_color.png") center top no-repeat;
-    background-size: contain; background-repeat: no-repeat;
-}
-
-.twitter_img:hover {
-    background-image: url("/resources/theme1/images/twitter_no_color.png");
-    background-size: contain; background-repeat: no-repeat;
-}
-.facebook_img {
-    height: auto; 
-    width: auto; 
-    max-width: 10%; 
-    min-height: 10%;
-    display:block;
-    background:transparent url("/resources/theme1/images/facebook_color.png") center top no-repeat;
-    background-size: contain; background-repeat: no-repeat;
-}
-
-.facebook_img:hover {
-    background-image: url("/resources/theme1/images/facebook_no_color.png");
-    background-size: contain; background-repeat: no-repeat;
-}
-.snapchat_img {
-    height: auto; 
-    width: auto; 
-    max-width: 10%; 
-    min-height: 10%;
-    display:block;
-    background:transparent url("/resources/theme1/images/snapchat_color.png") center top no-repeat;
-    background-size: contain; background-repeat: no-repeat;
-}
-
-.cf:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.snapchat_img:hover {
-    background-image: url("/resources/theme1/images/snapchat_no_color.png");
-    background-size: contain; background-repeat: no-repeat;
-}
-
-
-
-
-
 
 @media screen and (min-width: 1200px) {
 
