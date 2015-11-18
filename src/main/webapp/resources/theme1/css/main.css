@@ -59,6 +59,7 @@ section.wrong p {
     display: flex;
     flex-direction: row;
     align-items: center;
+    overflow: hidden;
     min-height: 32px;
 }
 
