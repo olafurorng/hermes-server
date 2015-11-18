@@ -60,19 +60,59 @@
     border-color: rgba(0,0,0,0.2);
 }
 
-.about {
+.items {
     width: 100%;
-    background: #fff url(https://d1a3f4spazzrp4.cloudfront.net/web-fresh/pattern-grid@2x.jpg) repeat left top;
-    min-height: 400px;
+    background: #fff url('/resources/theme1/images/grid.png') repeat left top;
+    min-height: 350px;
+    background-size: 18px 18px;
     padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.about h3 {
+.items h3 {
     margin: 0;
     text-align: center;
     color: rgb(34, 34, 34);
     font-size: 37px;
     font-family: 'Roboto';
+}
+
+.itemContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    font-family: 'Roboto';
+    text-align: center;
+}
+
+.itemContainer h5 {
+    font-size: 27px;
+}
+
+.itemContainer p {
+    font-size: 14px;
+}
+
+.itemContainer>div {
+    flex: 1;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.itemContainer img {
+    width: 100px;
+    height: 100px;
+}
+
+.about {
+    padding: 50px 0;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
 }
 
 @media screen and (min-width: 1200px) {

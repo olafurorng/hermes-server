@@ -22,8 +22,46 @@
     </header>
   </div>
   <main>
+    <section class="items">
+      <div class="itemContainer">
+        <div>
+          <img src="/resources/theme1/images/money.png">
+          <h5>Ódýrari</h5>
+          <p>Að meðaltali fimmfalt ódýrari en venjulegur leigubíll</p>
+        </div>
+        <div>
+          <img src="/resources/theme1/images/mobile.png">
+          <h5>Skilvirkari</h5>
+          <p>Notaðu appið. Hver nennir að hringja og biðja um far?</p>
+        </div>
+        <div>
+          <img src="/resources/theme1/images/lock.png">
+          <h5>Öruggara</h5>
+          <p>Hægt er að gefa notendur stjörnur sem veitir þér aukið öryggi</p>
+        </div>
+      </div>
+    </section>
     <section class="about">
-      <h3>Hvað er ÍsFar</h3>
+      <h3>Hvað er ÍsFar?</h3>
+      <p>
+          Ísfar er komanlegt app sem er hugsuð til að einfalda samskiptin milli bílstjóra og farþega þegar verið að skutla.
+          Áður hafa þessi samskipti farið fram á facebook hóp á mjög óskilvirkan hátt. 
+          Til að bæta þessi samskipti, mun okkar app geta:
+      </p>
+      <p>
+          Valið að sjá aðeins þá pósta sem eru að keyra eða eru farþegar. 
+          Flokkað pósta eftir:
+          Kostnaði
+          Staðsetningu
+          Tíma
+          Fjölda farþega
+          Gefið notendum stjörnur.
+      </p>
+      <p>
+          En auk þess mun vera hægt að bæta athugasemdum við pósta og tala við fólk í gegnum messenger.
+
+          Framtíðarsýn er svo að hægt verði að tengja önnur öpp við okkar sem geta séð um borganir milli fólks.
+      </p>
     </section>
   </main>
   <footer>
