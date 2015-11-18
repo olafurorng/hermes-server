@@ -5,7 +5,7 @@ package project.responseentities.subentities;
  */
 public class RiderListEntry
 {
-    private final User rider;
+    private final User user;
     private final String currentLocation;
     private final String destination;
     private final long pickUpDate; // timestamp
@@ -14,10 +14,10 @@ public class RiderListEntry
     private final long created; // timestamp of when the rider list entry was created
     private final int numberOfPeople;
 
-    public RiderListEntry(User rider, String currentLocation, String destination, long pickUpDate, int price,
+    public RiderListEntry(User user, String currentLocation, String destination, long pickUpDate, int price,
                           String message, long created, int numberOfPeople)
     {
-        this.rider = rider;
+        this.user = user;
         this.currentLocation = currentLocation;
         this.destination = destination;
         this.created = created;
@@ -27,9 +27,9 @@ public class RiderListEntry
         this.message = message;
     }
 
-    public User getRider()
+    public User getUser()
     {
-        return rider;
+        return user;
     }
 
     public String getCurrentLocation()

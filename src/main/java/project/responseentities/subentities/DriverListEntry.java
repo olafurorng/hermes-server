@@ -5,7 +5,7 @@ package project.responseentities.subentities;
  */
 public class DriverListEntry
 {
-    private final User driver;
+    private final User user;
     private final long startDriving;
     private final long stopDriving;
     private final int lowPrice;
@@ -16,12 +16,12 @@ public class DriverListEntry
     private final String message;
     private final long created;
 
-    public DriverListEntry(User driver, long startDrivingTimestamp, long stopDrivingTimestamp,
+    public DriverListEntry(User user, long startDrivingTimestamp, long stopDrivingTimestamp,
                            int lowPrice, int highPrice,
                            int numberOfPeople, String carDescription, String place, String message,
                            long created)
     {
-        this.driver = driver;
+        this.user = user;
         this.startDriving = startDrivingTimestamp;
         this.stopDriving = stopDrivingTimestamp;
         this.lowPrice = lowPrice;
@@ -33,9 +33,9 @@ public class DriverListEntry
         this.created = created;
     }
 
-    public User getDriver()
+    public User getUser()
     {
-        return driver;
+        return user;
     }
 
     public long getStartDriving()
