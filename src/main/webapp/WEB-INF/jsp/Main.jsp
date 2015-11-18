@@ -78,12 +78,10 @@
                 <div class="clocks">
                   
                 </div>
-                <div>
                     <textarea rows="4" cols="20" class="message form-control" name="comments" placeholder="Auka athugasemdir"></textarea>
                     <button class="submitRegister" type="button">
                         <i class="fa fa-taxi"> Skrá far</i>                  
-                    </button>
-                </div>       
+                    </button>    
             </form>
         </div>
     </div>

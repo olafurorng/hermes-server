@@ -69,6 +69,7 @@ var Main = (function() {
       var destinationInput= $('<input type="text" name="destination" class="form-control destinationInput" placeholder="Áfangastaður">');
       var errorLocation= $('<label id="errorLocation"></label>');   
       var errorDestination= $('<label id="errorDestination"></label>');
+      $(car).hide();
       $(locationInput).appendTo(place);
       $(to).appendTo(place);
       $(destinationInput).appendTo(place);
@@ -90,6 +91,7 @@ var Main = (function() {
       var carLogo = $('<i class="fa fa-car"></i>');
       var carDescription = $('<input type="text" name="carDescription" class="form-control carDescription" placeholder="Lýsing á bíl">');
       var errorCar = $('<label id="errorCar"></label>');
+      $(car).show();
       $(carLogo).appendTo(car);
       $(carDescription).appendTo(car);
       $(errorCar).appendTo(car);
