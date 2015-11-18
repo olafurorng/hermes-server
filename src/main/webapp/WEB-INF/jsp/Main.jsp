@@ -37,9 +37,7 @@
     <div class="addContainerText"></div>
     <div class="register">
         <div class="register_Header">
-          <div class="headerName">
 
-          </div>
         </div>
         <div class="register_Body">   
             <form name="form" id="form" method="post">             
@@ -47,25 +45,23 @@
                     <span class="glyphicon glyphicon-phone"></span>
                     <label class="sr-only" for="phone">Phone</label>          
                     <input type="text" id="phone" class="phoneInput form-control" name="phone" maxlength="7" placeholder="Símanúmer"/>
+                    <label id="errorPhone"></label>
                 </div>
-                <label id="errorPhone"></label>
                 <div class="car">
 
                 </div>
+
                 <div class="place">
 
                 </div>
-                <label id="errorLocation"></label>     
-                <label id="errorDestination"></label>
-                <label id="errorLocationArea"></label>
-                <div class="slider">
-                  <span class="glyphicon glyphicon-usd"></span>
-                  <label for="amount"></label>
-                  <input type="text" id="amount" class="price form-control">
-                </div>
-                <div id="slider-range"></div>    
+                <div class="sliderBody">
+                    <span class="glyphicon glyphicon-usd"></span>
+                    <label for="amount"></label>
+                    <input type="text" id="amount" class="price form-control">
+                  <div id="slider-range"></div>
+                </div>    
                 <div class="radios">
-                    <span><i class="fa fa-user-times"></i> Farþegafjöldi</span>
+                    <span><i class="fa fa-user-times"></i></span>
                     <input type="radio" name="rGroup" value=1 id="r1" checked="checked" />
                     <label class="radio" for="r1">1</label>
                     <input type="radio" name="rGroup" value=2 id="r2" />
