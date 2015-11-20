@@ -36,9 +36,6 @@
     <section class="addContainer">
     <div class="addContainerText"></div>
     <div class="register">
-        <div class="register_Header">
-
-        </div>
         <div class="register_Body">   
             <form name="form" id="form" method="post">             
                 <div class="phone">

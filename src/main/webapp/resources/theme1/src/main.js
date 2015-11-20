@@ -20,21 +20,18 @@ var Main = (function() {
   });
 
   function showRegisterForm(e) {
-      // Limit phonenumber to numbers
-      var phoneInput = $('.phoneInput');
-      phoneInput.on('keypress', limitToNumbers);     
-      // Unable to open Register Form when its already open
-      $(".register").slideDown();
-      // Only create new Form when showRider/showDriver is changed
-      if(changeForm){
-      // In both forms empty and create header, place, car, clock
-      var headerName = $('.headerName');
-      $(headerName).empty();
+    // Limit phonenumber to numbers
+    var phoneInput = $('.phoneInput');
+    phoneInput.on('keypress', limitToNumbers);     
+    // Unable to open Register Form when its already open
+    $(".register").slideDown();
+    // Only create new Form when showRider/showDriver is changed
+    if(changeForm){
+      // In both forms empty and create place, car, clock
       var place = $('.place');
       $(place).empty();
       var locationIcon = $('<span class="glyphicon glyphicon-map-marker"></span>');
       $(locationIcon).appendTo(place);
-
       var car = $('.car');
       $(car).empty();
       // Clock
@@ -44,69 +41,64 @@ var Main = (function() {
       var selectHours = $('<select class="selectHours"></select>');
       var selectMinutes= $('<select class="selectMinutes"></select>');
       // Second clock
-      var selectHoursFrom = $('<select class="selectHoursFrom"></select>');
-      var selectMinutesFrom= $('<select class="selectMinutesFrom"></select>');
+      var selectHoursTo = $('<select class="selectHoursTo"></select>');
+      var selectMinutesTo= $('<select class="selectMinutesTo"></select>');
       $(clocks).empty();
       for (var i = 0; i < 24; i++) {
         $('<option value="' + i +'">' + ('0' + i).slice(-2) + '</option>').appendTo(selectHours);
-        $('<option value="' + i +'">' + ('0' + i).slice(-2) + '</option>').appendTo(selectHoursFrom);
+        $('<option value="' + i +'">' + ('0' + i).slice(-2) + '</option>').appendTo(selectHoursTo);
         if (i < 12) $('<option value="' + i +'">' + ('0' + 5 * i).slice(-2) + '</option>').appendTo(selectMinutes);
-        if (i < 12) $('<option value="' + i +'">' + ('0' + 5 * i).slice(-2) + '</option>').appendTo(selectMinutesFrom);
+        if (i < 12) $('<option value="' + i +'">' + ('0' + 5 * i).slice(-2) + '</option>').appendTo(selectMinutesTo);
       }
       $(selectHours).val(now.getHours());
       $(selectMinutes).val(Math.floor(now.getMinutes() / 5));
-      $(selectHoursFrom).val(now.getHours());
-      $(selectMinutesFrom).val(Math.floor(now.getMinutes() / 5));
+      $(selectHoursTo).val(now.getHours());
+      $(selectMinutesTo).val(Math.floor(now.getMinutes() / 5));
       $('<span class="glyphicon glyphicon-time"></span>').appendTo(clocks);
+      // Happens to both forms
+      $(selectHours).appendTo(clocks);
+      $(selectMinutes).appendTo(clocks);
       // When rider is adding his info
       if(addRiderDriver){
-      riderDriverIsRegistered = true;
-      // Header
-      var headName = ('<p>Skrá <span class="ice">ís</span>Far</p>');
-      // Location and Destination
-      var locationInput = $('<input type="text" name="location" class="form-control locationInput" placeholder="Upphafsstaður">');
-      var to = $('<span class="loc_to_des"> <img src="/resources/theme1/images/locationTo.png" alt="arrowTo"></img></span');
-      var destinationInput= $('<input type="text" name="destination" class="form-control destinationInput" placeholder="Áfangastaður">');
-      var errorLocation= $('<label id="errorLocation"></label>');   
-      var errorDestination= $('<label id="errorDestination"></label>');
-      $(car).hide();
-      $(locationInput).appendTo(place);
-      $(to).appendTo(place);
-      $(destinationInput).appendTo(place);
-      $(errorLocation).appendTo(place);
-      $(errorDestination).appendTo(place);
-      changeForm =false;
+        riderDriverIsRegistered = true;
+        // Location and Destination
+        var locationInput = $('<input type="text" name="location" class="form-control locationInput" maxlength="20" placeholder="Upphafsstaður">');
+        var destinationInput= $('<input type="text" name="destination" class="form-control destinationInput" maxlength="20" placeholder="Áfangastaður">');
+        var errorLocation= $('<label id="errorLocation"></label>');   
+        var errorDestination= $('<label id="errorDestination"></label>');
+        $(car).hide();
+        $(locationInput).appendTo(place);
+        $(errorLocation).appendTo(place);
+        var secondLocationIcon = $('<span class="glyphicon glyphicon-map-marker"></span>');
+        $(secondLocationIcon).appendTo(place);
+        $(destinationInput).appendTo(place);
+        $(errorDestination).appendTo(place);
+        changeForm =false;
       }
       // When driver is adding his info
       if(!addRiderDriver){
-      riderDriverIsRegistered = false;
-      // Header
-      var headName = ('<p>Skrá <span class="ice">ís</span>Skutlara</p>');
-      // Location
-      var locationAreaInput= $('<input type="text" name="location" class="form-control locationAreaInput" placeholder="Svæði, t.d. höfuðborgarsvæðið">');
-      var errorlocationArea = $('<label id="errorLocationArea"></label>');
-      $(locationAreaInput).appendTo(place);
-      $(errorlocationArea).appendTo(place);
-      // CarDescription
-      var carLogo = $('<i class="fa fa-car"></i>');
-      var carDescription = $('<input type="text" name="carDescription" class="form-control carDescription" placeholder="Lýsing á bíl">');
-      var errorCar = $('<label id="errorCar"></label>');
-      $(car).show();
-      $(carLogo).appendTo(car);
-      $(carDescription).appendTo(car);
-      $(errorCar).appendTo(car);
-      // Second Clock
-      $(selectHoursFrom).appendTo(clocks);
-      $(selectMinutesFrom).appendTo(clocks);
-      $('<span>Til</span>').appendTo(clocks);
-      changeForm =false;
+        riderDriverIsRegistered = false;
+        // Location
+        var locationAreaInput= $('<input type="text" name="location" class="form-control locationAreaInput" maxlength="20" placeholder="Svæði, t.d. höfuðborgarsvæðið">');
+        var errorlocationArea = $('<label id="errorLocationArea"></label>');
+        $(locationAreaInput).appendTo(place);
+        $(errorlocationArea).appendTo(place);
+        // CarDescription
+        var carLogo = $('<i class="fa fa-car"></i>');
+        var carDescription = $('<input type="text" name="carDescription" class="form-control carDescription" maxlength="20" placeholder="Lýsing á bíl">');
+        var errorCar = $('<label id="errorCar"></label>');
+        $(car).show();
+        $(carLogo).appendTo(car);
+        $(carDescription).appendTo(car);
+        $(errorCar).appendTo(car);
+        // Second Clock
+        $('<span class="clockBetween">Til</span>').appendTo(clocks);
+        $(selectHoursTo).appendTo(clocks);
+        $(selectMinutesTo).appendTo(clocks);
+        changeForm =false;
       }
-      // Happens to both forms
-      $(headName).appendTo(headerName);
-      $(selectHours).appendTo(clocks);
-      $(selectMinutes).appendTo(clocks);
     }
-      e.preventDefault();
+    e.preventDefault();
   }
 
   //Ride information, run when Ok is clicked
@@ -127,11 +119,11 @@ var Main = (function() {
 
       // Create timestamp from clocks
       var timestamp = new Date();
-      var timestampFrom = new Date();
+      var timestampTo = new Date();
       timestamp.setHours($('.selectHours').val());
       timestamp.setMinutes($('.selectMinutes').val());
-      timestampFrom.setHours($('.selectHoursFrom').val());
-      timestampFrom.setMinutes($('.selectMinutesFrom').val());
+      timestampTo.setHours($('.selectHoursTo').val());
+      timestampTo.setMinutes($('.selectMinutesTo').val());
       // Phonenumber to int
       var phoneNumber=parseInt(phone); 
 
@@ -208,8 +200,8 @@ var Main = (function() {
             car_description: carDescription,
             user_id: userId,
             pickup_time_timestamp: timestamp.getTime(),
-            start_time_timestamp: timestampFrom.getTime(),
-            end_time_timestamp: timestamp.getTime()
+            start_time_timestamp: timestamp.getTime(),
+            end_time_timestamp: timestampTo.getTime()
           }
           console.log(data);
           //Sends info to registerdriver
