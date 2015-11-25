@@ -37,30 +37,26 @@
         <div>
           <img src="/resources/theme1/images/lock.png">
           <h5>Öruggara</h5>
-          <p>Hægt er að gefa notendur stjörnur sem veitir þér aukið öryggi</p>
+          <p>Hægt er að gefa notendur stjörnur og umsögn sem veitir þér aukið öryggi</p>
         </div>
       </div>
     </section>
     <section class="about">
       <h3>Hvað er ÍsFar?</h3>
       <p>
-          Ísfar er komanlegt app sem er hugsuð til að einfalda samskiptin milli bílstjóra og farþega þegar verið að skutla.
-          Áður hafa þessi samskipti farið fram á facebook hóp á mjög óskilvirkan hátt. 
+          Ísfar er komanlegt app sem er hugsuð til að einfalda samskiptin milli bílstjóra og farþega þegar verið að skutla. Áður hafa þessi samskipti farið fram á facebook hóp á mjög óskilvirkan hátt. 
           Til að bæta þessi samskipti, mun okkar app geta:
       </p>
       <p>
           Valið að sjá aðeins þá pósta sem eru að keyra eða eru farþegar. 
-          Flokkað pósta eftir:
-          Kostnaði
-          Staðsetningu
-          Tíma
-          Fjölda farþega
-          Gefið notendum stjörnur.
+          Flokkað pósta eftir: Kostnaði, staðsetningu, tíma og fjölda farþega.
+          Fundið staðsetningu með GPS.
+          Gefið notendum stjörnur og umsögn.
       </p>
       <p>
-          En auk þess mun vera hægt að bæta athugasemdum við pósta og tala við fólk í gegnum messenger.
+          En auk þess mun vera hægt að bæta athugasemdum við pósta og tala við fólk í gegnum messenger, líkt og hægt er að gera á Facebook núna.
 
-          Framtíðarsýn er svo að hægt verði að tengja önnur öpp við okkar sem geta séð um borganir milli fólks.
+          Framtíðarsýn okkar væri síðan að skoða möguleika við að tengja önnur öpp við okkar sem geta séð um borganir milli fólks.
       </p>
     </section>
   </main>
