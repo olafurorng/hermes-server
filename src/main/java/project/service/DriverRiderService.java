@@ -146,21 +146,36 @@ public class DriverRiderService extends AbstractService
         {
             Connection connection = getConnectionToDatabase();
 
+            final String sqlQueryUsers = "SELECT * FROM users;";
+            PreparedStatement preparedStatementUsers = connection.prepareStatement(sqlQueryUsers);
+            ResultSet resultSetUsers = preparedStatementUsers.executeQuery();
+
+
             final String sqlQuery = "SELECT * FROM " + DatabaseConstants.TABLE_DRIVER_ENTRY + ";"; // TODO: don't select everything because it is too expensive operation
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             ResultSet resultSet = preparedStatement.executeQuery();
-
             while (resultSet.next())
-            {
-                User user = null;
-                try
-                {
-                    user = userService.getUser(resultSet.getString(DatabaseConstants.TABLE_DRIVER_ENTRY_COLUMN_USER_ID), null, null);
+             {
+                 User user = null;
+                 while(resultSetUsers.previous()) {}
+                 while(resultSetUsers.next()) {
+                     if (resultSetUsers.getString(DatabaseConstants.TABLE_USERS_COLUMN_USER_ID).equals(
+                             resultSet.getString(DatabaseConstants.TABLE_USERS_COLUMN_USER_ID))) {
+                        final String name = resultSetUsers.getString(DatabaseConstants.TABLE_USERS_COLUMN_NAME);
+                        final String id = resultSetUsers.getString(DatabaseConstants.TABLE_USERS_COLUMN_USER_ID);
+                        final String email = resultSetUsers.getString(DatabaseConstants.TABLE_USERS_COLUMN_EMAIL);
+                        final double starRating = resultSetUsers.getDouble(DatabaseConstants.TABLE_USERS_COLUMN_STAR_RATING);
+                        final int numberOfStarRatings = resultSetUsers.getInt(DatabaseConstants.TABLE_USERS_COLUMN_NUMBER_OF_STAR_RATINGS);
+                        final String accessTokenFromDatabase = resultSetUsers.getString(DatabaseConstants.TABLE_USERS_COLUMN_ACCESS_TOKEN);
+                        final String pictureUrl = resultSetUsers.getString(DatabaseConstants.TABLE_USERS_COLUMN_PICTURE_URL);
+                        final String firstName = resultSetUsers.getString(DatabaseConstants.TABLE_USERS_COLUMN_FIRST_NAME);
+                        Log.i(LOGTAG, "User, id: " + id + ", does exist in database, return user");
+                        user = new User(accessTokenFromDatabase, id, name, email, starRating, numberOfStarRatings,
+                                pictureUrl, firstName,
+                                null);
+                        break;
+                    }
                 }
-                catch (UnauthorizedException e) {
-                    // ignore for now --> // TODO: stop ignoring??
-                }
-
                 if (user == null)
                 {
                     Log.w(LOGTAG, "user not found in database when selecting drivers - skipping this driver list entry");
@@ -184,6 +199,8 @@ public class DriverRiderService extends AbstractService
             }
 
             resultSet.close();
+            resultSetUsers.close();
+            preparedStatementUsers.close();
             preparedStatement.close();
         }
         catch (URISyntaxException e)
@@ -206,6 +223,10 @@ public class DriverRiderService extends AbstractService
         {
             Connection connection = getConnectionToDatabase();
 
+            final String sqlQueryUsers = "SELECT * FROM users;";
+            PreparedStatement preparedStatementUsers = connection.prepareStatement(sqlQueryUsers);
+            ResultSet resultSetUsers = preparedStatementUsers.executeQuery();
+
             final String sqlQuery = "SELECT * FROM " + DatabaseConstants.TABLE_RIDER_ENTRY + ";"; // TODO: don't select everything because it is too expensive operation
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -213,12 +234,23 @@ public class DriverRiderService extends AbstractService
             while (resultSet.next())
             {
                 User user = null;
-                try
-                {
-                    user = userService.getUser(resultSet.getString(DatabaseConstants.TABLE_DRIVER_ENTRY_COLUMN_USER_ID), null, null);
-                }
-                catch (UnauthorizedException e) {
-                    // ignore for now --> // TODO: stop ignoring??
+                while(resultSetUsers.previous()) {}
+                 while(resultSetUsers.next()) {
+                     if (resultSetUsers.getString(DatabaseConstants.TABLE_USERS_COLUMN_USER_ID).equals(
+                             resultSet.getString(DatabaseConstants.TABLE_USERS_COLUMN_USER_ID))) {
+                        final String name = resultSetUsers.getString(DatabaseConstants.TABLE_USERS_COLUMN_NAME);
+                        final String id = resultSetUsers.getString(DatabaseConstants.TABLE_USERS_COLUMN_USER_ID);
+                        final String email = resultSetUsers.getString(DatabaseConstants.TABLE_USERS_COLUMN_EMAIL);
+                        final double starRating = resultSetUsers.getDouble(DatabaseConstants.TABLE_USERS_COLUMN_STAR_RATING);
+                        final int numberOfStarRatings = resultSetUsers.getInt(DatabaseConstants.TABLE_USERS_COLUMN_NUMBER_OF_STAR_RATINGS);
+                        final String accessTokenFromDatabase = resultSetUsers.getString(DatabaseConstants.TABLE_USERS_COLUMN_ACCESS_TOKEN);
+                        final String pictureUrl = resultSetUsers.getString(DatabaseConstants.TABLE_USERS_COLUMN_PICTURE_URL);
+                        final String firstName = resultSetUsers.getString(DatabaseConstants.TABLE_USERS_COLUMN_FIRST_NAME);
+                        user = new User(accessTokenFromDatabase, id, name, email, starRating, numberOfStarRatings,
+                                pictureUrl, firstName,
+                                null);
+                        break;
+                    }
                 }
 
                 if (user == null)
