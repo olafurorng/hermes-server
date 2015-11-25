@@ -103,20 +103,15 @@ function callFbGraphApi(fbAccessToken) {
             url: '/login',
             data: response,
             success: function(data) {
-                console.log('data', data);
+                console.log('datassss', data);
                 var resultObj = {};
                 resultObj.timestamp = new Date().getTime() + 1000 * 60 * 60 * 24 * 30;
                 resultObj.accessToken = data.user.accessToken;
                 resultObj.userId = data.user.id;
                 localStorage.setItem('accessToken', JSON.stringify(resultObj));
-                
-                // document.getElementById('app').innerHTML =
-                    // 'Velkominn, ' + data.user.name + '!\n' +
-                    // 'Skráður tölvupóstur hjá þér er ' + data.user.email + '\n' +
-                    // 'Þú ert með ' + data.user.starRating + ' stjörnur.';
+                window.location.replace("http://localhost:8080/main");
             }
         }).fail(function() {
-            // $('#app').append('<p>Innskráning mistókst. Vinsamlegast reyndu aftur</p>')
         });
     });
 }

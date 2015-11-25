@@ -85,6 +85,7 @@ section.wrong p {
 .driverInfo p {
     font-size: 16px;
     text-align: left;
+    word-break: break-word;
 }
 
 .postContainer {

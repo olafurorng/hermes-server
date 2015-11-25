@@ -28,8 +28,9 @@ public class RouterController
     }
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public String main()
+    public String main(HttpServletRequest request)
     {
+        if (request.getSession().getAttribute("user") != null) return "redirect:/";
         String path = "Main";
         Log.i(LOGTAG, "Routing to: " + path);
         return path;
