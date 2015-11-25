@@ -192,7 +192,8 @@ public class DriverRiderService extends AbstractService
                         resultSet.getString(DatabaseConstants.TABLE_DRIVER_ENTRY_COLUMN_CAR_DESCRIPTION),
                         resultSet.getString(DatabaseConstants.TABLE_DRIVER_ENTRY_COLUMN_PLACE),
                         resultSet.getString(DatabaseConstants.TABLE_DRIVER_ENTRY_COLUMN_MESSAGE),
-                        new Date().getTime()); // TODO: store when the driver list entry was created
+                        new Date().getTime(),
+                        resultSet.getInt(DatabaseConstants.TABLE_DRIVER_ENTRY_COLUMN_PHONE_NUMBER)); // TODO: store when the dri  ver list entry was created
 
 
                 driverListEntryList.add(driverListEntry);
@@ -267,7 +268,8 @@ public class DriverRiderService extends AbstractService
                         resultSet.getInt(DatabaseConstants.TABLE_RIDER_ENTRY_COLUMN_PRICE), // TODO: store high and low price seperately
                         resultSet.getString(DatabaseConstants.TABLE_RIDER_ENTRY_COLUMN_MESSAGE),
                         new Date().getTime(), // TODO: store when the driver list entry was created
-                        resultSet.getInt(DatabaseConstants.TABLE_RIDER_ENTRY_COLUMN_NUMBER_OF_PEOPLE));
+                        resultSet.getInt(DatabaseConstants.TABLE_RIDER_ENTRY_COLUMN_NUMBER_OF_PEOPLE),
+                        resultSet.getInt(DatabaseConstants.TABLE_RIDER_ENTRY_COLUMN_PHONE_NUMBER));
 
                 riderListEntryList.add(riderListEntry);
             }

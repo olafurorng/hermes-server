@@ -13,9 +13,10 @@ public class RiderListEntry
     private final String message;
     private final long created; // timestamp of when the rider list entry was created
     private final int numberOfPeople;
+    private final int phoneNumber;
 
     public RiderListEntry(User user, String currentLocation, String destination, long pickUpDate, int price,
-                          String message, long created, int numberOfPeople)
+                          String message, long created, int numberOfPeople, int phoneNumber)
     {
         this.user = user;
         this.currentLocation = currentLocation;
@@ -25,6 +26,7 @@ public class RiderListEntry
         this.pickUpDate = pickUpDate;
         this.price = price;
         this.message = message;
+        this.phoneNumber = phoneNumber;
     }
 
     public User getUser()
@@ -66,4 +68,6 @@ public class RiderListEntry
     {
         return numberOfPeople;
     }
+
+    public int getPhoneNumber() { return phoneNumber; }
 }

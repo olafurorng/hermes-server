@@ -69,7 +69,7 @@ public class MockDataService
             int randomPrice = getRandomPrice();
             RiderListEntry riderListEntry = new RiderListEntry(user,
                     getRandomLocation(), getRandomLocation(), getRandomTimestamp(), randomPrice,
-                    getRandomMessageForRider(), getRandomTimestamp(), getRandomNumberOfPeople());
+                    getRandomMessageForRider(), getRandomTimestamp(), getRandomNumberOfPeople(), 5812345);
             riderListEntries.add(riderListEntry);
 
         }
@@ -91,7 +91,7 @@ public class MockDataService
             DriverListEntry driverListEntry = new DriverListEntry(user,
                     getRandomTimestamp(), getRandomTimestamp(), randomPrice, randomPrice + 3000,
                     getRandomNumberOfPeople(), getRandomCarDescription(), getRandomPlace(),
-                    getRandomMessageForDriver(), getRandomTimestamp());
+                    getRandomMessageForDriver(), getRandomTimestamp(), 5812345);
             driverListEntries.add(driverListEntry);
         }
 

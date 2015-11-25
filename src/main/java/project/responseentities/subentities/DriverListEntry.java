@@ -15,11 +15,12 @@ public class DriverListEntry
     private final String place;
     private final String message;
     private final long created;
+    private final int phoneNumber;
 
     public DriverListEntry(User user, long startDrivingTimestamp, long stopDrivingTimestamp,
                            int lowPrice, int highPrice,
                            int numberOfPeople, String carDescription, String place, String message,
-                           long created)
+                           long created, int phoneNumber)
     {
         this.user = user;
         this.startDriving = startDrivingTimestamp;
@@ -31,6 +32,7 @@ public class DriverListEntry
         this.place = place;
         this.message = message;
         this.created = created;
+        this.phoneNumber = phoneNumber;
     }
 
     public User getUser()
@@ -82,4 +84,6 @@ public class DriverListEntry
     {
         return created;
     }
+
+    public int getPhoneNumber() { return phoneNumber; }
 }

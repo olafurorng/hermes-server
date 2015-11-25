@@ -295,7 +295,7 @@ var Main = (function() {
 
       // Phone
       $('<span class="glyphicon glyphicon-phone"></span>').appendTo(phone);
-      $('<p>' + (data[i].user.phonenumber || "5812345") + '</p>').appendTo(phone);
+      $('<p>' + (data[i].phoneNumber || "5812345") + '</p>').appendTo(phone);
 
       // Message
       $('<p>' + data[i].message +'</p>').appendTo(message);
