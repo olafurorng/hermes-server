@@ -121,9 +121,9 @@ var Main = (function() {
       var timestamp = new Date();
       var timestampTo = new Date();
       timestamp.setHours($('.selectHours').val());
-      timestamp.setMinutes($('.selectMinutes').val());
+      timestamp.setMinutes($('.selectMinutes').val() * 5);
       timestampTo.setHours($('.selectHoursTo').val());
-      timestampTo.setMinutes($('.selectMinutesTo').val());
+      timestampTo.setMinutes($('.selectMinutesTo').val() * 5);
       // Phonenumber to int
       var phoneNumber=parseInt(phone); 
 
