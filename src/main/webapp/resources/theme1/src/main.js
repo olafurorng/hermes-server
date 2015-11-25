@@ -4,7 +4,7 @@ var Main = (function() {
   // Controles what data and input should post
   var riderDriverIsRegistered = false;
   // Controles what form is shown
-  var addRiderDriver = false;
+  var addRiderDriver = true;
   var changeForm = true;
 
     //Get out of register when clicked outside of container
@@ -237,7 +237,7 @@ var Main = (function() {
     $('.phoneInput').removeClass('invalid');
     // -----------------------------------------------------
 
-    addRiderDriver = type === 'rider';
+    addRiderDriver = type === 'driver';
     changeForm = true;
     var data = (type === 'driver') ? userData.driversList : userData.ridersList;
     var userList = $('.userList');
