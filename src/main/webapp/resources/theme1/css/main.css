@@ -247,10 +247,10 @@ section.wrong p {
     margin-bottom:10px;
 }
 
-.phone .glyphicon-phone, .car .fa-car, .place .glyphicon-map-marker, .clocks .glyphicon-time, .glyphicon-usd{
+.phone .glyphicon-phone, .car .fa-car, .place .glyphicon-map-marker, .clocks .glyphicon-time, .sliderBody>.glyphicon-usd{
     float:left;
     font-size:1.5em;
-    width:5%;
+    width: 5%;
 }
 
 .sliderBody {
