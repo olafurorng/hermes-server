@@ -212,11 +212,7 @@ section.wrong p {
     color: #000;  
     border-radius: 3px;
     opacity: 0.95;
-    z-index: 11;
-}
-
-.register_Body {
-    padding:5% 4% 5% 4%;
+    padding:5% 4% 0% 4%;
 }
 
 .invalid { 
@@ -237,23 +233,22 @@ section.wrong p {
     margin-bottom:10px;
     float:left;
     width:100%;
+    color:#fff;
 }
 
-.phoneInput, .locationAreaInput, .carDescription, .destinationInput {     
-    width: 95%; 
+.phoneInput, .locationAreaInput, .carDescription, .destinationInput, .locationInput {     
     float:left;
+    width: 95%; 
+    color:#fff;
 }
 
-.locationInput {     
-    width: 95%; 
+.locationInput {
     margin-bottom:10px;
-    float:left;
 }
 
 .phone .glyphicon-phone, .car .fa-car, .place .glyphicon-map-marker, .clocks .glyphicon-time, .glyphicon-usd{
     float:left;
     font-size:1.5em;
-    color:#fff;
     width:5%;
 }
 
@@ -263,6 +258,7 @@ section.wrong p {
     display: flex;
     margin-bottom: 5px;
     align-items: center;
+    color:#fff;
 }
 
 #slider-range{
@@ -288,18 +284,15 @@ section.wrong p {
 .radios span { 
     float:left;
     font-size:1.5em; 
-    color: #000; 
+    color: #fff; 
     margin-right:1.2%;
     margin-top:2%;
-}
-
-.fa {
-    color: #fff; 
 }
 
 .radios {
     width: 100%;
     float:left;
+    color:#000;
 }
 
 .radios .radio {
@@ -337,6 +330,7 @@ input:not([type]), input[type="text"] {
     width: 100%;
     float:left;
 }
+
 .clockBetween {
     color: #fff; 
 }
@@ -354,6 +348,7 @@ input:not([type]), input[type="text"] {
     padding:0.5%;
     margin-right:1%;
     border-radius: 5px;
+    color:#000;
 }
 
 .selectHoursTo {

@@ -51,9 +51,9 @@ var Main = (function() {
         if (i < 12) $('<option value="' + i +'">' + ('0' + 5 * i).slice(-2) + '</option>').appendTo(selectMinutesTo);
       }
       $(selectHours).val(now.getHours());
-      $(selectMinutes).val(Math.floor(now.getMinutes() / 5));
+      $(selectMinutes).val(Math.floor(now.getMinutes() / 5)*5);
       $(selectHoursTo).val(now.getHours());
-      $(selectMinutesTo).val(Math.floor(now.getMinutes() / 5));
+      $(selectMinutesTo).val(Math.floor(now.getMinutes() / 5)*5);
       $('<span class="glyphicon glyphicon-time"></span>').appendTo(clocks);
       // Happens to both forms
       $(selectHours).appendTo(clocks);

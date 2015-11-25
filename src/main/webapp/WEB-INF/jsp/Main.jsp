@@ -34,54 +34,52 @@
       <button class="btn btn-default addButton">Bæta við</button>
     </section>
     <section class="addContainer">
-    <div class="addContainerText"></div>
-    <div class="register">
-        <div class="register_Body">   
-            <form name="form" id="form" method="post">             
-                <div class="phone">
-                    <span class="glyphicon glyphicon-phone"></span>
-                    <label class="sr-only" for="phone">Phone</label>          
-                    <input type="text" id="phone" class="phoneInput form-control" name="phone" maxlength="7" placeholder="Símanúmer"/>
-                    <label id="errorPhone"></label>
-                </div>
-                <div class="car">
+      <div class="addContainerText"></div>
+      <div class="register">  
+          <form name="form" id="form" method="post">             
+              <div class="phone">
+                  <span class="glyphicon glyphicon-phone"></span>
+                  <label class="sr-only" for="phone">Phone</label>          
+                  <input type="text" id="phone" class="phoneInput form-control" name="phone" maxlength="7" placeholder="Símanúmer"/>
+                  <label id="errorPhone"></label>
+              </div>
+              <div class="car">
 
-                </div>
+              </div>
 
-                <div class="place">
+              <div class="place">
 
-                </div>
-                <div class="sliderBody">
-                    <span class="glyphicon glyphicon-usd"></span>
-                    <label for="amount"></label>
-                    <input type="text" id="amount" class="price form-control">
-                  <div id="slider-range"></div>
-                </div>    
-                <div class="radios">
-                    <span><i class="fa fa-user-times"></i></span>
-                    <input type="radio" name="rGroup" value=1 id="r1" checked="checked" />
-                    <label class="radio" for="r1">1</label>
-                    <input type="radio" name="rGroup" value=2 id="r2" />
-                    <label class="radio" for="r2">2</label>
-                    <input type="radio" name="rGroup" value=3 id="r3" />
-                    <label class="radio" for="r3">3</label>
-                    <input type="radio" name="rGroup" value=4 id="r4" />
-                    <label class="radio" for="r4">4</label>
-                    <input type="radio" name="rGroup" value=5 id="r5" />
-                    <label class="radio" for="r5">5</label>
-                    <input type="radio" name="rGroup" value=6 id="r6" />
-                    <label class="radio" for="r6">6</label>
-                </div>
-                <div class="clocks">
+              </div>
+              <div class="sliderBody">
+                  <span class="glyphicon glyphicon-usd"></span>
+                  <label for="amount"></label>
+                  <input type="text" id="amount" class="price form-control">
+                <div id="slider-range"></div>
+              </div>    
+              <div class="radios">
+                  <span><i class="fa fa-user-times"></i></span>
+                  <input type="radio" name="rGroup" value=1 id="r1" checked="checked" />
+                  <label class="radio" for="r1">1</label>
+                  <input type="radio" name="rGroup" value=2 id="r2" />
+                  <label class="radio" for="r2">2</label>
+                  <input type="radio" name="rGroup" value=3 id="r3" />
+                  <label class="radio" for="r3">3</label>
+                  <input type="radio" name="rGroup" value=4 id="r4" />
+                  <label class="radio" for="r4">4</label>
+                  <input type="radio" name="rGroup" value=5 id="r5" />
+                  <label class="radio" for="r5">5</label>
+                  <input type="radio" name="rGroup" value=6 id="r6" />
+                  <label class="radio" for="r6">6</label>
+              </div>
+              <div class="clocks">
                   
-                </div>
-                    <textarea rows="4" cols="20" class="message form-control" name="comments" placeholder="Auka athugasemdir"></textarea>
-                    <button class="submitRegister" type="button">
-                        <i class="fa fa-taxi"> Skrá far</i>                  
-                    </button>    
-            </form>
-        </div>
-    </div>
+              </div>
+                  <textarea rows="4" cols="20" class="message form-control" name="comments" placeholder="Auka athugasemdir"></textarea>
+                  <button class="submitRegister" type="button">
+                      <i class="fa fa-taxi"> Skrá far</i>                  
+                  </button>    
+          </form>
+      </div>
     </section>
     <section class="rider-driver-list">
         <div id="rider-driver-data" class="container-fluid"></div>
